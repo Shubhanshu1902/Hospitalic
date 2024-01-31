@@ -1,0 +1,61 @@
+@import '../../App.scss';
+
+body {
+    overflow: hidden;
+    margin: 0 0 0 0;
+    background: $color1;
+}
+
+.Login {
+    display: flex;
+}
+
+.options {
+    display: flex;
+    max-width: max-content;
+    height: 100vh;
+    align-items: center;
+    gap : 62px;
+    padding-left: 25px;
+    padding-right: 30px;
+    padding-top: 56px;
+    flex-direction: column;
+    background: $color4;
+
+    .title1 {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        align-items: center;
+        font: $font;
+        font-size: map-get($font-size, title);
+        font-weight: map-get($font-weight, bold);
+    }
+}
+
+.LoginOptions {
+    display: flex;
+    flex-direction: row;
+    font: $font;
+    font-size: map-get($font-size, normal);
+    font-weight: map-get($font-weight, normal);
+    background: $color2;
+    width: 497px;
+    height: 72px;
+    align-items: center;
+    padding-left: 14px;
+    box-shadow: 0px 4px 4px 0px rgba(240, 240, 240, 0.31); 
+    border-radius: 15px; 
+    justify-content: space-between;
+    padding-right: 30px;
+    user-select: none;
+
+    &:hover {
+        background: $color5;
+    }
+
+}
+
+.LoginBox {
+    display: flex;
+}

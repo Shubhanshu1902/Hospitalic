@@ -1,0 +1,23 @@
+$color1 : #2F80ED;
+$color2 : #F1FAFF;
+$color3 : #000000;
+$color4 : #ffffff;
+$color5 : #BBE3FA;
+
+$font : 'Mukta', sans-sherif;
+$font-weight : (
+    "normal" : 400,
+    "bold" : 500
+);
+$font-size : (
+    "title" : 45px,
+    "normal" : 30px
+);
+
+:export {
+    color1: $color1;
+    color2: $color2;
+    color3: $color3;
+    color4: $color4;
+    color5: $color5;
+}
