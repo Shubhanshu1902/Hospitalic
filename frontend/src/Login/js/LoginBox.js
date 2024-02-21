@@ -42,6 +42,10 @@ export const LoginBox = (props) => {
                     Sign In
                 </div>
 
+                {if(prop.type == patient) {
+                    
+                }}
+
             </div>
         );
 };

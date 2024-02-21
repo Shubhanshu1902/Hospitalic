@@ -7,7 +7,6 @@ import { LoginBox } from "./LoginBox";
 
 export const LoginScreen = () => {
     const login_types = ["Patient", "Doctor", "Lab", "Radiologist"];
-    const [color, setColor] = useState(variables.color2);
     const [currSelection, setCurrSelection] = useState("None");
     
     const changeSelection = (i) => {
