@@ -7,8 +7,12 @@ import { LoginBox } from "./LoginBox";
 
 export const LoginScreen = () => {
     const login_types = ["Patient", "Doctor", "Lab", "Radiologist"];
-    const [color, setColor] = useState(variables.color2);
     const [currSelection, setCurrSelection] = useState("None");
+    
+    const changeSelection = (i) => {
+        setCurrSelection(i);
+        console.log(i);
+    }
 
     return (
         <div className="Login">
@@ -19,11 +23,11 @@ export const LoginScreen = () => {
                 </div>
 
                 {login_types.map((s, i) => (
-                    <LoginOptions key={i} type={s} />
+                    <LoginOptions key={i} type={s} onClick = {() => changeSelection(s)}/>
                 ))}
             </div>
 
-            <LoginBox />
+            <LoginBox type={currSelection}/>
         </div>
     );
 };
