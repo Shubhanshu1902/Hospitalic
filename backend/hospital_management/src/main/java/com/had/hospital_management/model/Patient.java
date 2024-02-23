@@ -15,7 +15,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 public class Patient {
-    @jakarta.persistence.Id
+    @Id
     private Long Id;
     private String First_Name;
     private String Last_Name;
