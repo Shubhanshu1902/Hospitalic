@@ -1,5 +1,6 @@
 package com.had.hospital_management.repository;
 
+import com.had.hospital_management.model.Patient;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,5 +15,10 @@ class PatientRepositoryTest {
     @Test
     public void savePatient() {
         Patient patient = Patient.builder()
+                .First_Name("arin")
+                .Last_Name("awasthi")
+                .build();
+
+        patientRepository.save(patient); 
     }
 }
