@@ -1,10 +1,7 @@
 package com.had.hospital_management.repository;
-
-import com.had.hospital_management.model.Patient;
+import com.had.hospital_management.model.Appointment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
 @Repository
-public interface PatientRepository extends JpaRepository<Patient, Long> {
-
+public interface AppointmentRepository extends JpaRepository<Appointment,Long>{
 }
