@@ -5,8 +5,11 @@ $color4 : #ffffff;
 $color5 : #BBE3FA;
 $color6 : #E0E0E0;
 $color7 : #2A72B9;
+$color8 : #F9F9F9;
+$color9: #e0e0e0;
+$color10: #828282;
 
-$font : 'Mukta', sans-sherif;
+$font : 'Mukta', sans-serif;
 $font-weight : (
     "normal" : 400,
     "bold" : 500,
@@ -19,11 +22,3 @@ $font-size : (
     "type3" : 36px
 );
 
-:export {
-    color1: $color1;
-    color2: $color2;
-    color3: $color3;
-    color4: $color4;
-    color5: $color5;
-    color6: $color6
-}
