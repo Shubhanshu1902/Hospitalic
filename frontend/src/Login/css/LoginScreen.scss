@@ -106,6 +106,7 @@ body {
     }
 
     .box {
+        color: #000000;
         width: 426px;
         height: 72px;
         background: $color6;
@@ -130,5 +131,23 @@ body {
         font: $font;
         font-size: map-get($font-size, type3);
         font-weight: map-get($font-weight, bold);
+        caret-color: transparent;
+
+        &:hover{
+            caret-color: transparent;
+            background: $color1;
+        }
     }
+
+
+    input{
+        background: $color6;
+        font: $font;
+        font-size: map-get($font-size, regular);
+        font-weight: map-get($font-weight, regular);
+        box-shadow: 0 0 0 0;
+        border: 0;
+        width: 100%;
+        outline: 0;
+    }   
 }
