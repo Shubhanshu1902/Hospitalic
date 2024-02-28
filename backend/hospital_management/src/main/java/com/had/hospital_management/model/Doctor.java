@@ -16,12 +16,12 @@ import java.util.Date;
 @Builder
 public class Doctor {
     @jakarta.persistence.Id
-    private Long Id;
-    private String First_Name;
-    private String Last_Name;
-    private String Email;
-    private String Gender;
-    private Date DOB;
-    private String Address;
-    private String Password;
+    private Long id;
+    private String first_name;
+    private String last_name;
+    private String email;
+    private String gender;
+    private Date dob;
+    private String address;
+    private String password;
 }

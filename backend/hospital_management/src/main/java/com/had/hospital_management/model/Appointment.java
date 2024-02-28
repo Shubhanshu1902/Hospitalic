@@ -16,8 +16,8 @@ import java.util.Date;
 @Builder
 public class Appointment {
     @jakarta.persistence.Id
-    private Long Id;
-    private Long Doctor_Id;
-    private Long Patient_Id;
-    private Date Date;
+    private Long id;
+    private Long doctor_id;
+    private Long patient_id;
+    private Date date;
 }

@@ -17,12 +17,12 @@ import lombok.NoArgsConstructor;
 public class Report {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
-    private Long Lead_Doctor_Id;
-    private Long Lab_Id;
-    private Long Patient_Id;
-    private Long Radiologist_Id;
-    private String Photo_Path;
-    private String Comments;
-    private Long Chat_Id;
+    private Long id;
+    private Long lead_doctor_id;
+    private Long lab_id;
+    private Long patient_id;
+    private Long radiologist_id;
+    private String photo_path;
+    private String comments;
+    private Long chat_id;
 }

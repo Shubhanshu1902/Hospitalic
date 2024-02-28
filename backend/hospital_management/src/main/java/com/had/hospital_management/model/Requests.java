@@ -16,8 +16,8 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Requests {
     @jakarta.persistence.Id
-    private Long Id;
-    private Long Report_Id;
-    private Long Radiologist_Id;
-    private Long Status;
+    private Long id;
+    private Long report_id;
+    private Long radiologist_id;
+    private Long status;
 }
