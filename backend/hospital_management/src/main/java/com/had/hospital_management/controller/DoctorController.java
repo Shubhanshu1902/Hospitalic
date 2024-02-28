@@ -24,7 +24,7 @@ public class DoctorController {
         return doctorService.findAllDoc();
     }
 
-    @GetMapping("/get_by_{id}")
+    @GetMapping("/get_by_id/{id}")
     public ResponseEntity<Doctor> getById(@PathVariable("id") Long id)
     {
         Doctor doctor = doctorService.findDoctorById(id);

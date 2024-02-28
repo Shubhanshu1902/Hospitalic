@@ -10,14 +10,14 @@ import java.util.List;
 @Service
 public class RadiologistService {
     @Autowired
-    private RadiologistRepository radiologistRepository;
+    private static RadiologistRepository radiologistRepository;
 
     public Radiologist saveRadiologist(Radiologist radiologist)
     {
         return radiologistRepository.save(radiologist);
     }
 
-    public List<Radiologist> findAllRadiologists()
+    public static List<Radiologist> findAllRadiologists()
     {
         return radiologistRepository.findAll();
     }

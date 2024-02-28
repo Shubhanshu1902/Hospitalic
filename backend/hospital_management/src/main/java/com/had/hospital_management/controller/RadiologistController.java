@@ -24,7 +24,7 @@ public class RadiologistController {
         return RadiologistService.findAllRadiologists();
     }
 
-    @GetMapping("/get_by_{id}")
+    @GetMapping("/get_by_id/{id}")
     public ResponseEntity<Radiologist> getById(@PathVariable("id") Long id)
     {
         Radiologist radiologist = radiologistService.findRadiologistById(id);
