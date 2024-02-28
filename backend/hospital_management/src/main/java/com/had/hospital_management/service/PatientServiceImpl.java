@@ -13,8 +13,6 @@ public class PatientServiceImpl implements PatientService{
 
     @Override
     public Patient savePatient(Patient patient) {
-        System.out.println("savepatient reached");
-        System.out.println(patient);
         return patientRepository.save(patient);
     }
 }
