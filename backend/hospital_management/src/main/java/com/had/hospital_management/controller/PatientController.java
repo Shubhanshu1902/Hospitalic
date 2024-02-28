@@ -13,10 +13,11 @@ public class PatientController {
     private PatientService patientService;
 
     @PostMapping("/patients")
-    public String savePatient(@RequestBody Patient patient) {
+    public Patient savePatient(@RequestBody Patient patient) {
+        System.out.println(patient);
         System.out.println("reached");
-//        return patientService.savePatient(patient);
-        return "patientpencho";
+        return patientService.savePatient(patient);
+//        return "patientpencho";
     }
 
 
