@@ -13,10 +13,12 @@ public class PatientController {
     private PatientService patientService;
 
     @PostMapping("/patients")
-    public Patient savePatient(@RequestBody Patient patient) {
+    public String savePatient(@RequestBody Patient patient) {
         System.out.println("reached");
-        return patientService.savePatient(patient);
+//        return patientService.savePatient(patient);
+        return "patientpencho";
     }
+
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String helloWorld() {
