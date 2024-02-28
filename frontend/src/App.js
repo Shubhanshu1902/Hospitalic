@@ -1,5 +1,4 @@
 import "./App.scss";
-// import { LoginOptions } from "./Login/js/LoginOptions";
 import { LoginScreen } from "./Login/js/LoginScreen";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Register } from "./Login/js/Register";

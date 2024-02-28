@@ -2,13 +2,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faGooglePlusG, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import React, { useState } from "react";
 import { faEnvelope, faLock } from "@fortawesome/fontawesome-free-solid";
+import { useNavigate } from "react-router-dom";
 
 export const LoginBox = (props) => {
     const [email, setEmail] = useState("")
     const [eicon, setEicon] = useState(true)
     const [password, setPassword] = useState("")
     const [picon, setPicon] = useState(true)
-
+    let navigate = useNavigate()
 
     const onChangeEBox = (event) => {
         setEmail(event.target.value);
@@ -23,6 +24,11 @@ export const LoginBox = (props) => {
         console.log(props.type)
         console.log(email);
         console.log(password);
+    }
+
+    const onRegister = () => {
+        let path = 'register'
+        navigate(path);
     }
     
     if(props.type != "None") 
@@ -64,7 +70,7 @@ export const LoginBox = (props) => {
                 </div>
 
                 {props.type === "Patient" && 
-                    <div className="text" style={{textDecoration: "underline"}}>
+                    <div className="text" style={{textDecoration: "underline"}} onClick={onRegister}>
                         Register
                     </div>
                 }
