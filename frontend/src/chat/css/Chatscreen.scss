@@ -5,7 +5,6 @@ body {
     margin: 0 0 0 0;
     background: $color4;
 }
-
 .main {
     display: flex;
     height: 100vh;
@@ -120,12 +119,13 @@ body {
             .msgbox {
                 height : 90%;
                 width : 40%;
-                background: $color4;
+                background: $color2;
                 border-radius: 5px;
                 margin-top: 3%;
                 margin-right: 3%;
                 display: flex;
                 flex-direction: column;
+                overflow: scroll;
 
                 .title {
                     height: 50px;
@@ -139,8 +139,39 @@ body {
                 }
                 .messages{
                     padding: 10px;
-                    background: $color2;
-                    height: 50px;
+                    display: flex;
+                    gap: 20px;
+                    // background: $color2;
+                    height: 70px;
+                    margin-bottom: 10px;
+
+                    .messageInfo{
+                            display: flex;
+                            flex-direction: column;
+                            color: $color10;
+                            font-weight: 300;
+                        img{
+                            width: 40px;
+                            height: 40px;
+                            border-radius: 50%;
+                            object-fit: cover;
+                        }
+                    }
+
+                    .messageContent{
+                        max-width: 80%;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 5px;
+
+                        p{
+                            background-color: $color4;
+                            padding: 10px 20px;
+                            border-radius: 0px 40px 40px 40px;
+                        }
+                    }
+
+
                 }
                 .input{
                     color: $color10;
@@ -161,10 +192,13 @@ body {
                         width: 50%;
                         border: none;
                         outline: none;
+                        background-color: $color2;
                         color: $color10;
                         font-size: 18px;
                         font-family: 'Poppins';
                     }
+
+
                 }
             }
         }
