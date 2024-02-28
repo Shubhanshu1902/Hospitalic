@@ -1,4 +1,6 @@
+import { faPaperPlane } from "@fortawesome/fontawesome-free-solid";
 import Messages from "./Messages";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Msgbox = () => {
     return (
@@ -11,8 +13,12 @@ const Msgbox = () => {
             <Messages />
             <Messages />
             <Messages />
+
             <div className="input">
                 <input type="text" placeholder= 'Input'/>
+                <div className="sendArrow">
+                    <FontAwesomeIcon icon={faPaperPlane} />
+                </div>
             </div>
         </div>
     );
