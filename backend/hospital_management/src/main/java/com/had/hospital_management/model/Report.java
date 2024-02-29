@@ -15,9 +15,7 @@ public class Report {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long lead_doctor_id;
     private Long lab_id;
-    private Long patient_id;
     private Long radiologist_id;
     private String photo_path;
     private String comments;
@@ -25,4 +23,18 @@ public class Report {
     @OneToOne
     @JoinColumn(name = "chat_id", referencedColumnName = "id")
     private Chat chat;
+
+    @ManyToOne()
+    @JoinColumn(
+            name = "lead_doctor_id",
+            referencedColumnName = "id"
+    )
+    private Doctor doctor;
+
+    @ManyToOne()
+    @JoinColumn(
+            name = "patient_id",
+            referencedColumnName = "id"
+    )
+    private Patient patient;
 }
