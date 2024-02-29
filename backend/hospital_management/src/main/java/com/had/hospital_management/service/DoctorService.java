@@ -4,6 +4,7 @@ import com.had.hospital_management.model.Doctor;
 import com.had.hospital_management.repository.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -12,18 +13,25 @@ public class DoctorService {
     @Autowired
     private DoctorRepository doctorRepository;
 
-    public Doctor saveDoctor(Doctor doctor)
+    public Doctor save(Doctor doctor)
     {
         return doctorRepository.save(doctor);
     }
 
-    public List<Doctor> findAllDoc()
+    public List<Doctor> findAll()
     {
         return doctorRepository.findAll();
     }
 
-    public Doctor findDoctorById(Long Id)
+    public Doctor getById(Long Id)
     {
         return  doctorRepository.findById(Id).orElse(null);
+    }
+
+    @Transactional
+    public void deleteById(Long id) {
+        Doctor doctor = doctorRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Doctor with id " + id + " not found"));
+        doctorRepository.delete(doctor);
     }
 }
