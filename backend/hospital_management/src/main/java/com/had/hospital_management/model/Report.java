@@ -1,9 +1,6 @@
 package com.had.hospital_management.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,5 +21,8 @@ public class Report {
     private Long radiologist_id;
     private String photo_path;
     private String comments;
-    private Long chat_id;
+
+    @OneToOne
+    @JoinColumn(name = "chat_id", referencedColumnName = "id")
+    private Chat chat;
 }
