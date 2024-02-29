@@ -23,8 +23,8 @@ public class LabService {
     }
     @Transactional
     public void deleteById(Long id) {
-        Lab doctor = labRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Doctor with id " + id + " not found"));
-        labRepository.delete(doctor);
+        Lab lab = labRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Doctor with id " + id + " not found"));
+        labRepository.delete(lab);
     }
 
 }

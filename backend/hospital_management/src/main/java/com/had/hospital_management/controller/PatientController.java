@@ -3,6 +3,7 @@ package com.had.hospital_management.controller;
 import com.had.hospital_management.model.Patient;
 import com.had.hospital_management.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +21,6 @@ public class PatientController {
         System.out.println(patient);
         System.out.println("reached");
         return patientService.save(patient);
-//        return "patientpencho";
     }
 
     @GetMapping("/find_all")
@@ -42,6 +42,16 @@ public class PatientController {
     public String helloWorld() {
         System.out.println("hello reached");
         return "Hello wordl";
+    }
+
+    @DeleteMapping("delete_by_id/{id}")
+    public ResponseEntity<?> deleteById(@PathVariable("id") Long id) {
+        try {
+            patientService.deleteById(id);
+            return new ResponseEntity<>("Doctor deleted successfully", HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Failed to delete doctor", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 

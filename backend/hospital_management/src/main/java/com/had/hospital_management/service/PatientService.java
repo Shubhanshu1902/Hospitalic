@@ -2,6 +2,7 @@ package com.had.hospital_management.service;
 
 import com.had.hospital_management.model.Patient;
 import com.had.hospital_management.repository.PatientRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,5 +25,10 @@ public class PatientService {
 
     public Patient findById(Long Id){
         return patientRepository.findById(Id).orElse(null);
+    }
+
+    @Transactional
+    public void deleteById(Long id) {
+        Patient patient = patientRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Patient with id " + id + " not found"));
     }
 }
