@@ -2,6 +2,8 @@ package com.had.hospital_management.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,7 +19,19 @@ import java.util.Date;
 public class Appointment {
     @jakarta.persistence.Id
     private Long id;
-    private Long doctor_id;
-    private Long patient_id;
     private Date date;
+
+    @ManyToOne()
+    @JoinColumn(
+            name = "patient_id",
+            referencedColumnName = "id"
+    )
+    private Patient patient;
+
+    @ManyToOne()
+    @JoinColumn(
+            name = "doctor_id",
+            referencedColumnName = "id"
+    )
+    private Doctor doctor;
 }
