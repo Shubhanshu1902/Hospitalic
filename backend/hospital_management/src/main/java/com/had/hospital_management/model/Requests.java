@@ -1,9 +1,6 @@
 package com.had.hospital_management.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,7 +14,20 @@ import lombok.NoArgsConstructor;
 public class Requests {
     @jakarta.persistence.Id
     private Long id;
-    private Long report_id;
     private Long radiologist_id;
     private Long status;
+
+    @ManyToOne()
+    @JoinColumn(
+            name = "report_id",
+            referencedColumnName = "id"
+    )
+    private Report report;
+
+    @ManyToOne()
+    @JoinColumn(
+            name = "radiologist_id",
+            referencedColumnName = "id"
+    )
+    private Radiologist radiologist;
 }
