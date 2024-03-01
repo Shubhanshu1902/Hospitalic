@@ -16,6 +16,6 @@ import java.util.Date;
 @Builder
 public class Chat {
     @jakarta.persistence.Id
-    private Long Id;
-    private Long Report_Id;
+    private Long id;
+    private Long report_id;
 }

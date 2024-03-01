@@ -16,8 +16,8 @@ import java.util.Date;
 @Builder
 public class Lab {
     @jakarta.persistence.Id
-    private Long Id;
-    private String Name;
-    private String Address;
+    private Long id;
+    private String name;
+    private String address;
 }
 
