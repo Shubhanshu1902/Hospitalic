@@ -14,7 +14,6 @@ import lombok.NoArgsConstructor;
 public class Requests {
     @jakarta.persistence.Id
     private Long id;
-    private Long radiologist_id;
     private Long status;
 
     @ManyToOne()
