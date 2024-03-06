@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.userdetails.User;
 
 @Entity
 @Data
@@ -29,12 +30,12 @@ public class Report {
             name = "lead_doctor_id",
             referencedColumnName = "id"
     )
-    private Doctor doctor;
+    private UserEntity user1;
 
     @ManyToOne()
     @JoinColumn(
             name = "patient_id",
             referencedColumnName = "id"
     )
-    private Patient patient;
+    private UserEntity user2;
 }
