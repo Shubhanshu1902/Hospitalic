@@ -16,7 +16,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Patient {
+public class Patient{
     @Id
     private Long id;
     private String first_name;
