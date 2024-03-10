@@ -1,9 +1,36 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faGooglePlusG, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import React from "react";
+import React, { useState } from "react";
 import { faEnvelope, faLock } from "@fortawesome/fontawesome-free-solid";
+import { useNavigate } from "react-router-dom";
 
 export const LoginBox = (props) => {
+    const [email, setEmail] = useState("")
+    const [eicon, setEicon] = useState(true)
+    const [password, setPassword] = useState("")
+    const [picon, setPicon] = useState(true)
+    let navigate = useNavigate()
+
+    const onChangeEBox = (event) => {
+        setEmail(event.target.value);
+    }
+
+    const onChangePBox = (event) => {
+        setPassword(event.target.value);
+    }
+
+    // TODO
+    const onSignIn = () => {
+        console.log(props.type)
+        console.log(email);
+        console.log(password);
+    }
+
+    const onRegister = () => {
+        let path = 'register'
+        navigate(path);
+    }
+    
     if(props.type != "None") 
         return (
             <div className="LoginBox">
@@ -25,26 +52,28 @@ export const LoginBox = (props) => {
 
                 <div className="text">or use ur email account</div>
                 <div className="box">
-                    <FontAwesomeIcon icon={faEnvelope} />
-                    Email
+                    {eicon && <FontAwesomeIcon icon={faEnvelope} />}
+                    <input type="text" value={email} placeholder="Email" onChange={onChangeEBox}/>
                 </div>
 
                 <div className="box">
-                    <FontAwesomeIcon icon={faLock} />
-                    Password
+                    {picon && <FontAwesomeIcon icon={faLock} />}
+                    <input type="password" value={password} placeholder="Password" onChange={onChangePBox}/>
                 </div>
 
                 <div className="text" style={{textDecoration: "underline"}} >
                     Forgot your password?
                 </div>
 
-                <div className="signin">
+                <div className="signin" onClick={onSignIn}>
                     Sign In
                 </div>
 
-                {if(prop.type == patient) {
-                    
-                }}
+                {props.type === "Patient" && 
+                    <div className="text" style={{textDecoration: "underline"}} onClick={onRegister}>
+                        Register
+                    </div>
+                }
 
             </div>
         );

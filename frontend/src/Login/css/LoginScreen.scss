@@ -1,13 +1,11 @@
 @import '../../App.scss';
 
-body {
-    overflow: hidden;
-    margin: 0 0 0 0;
-    background: $color1;
-}
+
 
 .Login {
     display: flex;
+    background: $color1;
+    margin: 0 0 0 0;
 }
 
 .options {
@@ -106,6 +104,7 @@ body {
     }
 
     .box {
+        color: #000000;
         width: 426px;
         height: 72px;
         background: $color6;
@@ -130,5 +129,115 @@ body {
         font: $font;
         font-size: map-get($font-size, type3);
         font-weight: map-get($font-weight, bold);
+        border-radius: 10px;
+
+        &:hover{
+            caret-color: transparent;
+            background: $color1;
+        }
+    }
+
+
+    input{
+        background: $color6;
+        font: $font;
+        font-size: map-get($font-size, regular);
+        font-weight: map-get($font-weight, regular);
+        box-shadow: 0 0 0 0;
+        border: 0;
+        width: 100%;
+        outline: 0;
+    }   
+}
+
+.register-box {
+    display: flex;
+    background: $color4;
+    margin: auto;
+    padding: 30px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    border-radius: 20px;
+
+    .title1 {
+        font: $font;
+        font-size: map-get($font-size, title);
+        font-weight: map-get($font-weight, normal);
+    }
+
+    .try {
+        display: flex;
+        justify-content: center;
+        font: $font;
+        font-size: map-get($font-size, regular);
+        font-weight: map-get($font-weight, regular);
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        width: 100%;
+        input {
+            width: 420px;
+            height: 52px;
+            background: $color6;
+            border-radius: 10px;
+            padding-left: 20px;
+            font: $font;
+            font-size: map-get($font-size, regular);
+            font-weight: map-get($font-weight, regular);
+            border: 0;
+            outline: 0;
+            color: $color11;
+        }
+    }
+
+    .try2 {
+        display: flex;
+        font: $font;
+        font-size: map-get($font-size, regular);
+        font-weight: map-get($font-weight, regular);
+        gap: 20px;
+        width: 100%;
+        justify-content: space-between;
+
+        .gender {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        select {
+            width: 120px;
+            padding-left: 10px;
+            background: $color9;
+            border: 0;
+            height: 30px;
+            color: #8a8a8a;
+            font: $font;
+            font-size: map-get($font-size, regular);
+            font-weight: map-get($font-weight, regular);
+            color: $color11;
+            border-radius: 10px;
+        }
+    }   
+
+    .register{
+        width: 274px;
+        height: 72px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: $color7;
+        color: $color4;
+        font: $font;
+        font-size: map-get($font-size, type3);
+        font-weight: map-get($font-weight, bold);
+        border-radius: 10px;
+
+        &:hover{
+            caret-color: transparent;
+            background: $color1;
+        }
     }
 }

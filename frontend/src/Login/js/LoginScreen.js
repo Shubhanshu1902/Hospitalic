@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "../css/LoginScreen.scss";
 import main_logo from "../../icons/main_icon.png";
 import { LoginOptions } from "./LoginOptions";
-import variables from "../../App.scss";
 import { LoginBox } from "./LoginBox";
 
 export const LoginScreen = () => {
