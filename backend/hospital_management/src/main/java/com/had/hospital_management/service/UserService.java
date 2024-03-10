@@ -4,9 +4,11 @@ import com.had.hospital_management.model.UserEntity;
 import com.had.hospital_management.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class UserService {
     @Autowired
     private UserRepository userRepository;
