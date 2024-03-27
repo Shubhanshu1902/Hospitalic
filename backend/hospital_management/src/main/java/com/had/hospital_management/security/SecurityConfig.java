@@ -32,14 +32,17 @@ public class SecurityConfig {
 
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        System.out.println(http);
         http
                 .csrf(csrf -> csrf.disable())
                 .exceptionHandling(exceptionHandling -> exceptionHandling.authenticationEntryPoint(authEntryPoint))
                 .sessionManagement(sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("api/auth/**").permitAll()
-                        .requestMatchers("user/hello").hasRole("patient")
+                        // .requestMatchers("user/hello").hasRole("AUTH_PATIENT")
+                       // .requestMatchers("user/hello").authenticated()
                         .anyRequest().authenticated());
+
 
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
          return http.build();
