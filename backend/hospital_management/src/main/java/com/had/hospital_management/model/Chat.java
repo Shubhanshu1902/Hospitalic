@@ -18,10 +18,10 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 public class Chat {
-    @jakarta.persistence.Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long report_id;
+    private Long reportId;
     private Long sender_id;
     private String msg;
     private LocalDateTime time;

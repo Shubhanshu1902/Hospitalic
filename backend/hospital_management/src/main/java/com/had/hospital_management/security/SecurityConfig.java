@@ -42,6 +42,7 @@ public class SecurityConfig {
                         // .requestMatchers("user/hello").hasRole("AUTH_PATIENT")
                        // .requestMatchers("user/hello").authenticated()
                         .anyRequest().authenticated());
+//                        .anyRequest().permitAll());permitAll
 
 
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
