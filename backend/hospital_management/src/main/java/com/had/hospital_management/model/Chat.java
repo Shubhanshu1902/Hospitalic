@@ -1,12 +1,15 @@
 package com.had.hospital_management.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -15,7 +18,11 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 public class Chat {
-    @jakarta.persistence.Id
+    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long report_id;
+    private Long reportId;
+    private Long sender_id;
+    private String msg;
+    private LocalDateTime time;
 }

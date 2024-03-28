@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.userdetails.User;
 
 @Entity
 @Data
@@ -20,21 +21,21 @@ public class Report {
     private String photo_path;
     private String comments;
 
-    @OneToOne
-    @JoinColumn(name = "chat_id", referencedColumnName = "id")
-    private Chat chat;
-
-    @ManyToOne()
-    @JoinColumn(
-            name = "lead_doctor_id",
-            referencedColumnName = "id"
-    )
-    private Doctor doctor;
-
-    @ManyToOne()
-    @JoinColumn(
-            name = "patient_id",
-            referencedColumnName = "id"
-    )
-    private Patient patient;
+//    @OneToOne
+//    @JoinColumn(name = "chat_id", referencedColumnName = "id")
+//    private Chat chat;
+//
+//    @ManyToOne()
+//    @JoinColumn(
+//            name = "lead_doctor_id",
+//            referencedColumnName = "id"
+//    )
+//    private UserEntity user1;
+//
+//    @ManyToOne()
+//    @JoinColumn(
+//            name = "patient_id",
+//            referencedColumnName = "id"
+//    )
+//    private UserEntity user2;
 }

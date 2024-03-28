@@ -26,12 +26,12 @@ public class Appointment {
             name = "patient_id",
             referencedColumnName = "id"
     )
-    private Patient patient;
+    private UserEntity user1;
 
     @ManyToOne()
     @JoinColumn(
             name = "doctor_id",
             referencedColumnName = "id"
     )
-    private Doctor doctor;
+    private UserEntity user2;
 }

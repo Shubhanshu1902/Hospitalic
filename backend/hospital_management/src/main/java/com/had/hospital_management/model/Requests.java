@@ -28,5 +28,5 @@ public class Requests {
             name = "radiologist_id",
             referencedColumnName = "id"
     )
-    private Radiologist radiologist;
+    private UserEntity user;
 }
