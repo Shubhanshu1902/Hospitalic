@@ -17,6 +17,7 @@ public class AppointmentController {
 
     @PostMapping("/save")
     public Appointment save(@RequestBody Appointment appointment) {
+        System.out.println(appointment);
         return appointmentService.save(appointment);
     }
 
@@ -33,6 +34,14 @@ public class AppointmentController {
         else{
             return ResponseEntity.notFound().build();
         }
+    }
+    @GetMapping("get_appointment_by_doctor_id/{id}")
+    public List<Appointment> getAppointmentByDoctorId(@PathVariable("id")Long id){
+        return appointmentService.getAppointmentByDoctorId(id);
+    }
+    @GetMapping("get_appointment_by_patient_id/{id}")
+    public List<Appointment> getAppointmentByPatientId(@PathVariable("id")Long id){
+        return appointmentService.getAppointmentByPatientId(id);
     }
     @DeleteMapping("delete_by_id/{id}")
     public ResponseEntity<?> deleteById(@PathVariable("id") Long id) {

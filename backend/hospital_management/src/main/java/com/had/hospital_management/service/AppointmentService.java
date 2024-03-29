@@ -21,10 +21,17 @@ public class AppointmentService {
     public Appointment getById(Long id){
         return appointmentRepository.findById(id).orElse(null);
     }
+    public List<Appointment>getAppointmentByDoctorId(Long id){
+        return appointmentRepository.findAppointmentByDoctorId(id);
+    }
+    public List<Appointment>getAppointmentByPatientId(Long id){
+        return appointmentRepository.findAppointmentByPatientId(id);
+    }
     @Transactional
     public void deleteById(Long id) {
         Appointment appointment = appointmentRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("appointment with id " + id + " not found"));
         appointmentRepository.delete(appointment);
     }
+
 
 }
