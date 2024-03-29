@@ -3,7 +3,7 @@ import { faFacebook, faGooglePlusG, faLinkedin } from "@fortawesome/free-brands-
 import React, { useState } from "react";
 import { faEnvelope, faLock } from "@fortawesome/fontawesome-free-solid";
 import { useNavigate } from "react-router-dom";
-
+import { LoginCall } from "../../connections";
 export const LoginBox = (props) => {
     const [email, setEmail] = useState("")
     const [eicon, setEicon] = useState(true)
@@ -22,8 +22,8 @@ export const LoginBox = (props) => {
     // TODO
     const onSignIn = () => {
         console.log(props.type)
-        console.log(email);
-        console.log(password);
+        LoginCall(email, password);
+
     }
 
     const onRegister = () => {
