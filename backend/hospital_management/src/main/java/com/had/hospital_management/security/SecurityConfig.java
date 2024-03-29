@@ -38,12 +38,9 @@ public class SecurityConfig {
                 .exceptionHandling(exceptionHandling -> exceptionHandling.authenticationEntryPoint(authEntryPoint))
                 .sessionManagement(sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/user/hello").hasAuthority("PATIENT")
                         .requestMatchers("api/auth/**").permitAll()
-                        // .requestMatchers("user/hello").hasRole("AUTH_PATIENT")
-                       // .requestMatchers("user/hello").authenticated()
                         .anyRequest().authenticated());
-//                        .anyRequest().permitAll());permitAll
-
 
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
          return http.build();
