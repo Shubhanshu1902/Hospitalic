@@ -35,7 +35,14 @@ public class RequestsController {
             return ResponseEntity.notFound().build();
         }
     }
-
+    @GetMapping("get_all_by_report_id/{id}")
+    public List<Requests> getByReportId(@PathVariable("id") Long id){
+        return requestsService.getRequestByReportId(id);
+    }
+    @PostMapping("approve_request_by_id/{id}")
+    public void approveRequestById(@PathVariable("id")Long id){
+        requestsService.approveRequestById(id);
+    }
     @DeleteMapping("/delete_by_id/{id}")
     public ResponseEntity<?> deleteById(@PathVariable("id") Long id) {
         try {

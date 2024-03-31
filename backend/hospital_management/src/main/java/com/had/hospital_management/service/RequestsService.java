@@ -28,6 +28,14 @@ public class RequestsService {
         return  requestsRepository.findById(Id).orElse(null);
     }
 
+    public List<Requests> getRequestByReportId(Long id){
+        return requestsRepository.findRequestsByReportId(id);
+    }
+    @Transactional
+    public void approveRequestById(Long id){
+        requestsRepository.approveRequestById(id);
+    }
+
     @Transactional
     public void deleteById(Long id) {
         Requests Requests = requestsRepository.findById(id)
