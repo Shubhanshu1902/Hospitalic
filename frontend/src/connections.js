@@ -1,9 +1,22 @@
+import Cookies  from 'universal-cookie'
+import {jwtDecode} from "jwt-decode"
+
+
+// STORE JWT TOKEN
+const cookie = new Cookies();
+
+const login = (jwtToken) => {
+    const decode = jwtDecode(jwtToken);
+    cookie.set("JWTtoken",jwtToken,{
+        expires: new Date(decode.exp * 1000)
+    });
+} 
+
 async function LoginCall(email, pass) {
     const url = "http://localhost:8081/api/auth/login";
-    let ret, jwt;
     console.log("hi here");
     console.log(email,pass);
-
+    var ret,jwt;
     await fetch(url, {
         method: "POST",
         body: JSON.stringify({
@@ -21,8 +34,10 @@ async function LoginCall(email, pass) {
             return data.json();
         })
         .then((data) => {
-            console.log(data);
-            jwt = data["token"];
+            // console.log(data);
+            console.log(Object.values(data));
+            jwt = data["accessToken"];
+            login(jwt)
         })
         .catch((err) => {
             ret = false;
@@ -109,8 +124,14 @@ async function fetchChatEntities(reportId, token) {
     return chatEntities;
 }
 
+// retrieve JWT token
+export const retrieveJWT = () => {
+    console.log("testing",cookie.get("JWTtoken"))
+    return cookie.get("JWTtoken")
+}
+
 export {
     LoginCall,
-    RegisterCall
+    RegisterCall,
   };
   

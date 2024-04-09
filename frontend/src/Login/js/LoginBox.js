@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faGooglePlusG, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import React, { useState } from "react";
 import { faEnvelope, faLock } from "@fortawesome/fontawesome-free-solid";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import { LoginCall } from "../../connections";
 export const LoginBox = (props) => {
     const [email, setEmail] = useState("")
