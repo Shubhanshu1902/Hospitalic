@@ -23,4 +23,9 @@ public interface RequestsRepository extends JpaRepository<Requests , Long> {
             value = "update requests set status = 1 where id = :request_id"
     )
     void approveRequestById(@Param("request_id") Long request_id);
+    @Query(
+            nativeQuery = true,
+            value = "select * from requests where radiologist_id = :radiologist_id and status =1"
+    )
+    List<Long> getReportIdByRadiologistId(@Param("radiologist_id") Long radiologist_id);
 }

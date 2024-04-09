@@ -31,6 +31,11 @@ public class RequestsService {
     public List<Requests> getRequestByReportId(Long id){
         return requestsRepository.findRequestsByReportId(id);
     }
+    public List<Long> getReportIdByRadiologistId(Long id){
+        return requestsRepository.getReportIdByRadiologistId(id);
+    }
+
+
     @Transactional
     public void approveRequestById(Long id){
         requestsRepository.approveRequestById(id);

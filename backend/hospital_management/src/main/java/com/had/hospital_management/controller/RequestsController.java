@@ -35,6 +35,10 @@ public class RequestsController {
             return ResponseEntity.notFound().build();
         }
     }
+    @GetMapping("/get_report_id_by_radiologist_id/{id}")
+    public List<Long> getReportIdByRadiologistId(@PathVariable("id") Long id){
+        return requestsService.getReportIdByRadiologistId(id);
+    }
     @GetMapping("get_all_by_report_id/{id}")
     public List<Requests> getByReportId(@PathVariable("id") Long id){
         return requestsService.getRequestByReportId(id);
