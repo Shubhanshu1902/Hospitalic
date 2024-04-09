@@ -1,10 +1,11 @@
 import Report from "./Report";
 import Msgbox from "./Msgbox";
+import { DicomLoader } from "./DicomLoader";
 
 const ReportContainer = () => {
     return (
         <div className="reportCont">
-            <Report />
+            <DicomLoader />
             <Msgbox />
         </div>
     );
