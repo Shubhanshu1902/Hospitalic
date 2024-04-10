@@ -1,14 +1,14 @@
 import hasbulla from "../../icons/Untitled.jpeg"
 
-const Messages = (props) => {
+const Messages = () => {
     return (
         <div className="messages">
             <div className="messageInfo">
                 <img src={hasbulla} alt="hasbulla"/>
-                <span>{props.name}</span>
+                <span>just now</span>
             </div>
             <div className="messageContent">
-                <p>{props.message}</p>
+                <p>hello</p>
             </div>
 
         </div>

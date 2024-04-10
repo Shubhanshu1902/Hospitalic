@@ -1,14 +1,12 @@
 package com.had.hospital_management.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.text.spi.DateFormatProvider;
 import java.util.Date;
 
 @Entity
@@ -18,6 +16,7 @@ import java.util.Date;
 @Builder
 public class Appointment {
     @jakarta.persistence.Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Date date;
 

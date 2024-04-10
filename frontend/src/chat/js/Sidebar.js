@@ -1,8 +1,11 @@
 import main_logo from "../../icons/main_icon.png"
+import { useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCog, faMessage } from "@fortawesome/fontawesome-free-solid";
 
 const Sidebar = () => {
+    const navigate = useNavigate();
+
     return (
         <div className="sidebar">
             <div className="logo">
@@ -10,10 +13,10 @@ const Sidebar = () => {
             </div>
             <div className="menu">
                 MENU
-                <div className="items">Dashboard</div>
-                <div className="items">Appointments</div>
+                <div className="items" onClick={() => navigate("/dashboard")}>Dashboard</div>
+                <div className="items" onClick={() => navigate("/appointments")}>Appointments</div>
                 <div className="items">Patients</div>
-                <div className="items">Messages</div>
+                <div className="items" onClick={() => navigate("/chats")}>Messages</div>
                 <div className="items">Files</div>
             </div>
             <hr
