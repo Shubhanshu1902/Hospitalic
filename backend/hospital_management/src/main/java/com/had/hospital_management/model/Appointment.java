@@ -16,7 +16,7 @@ import java.util.Date;
 @Builder
 public class Appointment {
     @jakarta.persistence.Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
     private Date date;
 
