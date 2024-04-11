@@ -16,7 +16,6 @@ public class Report {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long lab_id;
     private Long radiologist_id;
     private String photo_path;
     private String comments;
