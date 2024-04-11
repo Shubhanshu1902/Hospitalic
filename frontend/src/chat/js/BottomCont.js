@@ -1,6 +1,8 @@
 import { useState } from "react";
 import RequestPop from "./RequestPop";
 import RequestModal from "./RequestModal";
+import InsightViewer, { useImage, useInteraction } from "@lunit/insight-viewer";
+import { useViewport } from "@lunit/insight-viewer/viewport";
 
 const BottomCont = () => {
     const[x, setButtonPopup] = useState(false);
