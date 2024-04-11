@@ -4,7 +4,6 @@ import RequestModal from "./RequestModal";
 import InsightViewer, { useImage, useInteraction } from "@lunit/insight-viewer";
 import { useViewport } from "@lunit/insight-viewer/viewport";
 
-
 const BottomCont = (props) => {
     const[x, setButtonPopup] = useState(false);
     
