@@ -5,7 +5,7 @@ import { LoginOptions } from "./LoginOptions";
 // import {DatePicker} from '@mui/x-date-pickers/DatePicker'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { RegisterCall } from "../../connections";
+import { RegisterCall } from "../../connections/Register";
 
 export const Register = () => {
     const login_types = ["Patient", "Doctor", "Lab", "Radiologist"];
