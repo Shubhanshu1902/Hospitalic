@@ -24,6 +24,14 @@ public class ReportController {
         return reportService.findAll();
     }
 
+    @GetMapping("/get_report_by_patient_id/{id}")
+    public List<Report> getReportByPateintId(@PathVariable("id") Long id){
+        return reportService.getReportByPateintId(id);
+    }
+    @GetMapping("/get_report_by_doctor_id/{id}")
+    public List<Report> getReportByDoctorId(@PathVariable("id") Long id){
+        return reportService.getReportByDoctorId(id);
+    }
     @GetMapping("/get_by_id/{id}")
     public ResponseEntity<Report> getById(@PathVariable("id") Long id)
     {

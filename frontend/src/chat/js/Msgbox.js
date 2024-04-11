@@ -2,24 +2,17 @@ import { faPaperPlane } from "@fortawesome/fontawesome-free-solid";
 import Messages from "./Messages";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Msgbox = (props) => {  
-    const msgs = {
-        "1" : "abcd",
-        "2" : "xyzw",
-        "3" : "abcd",
-        "4" : "yzw",
-        "5" : "xyzw",
-    }
-
+const Msgbox = () => {
     return (
         <div className="msgbox">
             <div className="title">
                 <span>Discussion</span>
             </div>
-
-            {Object.keys(msgs).map((keyname,i) => {
-                return <Messages name={keyname} message={msgs[keyname]}/>
-            })}
+            <Messages />
+            <Messages />
+            <Messages />
+            <Messages />
+            <Messages />
 
             <div className="input">
                 <input type="text" placeholder= 'Input'/>
