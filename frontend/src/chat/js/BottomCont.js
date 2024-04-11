@@ -9,7 +9,11 @@ const BottomCont = (props) => {
             <div className="button" onClick={props.controllers.adjust}>Adjust</div>
             <div className="button" onClick={props.controllers.reset}>Reset</div>
 
-            <div className="button">Request Radiologist</div>
+            <div className="button" onClick={() => setButtonPopup(true)}>Request Radiologist</div>
+            <RequestPop trigger={x} setTrigger={setButtonPopup}>
+                <h3>Request Radiologist</h3>
+                <RequestModal></RequestModal>
+            </RequestPop>
             <div className="summary">Write summary and diagnosis</div>
         </div>
     );
