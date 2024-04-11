@@ -6,6 +6,8 @@ import { useViewport } from "@lunit/insight-viewer/viewport";
 
 
 const BottomCont = (props) => {
+    const[x, setButtonPopup] = useState(false);
+    
     return (
         <div className="bottomCont">
             <div className="button" onClick={props.controllers.pan}>Pan</div>
