@@ -22,7 +22,11 @@ public class ChatController {
     public List<Chat> findAll() { return chatService.findAll();}
 
     @GetMapping("/find_filter/{id}")
-    public List<Chat> findByReportIdSortByTime(@PathVariable("id") Long reportId) { return chatService.findByReportIdSortByTime(reportId);}
+    public List<Chat> findByReportIdSortByTime(@PathVariable("id") Long reportId)
+    {
+        System.out.println("Reached Fetch CHat");
+        return chatService.findByReportIdSortByTime(reportId);
+    }
 
     @GetMapping("/hello")
     public String helloWorld() {
