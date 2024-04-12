@@ -2,7 +2,7 @@ import {retrieveJWT} from "./CookieJWT.js";
 
 export async function SaveChatCall(
     reportId,
-    username,
+    sender_id,
     msg)
     {
     const url = "http://localhost:8081/chat/save"; // Adjust URL if needed
@@ -16,10 +16,9 @@ export async function SaveChatCall(
       },
       body: JSON.stringify(
         {
-        reportId : reportId,
-        username : username,
-        msg : msg,
-        // time : ,
+          reportId : reportId,
+          sender_id : sender_id,
+          msg : msg,
         }),
     });
 

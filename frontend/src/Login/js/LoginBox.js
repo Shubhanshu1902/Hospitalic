@@ -24,7 +24,7 @@ export const LoginBox = (props) => {
     const onSignIn = () => {
         console.log(props.type)
         LoginCall(email, password);
-//        SaveChatCall(1, "vatsal3", "Yay !!");
+        SaveChatCall("1", "1", "Yay !!");
         FetchChatEntities(1);
     }
 
