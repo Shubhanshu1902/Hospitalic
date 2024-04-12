@@ -37,7 +37,7 @@ export async function SaveChatCall(
   }
 
 export async function FetchChatEntities(reportId) {
-    const url = `http://localhost:8081/api/find_filter/{reportId}`;
+    const url = `http://localhost:8081/chat/find_filter/${reportId}`;
     let chatEntities;
     let token = retrieveJWT();
 //    let token1 = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2YXRzYWwzIiwicm9sZXMiOlsiUGF0aWVudCJdLCJpYXQiOjE3MTI5MDUyMTIsImV4cCI6MTcxMjkwNTkxMn0.1rKv1Exuj0lFSkGPS5KVP8ir1BOVFX7cuoYF-IAdDhIj18tvXgc7qn7Fh4GzAjTpkmElpfN67uFgLCvx6xlUoQ";
@@ -63,6 +63,6 @@ export async function FetchChatEntities(reportId) {
         console.error('Error fetching chat entities:', error);
         chatEntities = [];
     });
-
+    console.log(chatEntities);
     return chatEntities;
 }
