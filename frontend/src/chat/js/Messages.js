@@ -1,6 +1,6 @@
 import hasbulla from "../../icons/Untitled.jpeg"
 
-const Messages = () => {
+const Messages = (props) => {
     return (
         <div className="messages">
             <div className="messageInfo">
@@ -8,7 +8,7 @@ const Messages = () => {
                 <span>just now</span>
             </div>
             <div className="messageContent">
-                <p>hello</p>
+                <p>props.chat.msg</p>
             </div>
 
         </div>

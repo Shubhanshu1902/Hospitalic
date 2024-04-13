@@ -41,10 +41,14 @@ const Chat = () => {
         onViewportChange: setViewport,
     };
 
+    const reportProps = {
+        reportId : "1",
+    }
+
     return (
         <div className="chat">
             <Navbar />
-            <ReportContainer viewerProps = {viewerProps} />
+            <ReportContainer viewerProps = {viewerProps} reportProps = {reportProps}/>
             <BottomCont controllers= {controllers} />
         </div>
     );
