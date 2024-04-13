@@ -50,3 +50,21 @@ export async function AddRadiologist(
             },
         })
 }
+export async function GetAllDoctor(){
+    const url = "http://localhost:8081/user/get_all_doctor"
+    let ret;
+    await fetch(url,
+    {
+        method: "GET",
+        headers: {"Content-type": "application/json"}
+    })
+    .then(response => {
+        console.log(response.json());
+    })
+    .then(data => {
+        ret = data;
+
+    })
+    console.log("returned", ret);
+    // return ret;
+}

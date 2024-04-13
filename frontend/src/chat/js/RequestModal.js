@@ -1,6 +1,7 @@
 import React from 'react'
 import Select from 'react-select'
 import { useState } from 'react'
+import { AddRadiologist } from '../../connections/Appointment';
 
 const docopt = [
     {value: "shubhanshu", label:"Dr.Shubhanshu"},
@@ -17,6 +18,12 @@ const RequestModal = () => {
     const handleChange = (selectedOption) => {
         setSelectedOption(selectedOption);
     };
+
+    const requestcall = () => {
+        console.log(selectedOption.value);
+
+        AddRadiologist('1', '3');
+    };
   
     return (
         <div className='hi'>
@@ -27,7 +34,7 @@ const RequestModal = () => {
                             onChange={handleChange}/>
                         </div>
                     </div>
-                    <button className='invite' style={{position:"absolute", left:"50%", transform:"translate(-50%)", height:"40%", fontSize:"large"}}>Send Invite</button>
+                    <button className='invite' onClick={requestcall} style={{position:"absolute", left:"50%", transform:"translate(-50%)", height:"40%", fontSize:"large"}}>Send Invite</button>
         </div>
   )
 }
