@@ -11,7 +11,7 @@ const docopt = [
     {value: "arin", label:"Dr.Arin"},
 ];
 
-const RequestModal = () => {
+const RequestModal = (props) => {
 
     const [selectedOption, setSelectedOption] = useState(null);
 
@@ -23,6 +23,8 @@ const RequestModal = () => {
         console.log(selectedOption.value);
 
         AddRadiologist('1', '3');
+
+        props.setTrigger(false);
     };
   
     return (

@@ -15,7 +15,7 @@ const BottomCont = (props) => {
             <div className="button" onClick={() => setButtonPopup(true)}>Request Radiologist</div>
             <RequestPop trigger={x} setTrigger={setButtonPopup}>
                 <h3>Request Radiologist</h3>
-                <RequestModal></RequestModal>
+                <RequestModal trigger={x} setTrigger={setButtonPopup}></RequestModal>
             </RequestPop>
             <div className="summary">Write summary and diagnosis</div>
         </div>
