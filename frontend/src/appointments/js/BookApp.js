@@ -12,7 +12,7 @@ const BookApp = () => {
             <button className='book' onClick={() => setButtonPopup(true)}>Book Appointment</button>
             <Bookpop trigger={x} setTrigger={setButtonPopup}>
                 <h3>Book Appointment</h3>
-                <Modal>hi</Modal>
+                <Modal trigger={x} setTrigger={setButtonPopup}>hi</Modal>
             </Bookpop>
         </div>
   )

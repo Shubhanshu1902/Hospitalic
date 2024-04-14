@@ -59,12 +59,13 @@ export async function GetAllDoctor(){
         headers: {"Content-type": "application/json"}
     })
     .then(response => {
-        console.log(response.json());
+        // console.log(response.json());
+        return(response.json());
     })
     .then(data => {
         ret = data;
 
     })
-    console.log("returned", ret);
-    // return ret;
+    // console.log(ret);
+    return ret;
 }

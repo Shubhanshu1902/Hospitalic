@@ -13,10 +13,16 @@ const docopt = [
     {value: "arin", label:"Dr.Arin"},
 ];
 
-var data = GetAllDoctor();
-console.log(data);
+// var list;
+// var data = Promise.resolve(GetAllDoctor());
+// data.then(
+//     value => {
+//         list = value;
+//         console.log("list", list);
+//     }
+// )
 
-const Modal = () => {
+const Modal = (props) => {
 
     const [user1, setUser1] = useState("");
     const [dateVar, setDateVar] = useState(new Date());
@@ -26,16 +32,32 @@ const Modal = () => {
         console.log(dateVar);
         console.log(user2.value);
         BookAppointment(dateVar, '1', user2);
+        props.setTrigger(false);
     };
 
     const handleChange2 = (user2) => {
         setUser2(user2);
     };
 
+    const listmake = () => {
+        var list;
+        var data = Promise.resolve(GetAllDoctor());
+        data.then(
+        value => {
+            list = value;
+            // console.log("list", list);
+        })
+        data.then(() => {
+            console.log(list);
+            console.log(list[0]['id']);
+        })
+    };
+
+    listmake();
 
 
   
-    return (
+    return(props.trigger) ? (
         <div className='hi'>
                     <div className='item1' style={{display:'flex', alignItems:'center', justifyContent:'space-around'}}>
                         <h4>Choose your doctor</h4>
@@ -59,7 +81,7 @@ const Modal = () => {
                     </div> */}
                     <button className='invite' onClick={bookcall} style={{position:"absolute", left:"50%", transform:"translate(-50%)", height:"30%", width:"10%",fontSize:"large"}}>Book</button>
         </div>
-  )
+  ) : ""
 }
 
 export default Modal
