@@ -8,7 +8,7 @@ const Messages = (props) => {
                 <span>just now</span>
             </div>
             <div className="messageContent">
-                <p>props.chat.msg</p>
+                <p>{props.chat.msg}</p>
             </div>
 
         </div>

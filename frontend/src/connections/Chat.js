@@ -37,31 +37,42 @@ export async function SaveChatCall(
 
 export async function FetchChatEntities(reportId) {
     const url = `http://localhost:8081/chat/find_filter/${reportId}`;
-    let chatEntities;
     let token = retrieveJWT();
-//    let token1 = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2YXRzYWwzIiwicm9sZXMiOlsiUGF0aWVudCJdLCJpYXQiOjE3MTI5MDUyMTIsImV4cCI6MTcxMjkwNTkxMn0.1rKv1Exuj0lFSkGPS5KVP8ir1BOVFX7cuoYF-IAdDhIj18tvXgc7qn7Fh4GzAjTpkmElpfN67uFgLCvx6xlUoQ";
     console.log("In Fetch Chat");
-    await fetch(url, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-        },
-    })
-    .then(response => {
-        console.log(response);
+
+    try {
+        const response = await fetch(url, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+        });
+
         if (!response.ok) {
             throw new Error("Network response was not ok");
         }
-        return response.json();
-    })
-    .then(data => {
-        chatEntities = data;
-    })
-    .catch(error => {
+
+        const textData = await response.text();
+        const dataList = JSON.parse(textData);
+//        console.log(dataList);
+//        console.log(typeof dataList[0],typeof dataList,Object.keys(dataList),Object.values(dataList));
+//        const arr = Object.values(dataList);
+//        console.log(typeof arr, arr);
+//        dataList.forEach(item => console.log(item));
+
+////        const myPromise = response;
+//        response
+//            .then(data => {
+//                const dataList = JSON.parse(data);
+//                console.log(dataList);
+//                return dataList;
+//            })
+//            .catch(error => console.error(error));
+
+        return dataList;
+    } catch (error) {
         console.error('Error fetching chat entities:', error);
-        chatEntities = [];
-    });
-    console.log(chatEntities);
-    return chatEntities;
+        return []; // Return an empty array in case of error
+    }
 }
