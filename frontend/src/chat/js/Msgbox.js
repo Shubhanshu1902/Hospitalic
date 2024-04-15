@@ -3,7 +3,7 @@ import { faPaperPlane } from "@fortawesome/fontawesome-free-solid";
 import Messages from "./Messages";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FetchChatEntities } from "../../connections/Chat";
-
+import { SaveChatCall } from "../../connections/Chat";
 const Msgbox = (props) => {
     const reportId = props.reportProps.reportId;
 
@@ -27,6 +27,23 @@ const Msgbox = (props) => {
 
     console.log(chatList);
 
+    const [inputValue, setInputValue] = useState('');
+
+      const handleInputChange = (event) => {
+        setInputValue(event.target.value);
+      };
+
+      const handleKeyDown = (event) => {
+        if (event.key === 'Enter' && inputValue.trim()) {
+          SaveChatCall(reportId, "1", inputValue); //Change the senderid with cookie's sender id
+          setInputValue('');
+        }
+      };
+
+      const handleArrow = (event) => {
+        SaveChatCall(reportId, "1", inputValue); //Change the senderid with cookie's sender id
+        setInputValue('');
+      }
     return (
         <div className="msgbox">
             <div className="title">
@@ -40,9 +57,14 @@ const Msgbox = (props) => {
             </div>
 
             <div className="input">
-                <input type="text" placeholder= 'Input'/>
+                <input type="text"
+                placeholder= 'Input'
+                value={inputValue}
+                onChange={handleInputChange}
+                onKeyDown={handleKeyDown}
+                />
                 <div className="sendArrow">
-                    <FontAwesomeIcon icon={faPaperPlane} />
+                    <FontAwesomeIcon icon={faPaperPlane} onClick={handleArrow}/>
                 </div>
             </div>
         </div>
