@@ -55,20 +55,6 @@ export async function FetchChatEntities(reportId) {
 
         const textData = await response.text();
         const dataList = JSON.parse(textData);
-//        console.log(dataList);
-//        console.log(typeof dataList[0],typeof dataList,Object.keys(dataList),Object.values(dataList));
-//        const arr = Object.values(dataList);
-//        console.log(typeof arr, arr);
-//        dataList.forEach(item => console.log(item));
-
-////        const myPromise = response;
-//        response
-//            .then(data => {
-//                const dataList = JSON.parse(data);
-//                console.log(dataList);
-//                return dataList;
-//            })
-//            .catch(error => console.error(error));
 
         return dataList;
     } catch (error) {
