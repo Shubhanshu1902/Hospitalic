@@ -4,6 +4,7 @@ import { useState } from 'react'
 import DatePicker from "react-datepicker";
 import { BookAppointment } from '../../connections/Appointment';
 import { GetAllDoctor } from '../../connections/Appointment';
+import moment from 'moment'
 
 
 const Modal = (props) => {
@@ -14,9 +15,9 @@ const Modal = (props) => {
     const [list, setList] = useState("");
 
     const bookcall = () => {
-        console.log(dateVar);
+        console.log(moment(dateVar).format());
         console.log(user2.id);
-        BookAppointment(dateVar, "2", user2);
+        BookAppointment( moment(dateVar).format('YYYY-MM-DD'), '2', user2.id);
         props.setTrigger(false);
     };
 

@@ -9,7 +9,7 @@ export async function BookAppointment(
         method: "POST",
         body:JSON.stringify(
         {
-            date:dt,
+            date:dt.toString(),
             user1:
             {
                 id: user1_id.toString()
@@ -64,6 +64,23 @@ export async function GetAllDoctor(){
     .then(data => {
         ret = data;
 
+    })
+    return ret;
+}
+
+export async function GetAllRadiologist(){
+    const url = "http://localhost:8081/user/get_all_radiologist"
+    let ret;
+    await fetch(url, 
+    {
+        method: "GET",
+        headers: {"Content-type": "application.json"}
+    })
+    .then(response =>{
+        return(response.json());
+    })
+    .then(data => {
+        ret = data;
     })
     return ret;
 }

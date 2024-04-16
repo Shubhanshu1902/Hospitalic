@@ -1,38 +1,52 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Select from 'react-select'
 import { useState } from 'react'
-import { AddRadiologist } from '../../connections/Appointment';
+import { AddRadiologist, GetAllRadiologist } from '../../connections/Appointment';
 
-const docopt = [
-    {value: "shubhanshu", label:"Dr.Shubhanshu"},
-    {value: "naitik", label:"Dr.Naitiksinh"},
-    {value: "vatsal", label:"Dr.Vatsal"},
-    {value: "vaibhav", label:"Dr.Vaibhav"},
-    {value: "arin", label:"Dr.Arin"},
-];
+// const docopt = [
+//     {value: "shubhanshu", label:"Dr.Shubhanshu"},
+//     {value: "naitik", label:"Dr.Naitiksinh"},
+//     {value: "vatsal", label:"Dr.Vatsal"},
+//     {value: "vaibhav", label:"Dr.Vaibhav"},
+//     {value: "arin", label:"Dr.Arin"},
+// ];
 
 const RequestModal = (props) => {
 
     const [selectedOption, setSelectedOption] = useState(null);
+    const [list, setList] = useState("");
 
     const handleChange = (selectedOption) => {
         setSelectedOption(selectedOption);
     };
 
     const requestcall = () => {
-        console.log(selectedOption.value);
+        console.log(selectedOption.id);
 
-        AddRadiologist('1', '3');
+        AddRadiologist('1', selectedOption.id);
 
         props.setTrigger(false);
     };
+
+    useEffect(() => {
+        const data = Promise.resolve(GetAllRadiologist());
+        data.then(
+            value => {
+                setList(value);
+            }
+        )
+    }, []);
   
     return (
         <div className='hi'>
                     <div className='item1' style={{display:'flex', alignItems:'center', justifyContent:'space-around'}}>
                         <h4>Choose your doctor</h4>
                         <div className='dropdown' style={{width: "300px"}}>
-                            <Select options={docopt} value={selectedOption}
+                            <Select 
+                                options={list} 
+                                value={selectedOption}
+                                getOptionLabel={(opt) => opt.first_name}
+                                getOptionValue={(opt) => opt.id}
                             onChange={handleChange}/>
                         </div>
                     </div>
