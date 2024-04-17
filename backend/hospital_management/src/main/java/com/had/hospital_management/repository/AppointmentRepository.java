@@ -1,6 +1,7 @@
 package com.had.hospital_management.repository;
 import com.had.hospital_management.model.Appointment;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -24,4 +25,11 @@ public interface AppointmentRepository extends JpaRepository<Appointment,Long>{
             value  = "select * from Appointment where lab_id = :lab_id"
     )
     List<Appointment> findAppointmentByLabId(@Param("lab_id") Long lab_id);
+
+    @Modifying
+    @Query(
+            nativeQuery = true,
+            value = "update Appointment set lab_id = :lab_id where id = :id"
+    )
+    void assignLab(@Param("lab_id") Long lab_id,@Param("id") Long id);
 }

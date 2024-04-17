@@ -47,6 +47,10 @@ public class AppointmentController {
     public List<Appointment> getAppointmentByLavId(@PathVariable("id")Long id){
         return appointmentService.getAppointmentByLabId(id);
     }
+    @PostMapping("assign_lab/{lab_id}/{id}")
+    public void assignLab(@PathVariable("lab_id") Long lab_id,@PathVariable("id") Long id){
+        appointmentService.assignLab(lab_id , id);
+    }
     @DeleteMapping("delete_by_id/{id}")
     public ResponseEntity<?> deleteById(@PathVariable("id") Long id) {
         try {
@@ -56,6 +60,5 @@ public class AppointmentController {
             return new ResponseEntity<>("Failed to delete doctor", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
 
 }
