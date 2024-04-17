@@ -43,6 +43,10 @@ public class AppointmentController {
     public List<Appointment> getAppointmentByPatientId(@PathVariable("id")Long id){
         return appointmentService.getAppointmentByPatientId(id);
     }
+    @GetMapping("get_appointment_by_lab_id/{id}")
+    public List<Appointment> getAppointmentByLavId(@PathVariable("id")Long id){
+        return appointmentService.getAppointmentByLabId(id);
+    }
     @DeleteMapping("delete_by_id/{id}")
     public ResponseEntity<?> deleteById(@PathVariable("id") Long id) {
         try {

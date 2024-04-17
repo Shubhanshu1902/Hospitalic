@@ -5,19 +5,19 @@ import DatePicker from "react-datepicker";
 import { BookAppointment } from '../../connections/Appointment';
 import { GetAllDoctor } from '../../connections/Appointment';
 import moment from 'moment'
+import {retrieveUserId} from "../../connections/CookieJWT";
 
 
 const Modal = (props) => {
 
-    const [user1, setUser1] = useState("");
     const [dateVar, setDateVar] = useState(new Date());
     const [user2, setUser2] = useState("");
     const [list, setList] = useState("");
-
+    var user1_id = retrieveUserId();
     const bookcall = () => {
         console.log(moment(dateVar).format());
         console.log(user2.id);
-        BookAppointment( moment(dateVar).format('YYYY-MM-DD'), '2', user2.id);
+        BookAppointment( moment(dateVar).format('YYYY-MM-DD'), user1_id, user2.id);
         props.setTrigger(false);
     };
 

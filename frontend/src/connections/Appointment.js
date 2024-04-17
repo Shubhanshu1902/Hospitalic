@@ -4,6 +4,7 @@ export async function BookAppointment(
     user2_id
 ){
     const url = "http://localhost:8081/appointment/save";
+    console.log(user1_id + " "+ user2_id);
     await fetch(url,
     {
         method: "POST",
@@ -12,11 +13,11 @@ export async function BookAppointment(
             date:dt.toString(),
             user1:
             {
-                id: user1_id.toString()
+                id: user1_id
             },
             user2:
             {
-                id:user2_id.toString()
+                id:user2_id
             }
         }),
         headers: {

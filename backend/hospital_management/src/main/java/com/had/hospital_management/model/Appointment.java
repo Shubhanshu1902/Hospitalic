@@ -33,4 +33,10 @@ public class Appointment {
             referencedColumnName = "id"
     )
     private UserEntity user2;
+    @ManyToOne()
+    @JoinColumn(
+            name = "lab_id",
+            referencedColumnName = "id"
+    )
+    private UserEntity lab;
 }
