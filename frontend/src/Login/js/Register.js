@@ -20,16 +20,16 @@ export const Register = () => {
     let navigate = useNavigate()
 
     const register = () => {
-        // RegisterCall(
-        // email,
-        // Password,
-        // fname,
-        // lname,
-        // gender,
-        // startDate,
-        // Address,
-        // 1
-        // )
+        RegisterCall(
+        email,
+        Password,
+        fname,
+        lname,
+        gender,
+        startDate,
+        Address,
+        1
+        )
         
         let path = "/"
         navigate(path)
