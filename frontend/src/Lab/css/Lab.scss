@@ -1,0 +1,46 @@
+@import "../../App.scss";
+
+body {
+    background: $color6;
+}
+
+.dashboard {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+
+    .navbar {
+        color: $color4;
+        background: $color4;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding-left: 12px;
+        padding-right: 12px;
+        filter: drop-shadow(0 0 0.1rem 0.1rem #ffffff);
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: $color4;
+            // align-items: center;
+            background: $color4;
+            padding-bottom: 50px;
+            .Box {
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .text {
+                display: flex;
+                gap: 12px;
+                color: $color10;
+                font: $font;
+                font-size: 16px;
+                font-weight: map-get($map: $font-weight, $key: normal);
+            }
+        }
+    }
+}
