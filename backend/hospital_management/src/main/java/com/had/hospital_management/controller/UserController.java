@@ -52,6 +52,10 @@ public class UserController {
     public List<UserEntity>getAllRadiologist(){
         return userService.getAllRadiologist();
     }
+    @GetMapping("/get_all_lab")
+    public List<UserEntity>getAllLab(){
+        return userService.getAllLab();
+    }
     @GetMapping("/get_user_by_username/{username}")
     public ResponseEntity<UserEntity>getUserByUsername(@PathVariable("username") String username){
         UserEntity userEntity = userService.getUserByUsername(username);

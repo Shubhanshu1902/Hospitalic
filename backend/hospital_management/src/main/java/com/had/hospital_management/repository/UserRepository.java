@@ -23,6 +23,11 @@ public interface UserRepository extends JpaRepository<UserEntity,Long> {
     List<UserEntity> getAllRadiologist();
     @Query(
             nativeQuery = true,
+            value = "select * from users where role_id = 4"
+    )
+    List<UserEntity> getAllLab();
+    @Query(
+            nativeQuery = true,
             value = "select * from users where username = :username"
     )
     UserEntity getUserByUsername(@Param("username") String username);
