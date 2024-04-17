@@ -23,6 +23,7 @@ export const Navbar = () => {
                 />
             </div>
             <div className="main">
+                {/* UPAR WALA BOX */}
                 <div className="Box">
                     <div className="text">Menu</div>
                     <div className="text">
@@ -39,7 +40,8 @@ export const Navbar = () => {
                         Reports
                     </div>
                 </div>
-
+                
+                {/* NEECHE WALA BOX */}
                 <div className="Box">
                     <div>
                         <hr
