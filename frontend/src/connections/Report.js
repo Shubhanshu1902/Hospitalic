@@ -48,3 +48,57 @@ export async function saveReport(
     }
     catch(error){console.error(error);}
 }
+export async function GetAllDoctorPatientReport(
+    doc_id,pat_id
+) {
+    const url = "http://localhost:8081/report/get_report_by_doctor_and_patient_id/" + doc_id + "/" + pat_id;
+    let ret;
+    let token = retrieveJWT();
+    try {
+        await fetch(url,
+            {
+                method: "GET",
+                headers: {
+                    "Content-type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+            .then(response => {
+                return (response.json());
+            })
+            .then(data => {
+                ret = data;
+
+            })
+        return ret;
+    } catch (error) {
+        console.error(error);
+    }
+}
+export async function GetAllLabReport(
+    lab_id
+) {
+    const url = "http://localhost:8081/report/get_report_by_lab_id/" + lab_id;
+    let ret;
+    let token = retrieveJWT();
+    try {
+        await fetch(url,
+            {
+                method: "GET",
+                headers: {
+                    "Content-type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+            .then(response => {
+                return (response.json());
+            })
+            .then(data => {
+                ret = data;
+
+            })
+        return ret;
+    } catch (error) {
+        console.error(error);
+    }
+}

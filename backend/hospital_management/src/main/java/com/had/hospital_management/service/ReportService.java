@@ -34,6 +34,13 @@ public class ReportService {
     public List<Report> getReportByDoctorId(Long id){
         return reportRepository.getReportByDoctorId(id);
     }
+    public List<Report> getReportByLabId(Long id){
+        return reportRepository.getReportByLabId(id);
+    }
+
+    public List<Report> getReportByDoctorAndPatientId(Long doc_id,Long pat_id){
+        return reportRepository.getReportByDoctorAndPatientId(doc_id,pat_id);
+    }
     @Transactional
     public void deleteById(Long id) {
         Report reports = reportRepository.findById(id)
