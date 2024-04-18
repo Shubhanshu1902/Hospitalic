@@ -91,9 +91,36 @@ body {
             }
         }
 
-        .Tasks {
-            width: 100%;
-            margin: auto;
+        .applist{
+            display: flex;
+            flex-direction: column;
+            height: 66%;
+            width: 98%;
+            background-color: $color4;
+            justify-content: start;
+            align-items: start;
+            padding: 10px;
+            margin-top: 10px;
+            margin-left: 10px;
+            border-radius: 20px;
+            overflow: scroll;
+
+            .t1{
+                height: 12%;
+                width: 60%;
+                display: flex;
+                background-color: $color2;
+                justify-content: start;
+                align-items: center;
+                margin: 5px;
+                border-radius: 20px;
+
+                .t2{
+                    padding-left: 30px;
+                    font-size: large;
+                }
+            }
+
         }
     }
     

@@ -2,6 +2,7 @@ import React from "react";
 import { Route } from "react-router-dom";
 import { Navbar } from "./Navbar";
 import { TopBar } from "./TopBar";
+import TaskList from "./TaskList";
 
 export const Tasks = () => {
     return (
@@ -9,9 +10,7 @@ export const Tasks = () => {
             <Navbar />
             <div className="AppContent">
                 <TopBar />
-                <div className="tasks">
-                    Tasks
-                </div>
+                <TaskList />
             </div>
         </div>
     );

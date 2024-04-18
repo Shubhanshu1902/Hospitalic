@@ -24,6 +24,7 @@ function App() {
 
 
                 {/* PATIENT */}
+                <Route path='/patient/dashboard' element={<Dash />} />
                 <Route path='/appointments' element={<Appscreen />} />
 
                 {/* LAB */}
@@ -32,6 +33,7 @@ function App() {
                 <Route path='/lab/tasks' element={<Tasks />} />
 
                 {/* RADIOLOGIST */}
+                <Route path='/radiologist/dashboard' element={<Dash />} />
                 
 
             </Routes>

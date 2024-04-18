@@ -1,17 +1,18 @@
 import React, {useEffect, useState} from 'react';
-import { GetAppByPatId } from '../../connections/Appointment';
+import { GetAppByLabId } from '../../connections/Appointment';
 import { retrieveUserId } from '../../connections/CookieJWT';
-import AppComp from './AppComp';
+import TaskComp from './TaskComp';
 
-const Applist = () => {
+const TaskList = () => {
 
     const [list, setList] = useState([]);
     var patid = retrieveUserId();
     console.log(patid);
 
     useEffect (() => {
-        const data = Promise.resolve(GetAppByPatId(patid));
+        const data = Promise.resolve(GetAppByLabId(patid));
         console.log("this is", data);
+        console.log(data)
         data.then(
             value => {
                 setList(value);
@@ -26,9 +27,9 @@ const Applist = () => {
             {list && list.map((elem) => {
                 console.log("this is elem", elem);
                 return(
-                    <AppComp
-                        time = {elem.date}
-                        name = {elem.user2.first_name}
+                    <TaskComp
+                        pname = {elem.user1.first_name}
+                        dname = {elem.user2.first_name}
                     />
                 );
             })}
@@ -36,4 +37,4 @@ const Applist = () => {
     )
 }
 
-export default Applist
+export default TaskList

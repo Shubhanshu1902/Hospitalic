@@ -24,8 +24,11 @@ export const LoginBox = (props) => {
     const onSignIn = () => {
         console.log(props.type)
         LoginCall(email, password);
-//        SaveChatCall("1", "1", "Yay !!");
-        FetchChatEntities(1);
+        if(props.type === "Patient") navigate("/patient/dashboard");
+        else if(props.type === "Doctor") navigate("/doctor/dashboard");
+        else if(props.type === "Lab") navigate("/lab/dashboard");
+        else if(props.type === "Radiologist") navigate("/radiologist/dashboard");
+
     }
 
     const onRegister = () => {
