@@ -105,3 +105,22 @@ export async function GetAppByPatId(
     })
     return ret;
 }
+export async function GetAppByLabId(
+    id
+){
+    const url = "http://localhost:8081/appointment/get_appointment_by_lab_id/" + id;
+    let ret;
+
+    await fetch(url,
+        {
+            method: "GET",
+            headers: {"Content-type": "application.json"}
+        })
+        .then(response => {
+            return(response.json());
+        })
+        .then(data =>{
+            ret = data;
+        })
+    return ret;
+}
