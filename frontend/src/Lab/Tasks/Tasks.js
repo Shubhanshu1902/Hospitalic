@@ -1,8 +1,8 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import { Navbar } from "./Navbar";
-import { TopBar } from "./TopBar";
 import TaskList from "./TaskList";
+import { Navbar } from "../Dashboard/Navbar";
+import { TopBar } from "../Dashboard/TopBar";
 
 export const Tasks = () => {
     return (

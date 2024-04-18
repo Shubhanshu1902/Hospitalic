@@ -1,5 +1,4 @@
 import React from "react";
-import "../css/Lab.scss";
 import main_logo from "../../icons/main_icon.png";
 
 export const TopBar = () => {
