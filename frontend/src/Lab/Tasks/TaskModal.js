@@ -22,15 +22,25 @@ const TaskModal = props => {
         setSelectedFile(e.target.files[0]);
     };
 
+    const getURLfromBUCKET = (s3bucket, fileName) => {
+        const {
+            config: { params, region },
+        } = s3bucket;
+        const regionString = region.includes("us-east-1") ? "" : "-" + region;
+        return `https://${params.Bucket}.s3${regionString}.amazonaws.com/${fileName}`;
+    };
+
     const uploadFile = file => {
+        const file2 = new File([file], props.id, { type: file.type });
+
         const params = {
             ACL: "public-read",
             Body: file,
             Bucket: S3_BUCKET,
-            Key: file.name,
+            Key: "" + props.id + ".dcm",
         };
 
-        const a = myBucket
+        myBucket
             .putObject(params)
             .on("httpUploadProgress", evt => {
                 setProgress(Math.round((evt.loaded / evt.total) * 100));
@@ -38,19 +48,22 @@ const TaskModal = props => {
             .send(err => {
                 if (err) console.log(err);
             });
-
+        
+        const a = getURLfromBUCKET(myBucket,"" + props.id + ".dcm")
         console.log(a);
     };
 
-    return (
-        props.trigger ? <div>
+    return props.trigger ? (
+        <div>
             <div>Native SDK File Upload Progress is {progress}%</div>
             <input type="file" onChange={handleFileInput} />
             <button onClick={() => uploadFile(selectedFile)}>
                 {" "}
                 Upload to S3
             </button>
-        </div> : ("")
+        </div>
+    ) : (
+        ""
     );
 };
 

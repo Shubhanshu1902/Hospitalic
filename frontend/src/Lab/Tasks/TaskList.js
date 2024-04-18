@@ -25,6 +25,7 @@ const TaskList = () => {
                 return(
                     <TaskComp
                         key = {i++}
+                        id = {elem.id}
                         pname = {elem.user1.first_name}
                         dname = {elem.user2.first_name}
                     />

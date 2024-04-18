@@ -8,8 +8,9 @@ import { useViewport } from "@lunit/insight-viewer/viewport";
 import { useRef } from "react";
 
 const Chat = () => {
+    // TODO change image name
     const MOCK_IMAGE =
-        "wadouri:https://static.lunit.io/fixtures/dcm-files/series/CT000002.dcm";
+        "wadouri:https://hospitalic1.s3-ap-south-1.amazonaws.com/1.dcm";
 
     const { image } = useImage({ wadouri: MOCK_IMAGE });
     const viewerRef = useRef(null);
