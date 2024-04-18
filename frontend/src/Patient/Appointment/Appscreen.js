@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import Sidebar from '../../chat/js/Sidebar';
 import AppContent from './AppContent';
-import "../css/Appoint.scss";
+import "../Patient.scss";
+import { Navbar } from '../Dashboard/Navbar';
 
 const Appscreen = () => {
     return (
         <div className='apphome'>
-            <Sidebar></Sidebar>
-            <AppContent></AppContent>
+            <Navbar />
+            <AppContent />
         </div>
     );
 }
