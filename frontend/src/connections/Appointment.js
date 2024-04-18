@@ -85,3 +85,23 @@ export async function GetAllRadiologist(){
     })
     return ret;
 }
+
+export async function GetAppByPatId(
+    id
+){
+    const url = "http://localhost:8081/appointment/get_appointment_by_patient_id/" + id;
+    let ret;
+
+    await fetch(url,
+    {
+        method: "GET",
+        headers: {"Content-type": "application.json"}
+    })
+    .then(response => {
+        return(response.json());
+    })
+    .then(data =>{
+        ret = data;
+    })
+    return ret;
+}

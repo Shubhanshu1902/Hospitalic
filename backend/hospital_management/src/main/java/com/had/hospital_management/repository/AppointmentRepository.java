@@ -12,24 +12,24 @@ import java.util.List;
 public interface AppointmentRepository extends JpaRepository<Appointment,Long>{
     @Query(
             nativeQuery = true,
-            value  = "select * from Appointment where doctor_id = :doc_id"
+            value  = "select * from appointment where doctor_id = :doc_id"
     )
     List<Appointment> findAppointmentByDoctorId(@Param("doc_id") Long doc_id);
     @Query(
             nativeQuery = true,
-            value  = "select * from Appointment where patient_id = :pat_id"
+            value  = "select * from appointment where patient_id = :pat_id"
     )
     List<Appointment> findAppointmentByPatientId(@Param("pat_id") Long pat_id);
     @Query(
             nativeQuery = true,
-            value  = "select * from Appointment where lab_id = :lab_id"
+            value  = "select * from appointment where lab_id = :lab_id"
     )
     List<Appointment> findAppointmentByLabId(@Param("lab_id") Long lab_id);
 
     @Modifying
     @Query(
             nativeQuery = true,
-            value = "update Appointment set lab_id = :lab_id where id = :id"
+            value = "update appointment set lab_id = :lab_id where id = :id"
     )
     void assignLab(@Param("lab_id") Long lab_id,@Param("id") Long id);
 }
