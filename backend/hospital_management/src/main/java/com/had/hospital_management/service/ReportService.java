@@ -2,6 +2,7 @@ package com.had.hospital_management.service;
 
 import com.had.hospital_management.model.Report;
 import com.had.hospital_management.model.Requests;
+import com.had.hospital_management.model.UserEntity;
 import com.had.hospital_management.repository.ReportRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,7 +38,8 @@ public class ReportService {
     public List<Report> getReportByLabId(Long id){
         return reportRepository.getReportByLabId(id);
     }
-
+    public List<UserEntity> getPatientByDoctorId(Long id){return reportRepository.getPatientByDoctorId(id);}
+    public List<UserEntity> getDoctorByPatientId(Long id){return reportRepository.getDoctorByPatientId(id);}
     public List<Report> getReportByDoctorAndPatientId(Long doc_id,Long pat_id){
         return reportRepository.getReportByDoctorAndPatientId(doc_id,pat_id);
     }

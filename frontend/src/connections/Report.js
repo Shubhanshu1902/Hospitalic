@@ -102,3 +102,57 @@ export async function GetAllLabReport(
         console.error(error);
     }
 }
+export async function GetDoctorByPatientId(
+    pat_id
+) {
+    const url = "http://localhost:8081/report/get_doctor_by_patient_id/" pat_id;
+    let ret;
+    let token = retrieveJWT();
+    try {
+        await fetch(url,
+            {
+                method: "GET",
+                headers: {
+                    "Content-type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+            .then(response => {
+                return (response.json());
+            })
+            .then(data => {
+                ret = data;
+
+            })
+        return ret;
+    } catch (error) {
+        console.error(error);
+    }
+}
+export async function GetPatientByDoctorId(
+    doc_id
+) {
+    const url = "http://localhost:8081/report/get_patient_by_doctor_id/" doc_id;
+    let ret;
+    let token = retrieveJWT();
+    try {
+        await fetch(url,
+            {
+                method: "GET",
+                headers: {
+                    "Content-type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+            .then(response => {
+                return (response.json());
+            })
+            .then(data => {
+                ret = data;
+
+            })
+        return ret;
+    } catch (error) {
+        console.error(error);
+    }
+}
