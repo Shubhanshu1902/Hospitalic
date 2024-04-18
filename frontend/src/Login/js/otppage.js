@@ -27,7 +27,7 @@ export const EmailVerification = () => {
       <p>
         <span>0:{secondsRemaining.toString().padStart(2, '0')}</span> secs remaining
       </p>
-      <button onClick() => {} >Verify account</button>
+      <button >Verify account</button>
       <button onClick={resendCode}>Didnt receive code, Resend</button>
     </div>
   );
