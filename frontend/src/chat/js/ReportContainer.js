@@ -6,7 +6,7 @@ const ReportContainer = (props) => {
     return (
         <div className="reportCont">
             <DicomLoader viewerProps = {props.viewerProps}/>
-            <Msgbox controllers= {props.controllers}/>
+            <Msgbox controllers= {props.controllers} reportProps = {props.reportProps}/>
         </div>
     );
 }

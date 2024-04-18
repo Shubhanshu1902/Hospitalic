@@ -19,7 +19,7 @@ import java.util.Date;
 @Builder
 public class Chat {
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
     private Long reportId;
     private Long sender_id;
