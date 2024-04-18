@@ -17,10 +17,8 @@ export const login = (jwtToken,userId) => {
 
 // retrieve JWT token
 export const retrieveJWT = () => {
-    console.log("testing",cookie.get("JWTtoken"))
     return cookie.get("JWTtoken")
 }
 export const retrieveUserId = () => {
-    console.log("testing",cookie.get("UserId"))
     return cookie.get("UserId")
 }

@@ -110,7 +110,9 @@ body {
                 width: 60%;
                 display: flex;
                 background-color: $color2;
-                justify-content: start;
+                justify-content: space-between;
+                padding-left: 10px;
+                padding-right: 20px;
                 align-items: center;
                 margin: 5px;
                 border-radius: 20px;
@@ -118,6 +120,16 @@ body {
                 .t2{
                     padding-left: 30px;
                     font-size: large;
+                }
+
+                .button {
+                    background: $color7;
+                    width: 15%;
+                    height: 70%;
+                    color: #ffffff;
+                    font: $font;
+                    font-size: 20px;
+                    font-weight: 400;
                 }
             }
 

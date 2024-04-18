@@ -25,7 +25,7 @@ function App() {
 
                 {/* PATIENT */}
                 <Route path='/patient/dashboard' element={<Dash />} />
-                <Route path='/appointments' element={<Appscreen />} />
+                <Route path='/patient/appointments' element={<Appscreen />} />
 
                 {/* LAB */}
                 <Route path='/addReport/:appointmentId' element={<ReportAdd />} />
