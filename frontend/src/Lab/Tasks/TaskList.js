@@ -16,7 +16,7 @@ const TaskList = () => {
                 setList(value);
             }
         )
-    }, []);
+    }, [list]);
 
     var i = 0;
     return (

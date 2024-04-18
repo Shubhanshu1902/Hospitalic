@@ -17,7 +17,7 @@ const Applist = () => {
                 setList(value);
             }
         )
-    }, []);
+    }, [list]);
 
     console.log(list);
 

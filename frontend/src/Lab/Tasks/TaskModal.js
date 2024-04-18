@@ -55,6 +55,7 @@ const TaskModal = props => {
         const a = getURLfromBUCKET(myBucket,"" + props.id + ".dcm")
         updateAppointmentStatus(props.id);
         console.log(a);
+        props.setTrigger(false)
     };
 
     return props.trigger ? (
