@@ -1,6 +1,6 @@
 import React from "react";
 import { Navbar } from "./Navbar";
-import "../css/Lab.scss";
+import "../Lab.scss";
 import { TopBar } from "./TopBar";
 
 export const LabDashboard = () => {

@@ -3,10 +3,6 @@ import { LoginScreen } from "./Login/js/LoginScreen";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Register } from "./Login/js/Register";
 import {Chatscreen} from "./chat/js/Chatscreen";
-import { ReportAdd } from "./Lab/js/ReportAdd";
-import { LabDashboard } from "./Lab/js/LabDashboard";
-import { Tasks } from "./Lab/js/Tasks";
-import Appscreen from "./Patient/Appointment/Appscreen";
 import { Dashboard } from "./Patient/Dashboard/Dashboard";
 import { ReportScreen } from "./Patient/Reports/ReportScreen";
 import { RadioDashboard } from "./Radiologist/Dashboard/Dashboard";
@@ -14,6 +10,9 @@ import { DocDashboard } from "./Doctor/Dashboard/Dashboard";
 import { DocAppointments } from "./Doctor/Appointment/Appointments";
 import { DocReportScreen } from "./Doctor/Report/ReportScreen";
 import { RadReportScreen } from "./Radiologist/Report/ReportScreen";
+import Appscreen from "./Patient/Appointment/Appscreen";
+import { LabDashboard } from "./Lab/Dashboard/LabDashboard";
+import { Tasks } from "./Lab/Tasks/Tasks";
 
 
 function App() {
@@ -39,7 +38,6 @@ function App() {
                 
 
                 {/* LAB */}
-                <Route path='/addReport/:appointmentId' element={<ReportAdd />} />
                 <Route path='/lab/dashboard' element={<LabDashboard />} />
                 <Route path='/lab/tasks' element={<Tasks />} />
 

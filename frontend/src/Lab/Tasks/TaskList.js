@@ -10,7 +10,7 @@ const TaskList = () => {
 
     useEffect (() => {
         // TODO change 
-        const data = Promise.resolve(GetAppByPatId(5));
+        const data = Promise.resolve(GetAppByPatId(1));
         data.then(
             value => {
                 setList(value);

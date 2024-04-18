@@ -7,9 +7,6 @@ export const TopBar = () => {
 
     return (
         <div className="Topbar">
-            {/* <img src={main_logo} alt="main_logo" className="image"/> */}
-
-            {/* TopBar */}
             <input type="search" placeholder="Search" className="search" />
 
             <div className="name_and_title">
