@@ -4,9 +4,10 @@ import AWS from "aws-sdk";
 const S3_BUCKET = "hospitalic1";
 const REGION = "ap-south-1";
 
+
 AWS.config.update({
-    accessKeyId: "AKIAYS2NQIIRAKBGX467",
-    secretAccessKey: "",
+    accessKeyId: process.env.ACCESS_KEY,
+    secretAccessKey: process.env.SECRET_ACCESS_KEY,
 });
 
 const myBucket = new AWS.S3({
