@@ -8,32 +8,58 @@ import {
     faReceipt,
     faTasks,
 } from "@fortawesome/fontawesome-free-solid";
+import { useNavigate } from "react-router-dom";
+import main_logo from "../../icons/main_icon.png";
 
 export const Navbar = () => {
+    const navigate = useNavigate();
     return (
         <div className="navbar">
             <div className="main">
                 {/* UPAR WALA BOX */}
                 <div className="Box">
-                    <div>
-                        <hr
-                            style={{
-                                color: "#E0E0E0",
-                                backgroundColor: "#E0E0E0",
-                            }}
+                    <div className="icon-box">
+                        <img
+                            src={main_logo}
+                            alt="main_logo"
+                            className="image"
                         />
+
+                        <div>
+                            <hr
+                                style={{
+                                    color: "#E0E0E0",
+                                    backgroundColor: "#E0E0E0",
+                                }}
+                            />
+                        </div>
                     </div>
                     <div className="text">Menu</div>
-                    <div className="text">
+                    <div
+                        className="text"
+                        onClick={() => {
+                            navigate("/lab/dashboard");
+                        }}
+                    >
                         <Dashboard strokeWidth={2} size={20} />
                         Dashboard
                     </div>
-                    <div className="text">
+                    <div
+                        className="text"
+                        onClick={() => {
+                            navigate("/lab/tasks");
+                        }}
+                    >
                         <FontAwesomeIcon icon={faTasks} />
                         Tasks
                     </div>
 
-                    <div className="text">
+                    <div
+                        className="text"
+                        onClick={() => {
+                            navigate("/lab/reports");
+                        }}
+                    >
                         <FontAwesomeIcon icon={faReceipt} />
                         Reports
                     </div>

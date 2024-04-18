@@ -17,13 +17,22 @@ function App() {
             <Routes>
                 <Route path="/" element={<LoginScreen />} />
                 <Route path='/register' element={<Register />} />
-                <Route path='/chats' element={<Chatscreen />} />
-                <Route path='/dashboard' element={<Dash />} />
+
+                {/* DOCTOR */}
+                <Route path='/doctor/dashboard' element={<Dash />} />
+                <Route path='/doctor/chats/:reportId' element={<Chatscreen />} />
+
+
+                {/* PATIENT */}
                 <Route path='/appointments' element={<Appscreen />} />
-                <Route path='/addReport/:patientId' element={<ReportAdd />} />
-                <Route path='/labdashboard' element={<LabDashboard />} />
+
+                {/* LAB */}
+                <Route path='/addReport/:appointmentId' element={<ReportAdd />} />
+                <Route path='/lab/dashboard' element={<LabDashboard />} />
                 <Route path='/lab/tasks' element={<Tasks />} />
 
+                {/* RADIOLOGIST */}
+                
 
             </Routes>
         </BrowserRouter>
