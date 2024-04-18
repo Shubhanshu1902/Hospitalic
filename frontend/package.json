@@ -30,7 +30,8 @@
     "react-select": "^5.8.0",
     "sass": "^1.70.0",
     "universal-cookie": "^7.1.4",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "@emailjs/browser": "^4.3.3"
   },
   "scripts": {
     "start": "react-scripts start",
