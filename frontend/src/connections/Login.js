@@ -1,5 +1,5 @@
 import { login } from "./CookieJWT";
-
+import {GetUserId} from "./User";
 export async function LoginCall(email, pass) {
     const url = "http://localhost:8081/api/auth/login";
     console.log("hi here");
@@ -25,7 +25,16 @@ export async function LoginCall(email, pass) {
             // console.log(data);
             console.log(Object.values(data));
             jwt = data["accessToken"];
-            login(jwt)
+            let id=0;
+            const dt = Promise.resolve(GetUserId(email));
+            dt.then(
+                value => {
+                    id = value['id'];
+                    // console.log("haaa",);
+                    // console.log(value['id']);
+                    login(jwt,value['id']);
+                }
+            )
         })
         .catch((err) => {
             ret = false;

@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebook, faGooglePlusG, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { faFacebook, faGoogle, faGooglePlusG, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import React, { useState } from "react";
 import { faEnvelope, faLock } from "@fortawesome/fontawesome-free-solid";
 import { useNavigate,Link } from "react-router-dom";
@@ -24,8 +24,11 @@ export const LoginBox = (props) => {
     const onSignIn = () => {
         console.log(props.type)
         LoginCall(email, password);
-//        SaveChatCall("1", "1", "Yay !!");
-        FetchChatEntities(1);
+        if(props.type === "Patient") navigate("/patient/dashboard");
+        else if(props.type === "Doctor") navigate("/doctor/dashboard");
+        else if(props.type === "Lab") navigate("/lab/dashboard");
+        else if(props.type === "Radiologist") navigate("/radiologist/dashboard");
+
     }
 
     const onRegister = () => {
@@ -43,7 +46,7 @@ export const LoginBox = (props) => {
                         style={{ color: "#2F80ED", scale: "2.5" }}
                     />
                     <FontAwesomeIcon
-                        icon={faGooglePlusG}
+                        icon={faGoogle}
                         style={{ color: "#FF4343", scale: "2.5" }}
                     />
                     <FontAwesomeIcon

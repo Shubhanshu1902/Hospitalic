@@ -1,46 +1,61 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Select from 'react-select'
 import { useState } from 'react'
+import DatePicker from "react-datepicker";
+import { BookAppointment } from '../../connections/Appointment';
+import { GetAllDoctor } from '../../connections/Appointment';
+import moment from 'moment'
+import {retrieveUserId} from "../../connections/CookieJWT";
 
-const docopt = [
-    {value: "shubhanshu", label:"Dr.Shubhanshu"},
-    {value: "naitik", label:"Dr.Naitiksinh"},
-    {value: "vatsal", label:"Dr.Vatsal"},
-    {value: "vaibhav", label:"Dr.Vaibhav"},
-    {value: "arin", label:"Dr.Arin"},
-];
 
-const Modal = () => {
+const Modal = (props) => {
 
-    const [selectedOption, setSelectedOption] = useState(null);
-
-    const handleChange = (selectedOption) => {
-        setSelectedOption(selectedOption);
+    const [dateVar, setDateVar] = useState(new Date());
+    const [user2, setUser2] = useState("");
+    const [list, setList] = useState("");
+    var user1_id = retrieveUserId();
+    const bookcall = () => {
+        console.log(moment(dateVar).format());
+        console.log(user2.id);
+        BookAppointment( moment(dateVar).format('YYYY-MM-DD'), user1_id, user2.id);
+        props.setTrigger(false);
     };
+
+    const handleChange2 = (user2) => {
+        setUser2(user2);
+    };
+
+    useEffect (() => {
+        const data = Promise.resolve(GetAllDoctor());
+        data.then(
+        value => {
+            setList(value);
+        })
+    }, []);
+
+    console.log(list);
+
   
-    return (
+    return(props.trigger) ? (
         <div className='hi'>
                     <div className='item1' style={{display:'flex', alignItems:'center', justifyContent:'space-around'}}>
                         <h4>Choose your doctor</h4>
                         <div className='dropdown' style={{maxWidth: "300px"}}>
-                            <Select options={docopt} value={selectedOption}
-                            onChange={handleChange}/>
+                            <Select 
+                                options={list}
+                                value={user2}
+                                getOptionLabel={(opt) => opt.first_name}
+                                getOptionValue={(opt) => opt.id}
+                                onChange={handleChange2}/>
                         </div>
                     </div>
                     <div className='item2' style={{display:'flex', alignItems:'center', justifyContent:'space-around'}}>
                         <h4>Choose your date</h4>
-                        <div className='input' style={{maxWidth: "300px"}}>
-                            <input type='text' placeholder='DD/MM/YY'></input>
-                        </div>
+                        <DatePicker selected={dateVar} onChange={date => setDateVar(date)}/>
                     </div>
-                    <div className='item3' style={{display:'flex', alignItems:'center', justifyContent:'space-around'}}>
-                        <h4>Choose your time</h4>
-                        <div className='input' style={{maxWidth: "300px"}}>
-                            <input type='text' placeholder='00:00'></input>
-                        </div>
-                    </div>
+                    <button className='invite' onClick={bookcall} style={{position:"absolute", left:"50%", transform:"translate(-50%)", height:"30%", width:"10%",fontSize:"large"}}>Book</button>
         </div>
-  )
+  ) : ""
 }
 
 export default Modal

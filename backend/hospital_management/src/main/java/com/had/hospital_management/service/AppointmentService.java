@@ -27,6 +27,14 @@ public class AppointmentService {
     public List<Appointment>getAppointmentByPatientId(Long id){
         return appointmentRepository.findAppointmentByPatientId(id);
     }
+    public List<Appointment>getAppointmentByLabId(Long id){
+        return appointmentRepository.findAppointmentByLabId(id);
+    }
+    @Transactional
+    public void assignLab(Long lab_id,Long id){
+        appointmentRepository.assignLab(lab_id,id);
+    }
+
     @Transactional
     public void deleteById(Long id) {
         Appointment appointment = appointmentRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("appointment with id " + id + " not found"));

@@ -6,6 +6,7 @@ import { LoginOptions } from "./LoginOptions";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { RegisterCall } from "../../connections/Register";
+import { useNavigate } from "react-router-dom";
 
 export const Register = () => {
     const login_types = ["Patient", "Doctor", "Lab", "Radiologist"];
@@ -16,15 +17,9 @@ export const Register = () => {
     const [email, setEmail] = useState("");
     const [Address, setAddress] = useState("");
     const [Password, setPassword] = useState("");
+    let navigate = useNavigate()
 
     const register = () => {
-        console.log(fname);
-        console.log(lname);
-        console.log(email);
-        console.log(Address);
-        console.log(Password);
-        console.log(gender);
-        console.log(startDate);
         RegisterCall(
         email,
         Password,
@@ -35,6 +30,9 @@ export const Register = () => {
         Address,
         1
         )
+        
+        let path = "/"
+        navigate(path)
     };
 
     return (

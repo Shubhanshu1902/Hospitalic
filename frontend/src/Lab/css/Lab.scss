@@ -1,0 +1,139 @@
+@import "../../App.scss";
+
+body {
+    background: $color6;
+}
+
+.dashboard {
+    display: flex;
+    // flex-direction: column;
+
+    .navbar {
+        color: $color4;
+        background: $color4;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding-left: 0.7%;
+        padding-right: 0.7%;
+        filter: drop-shadow(0 0 0.1rem 0.1rem #ffffff);
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: $color4;
+            background: $color4;
+            padding-bottom: 50px;
+
+            .Box {
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+
+                .icon-box {
+                    display: flex;
+                    flex-direction: column;
+                    .image {
+                        height: 80px;
+                    }
+                }
+
+                .text {
+                    display: flex;
+                    gap: 12px;
+                    color: $color10;
+                    font: $font;
+                    font-size: 20px;
+                    font-weight: 500;
+                }
+            }
+
+        }
+    }
+
+    .AppContent {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        .Topbar {
+            background-color: $color4;
+            display: flex;
+            height: 85px;
+            gap: 50px;
+            align-items: center;
+            padding-left: 50px;
+    
+            .search {
+                height: 40px;
+                width: 40%;
+                border-radius: 10px solid rgba(42, 91, 195, 0.35);
+                box-shadow: none;
+                filter: drop-shadow(0 0 0 0 #ffffff);
+                font: $font;
+                font-size: 14px;
+                font-weight: map-get($map: $font-weight, $key: normal);
+            }
+    
+            .search::placeholder {
+                text-align: center;
+                font: $font;
+                font-size: 14px;
+                font-weight: map-get($map: $font-weight, $key: normal);
+            }
+    
+            .name_and_title {
+                display: flex;
+                flex-direction: column;
+                font: $font;
+                font-size: 16px;
+            }
+        }
+
+        .applist{
+            display: flex;
+            flex-direction: column;
+            height: 66%;
+            width: 98%;
+            background-color: $color4;
+            justify-content: start;
+            align-items: start;
+            padding: 10px;
+            margin-top: 10px;
+            margin-left: 10px;
+            border-radius: 20px;
+            overflow: scroll;
+
+            .t1{
+                height: 12%;
+                width: 60%;
+                display: flex;
+                background-color: $color2;
+                justify-content: space-between;
+                padding-left: 10px;
+                padding-right: 20px;
+                align-items: center;
+                margin: 5px;
+                border-radius: 20px;
+
+                .t2{
+                    padding-left: 30px;
+                    font-size: large;
+                }
+
+                .button {
+                    background: $color7;
+                    width: 15%;
+                    height: 70%;
+                    color: #ffffff;
+                    font: $font;
+                    font-size: 20px;
+                    font-weight: 400;
+                }
+            }
+
+        }
+    }
+    
+}

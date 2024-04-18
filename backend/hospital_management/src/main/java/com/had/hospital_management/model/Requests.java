@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Requests {
     @jakarta.persistence.Id
+    @GeneratedValue
     private Long id;
     private Long status;
 
