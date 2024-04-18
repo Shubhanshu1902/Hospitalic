@@ -174,7 +174,33 @@ export async function GetAppByLabId(
     catch(error){
         console.error(error);
     }
-
+}
+export async function GetAppByDoctorId(
+    id
+){
+    const url = "http://localhost:8081/appointment/get_appointment_by_doctor_id/" + id;
+    let ret;
+    let token = retrieveJWT();
+    try {
+        await fetch(url,
+            {
+                method: "GET",
+                headers: {
+                    "Content-type": "application.json",
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+            .then(response => {
+                return (response.json());
+            })
+            .then(data => {
+                ret = data;
+            })
+        return ret;
+    }
+    catch(error){
+        console.error(error);
+    }
 }
 export async function AssignLab(
     appointment_id,lab_id
