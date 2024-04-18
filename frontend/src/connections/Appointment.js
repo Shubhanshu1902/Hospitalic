@@ -227,3 +227,28 @@ export async function AssignLab(
     }
     catch(error){console.error(error);}
 }
+export async function updateAppointmentStatus(
+    id
+){
+    const url = "http://localhost:8081/appointment/update_status/" + id;
+    let ret;
+    let token = retrieveJWT();
+    try {
+        await fetch(url,
+            {
+                method: "POST",
+                headers: {
+                    "Content-type": "application.json",
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+            .then(response => {
+                return (response.json());
+            })
+            .then(data => {
+                ret = data;
+            })
+        return ret;
+    }
+    catch(error){console.error(error);}
+}

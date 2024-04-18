@@ -51,6 +51,10 @@ public class AppointmentController {
     public void assignLab(@PathVariable("lab_id") Long lab_id,@PathVariable("id") Long id){
         appointmentService.assignLab(lab_id , id);
     }
+    @PostMapping("update_status/{id}")
+    public void updateStatus(@PathVariable("id") Long id){
+        appointmentService.updateStatus(id);
+    }
     @DeleteMapping("delete_by_id/{id}")
     public ResponseEntity<?> deleteById(@PathVariable("id") Long id) {
         try {
