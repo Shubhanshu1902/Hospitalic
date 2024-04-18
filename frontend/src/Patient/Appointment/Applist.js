@@ -26,10 +26,10 @@ const Applist = () => {
             {list && list.map((elem) => {
                 console.log("this is elem", elem);
                 return(
-                    <AppComp
+                    !elem.status ? <AppComp
                         time = {elem.date}
                         name = {elem.user2.first_name}
-                    />
+                    /> : ""
                 );
             })}
         </div>

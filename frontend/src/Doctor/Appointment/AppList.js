@@ -23,11 +23,11 @@ const AppList = () => {
         <div className= 'applist'>
             {list && list.map((elem) => {
                 return(
-                    <AppComp
+                    !elem.status ? <AppComp
                         key = {i++}
                         pname = {elem.user1.first_name}
                         dname = {elem.user2.first_name}
-                    />
+                    /> : ""
                 );
             })}
         </div>

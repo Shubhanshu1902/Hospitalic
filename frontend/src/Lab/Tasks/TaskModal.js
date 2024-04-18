@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import AWS from "aws-sdk";
+import { updateAppointmentStatus } from "../../connections/Appointment";
+import { saveReport } from "../../connections/Report";
 
 const S3_BUCKET = "hospitalic1";
 const REGION = "ap-south-1";
@@ -46,10 +48,12 @@ const TaskModal = props => {
                 setProgress(Math.round((evt.loaded / evt.total) * 100));
             })
             .send(err => {
-                if (err) console.log(err);
+                if (err) {console.log(err); return}
             });
         
+        
         const a = getURLfromBUCKET(myBucket,"" + props.id + ".dcm")
+        updateAppointmentStatus(props.id);
         console.log(a);
     };
 
