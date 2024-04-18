@@ -8,23 +8,21 @@ import {
     faReceipt,
     faTasks,
 } from "@fortawesome/fontawesome-free-solid";
-import main_logo from "../../icons/main_icon.png";
 
 export const Navbar = () => {
     return (
         <div className="navbar">
-            <img src={main_logo} alt="main_logo" />
-            <div>
-                <hr
-                    style={{
-                        color: "#E0E0E0",
-                        backgroundColor: "#E0E0E0",
-                    }}
-                />
-            </div>
             <div className="main">
                 {/* UPAR WALA BOX */}
                 <div className="Box">
+                    <div>
+                        <hr
+                            style={{
+                                color: "#E0E0E0",
+                                backgroundColor: "#E0E0E0",
+                            }}
+                        />
+                    </div>
                     <div className="text">Menu</div>
                     <div className="text">
                         <Dashboard strokeWidth={2} size={20} />
@@ -40,7 +38,7 @@ export const Navbar = () => {
                         Reports
                     </div>
                 </div>
-                
+
                 {/* NEECHE WALA BOX */}
                 <div className="Box">
                     <div>

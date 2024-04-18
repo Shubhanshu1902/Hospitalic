@@ -7,6 +7,7 @@ import Dash from "./dashboard/js/Dash";
 import Appscreen from "./appointments/js/Appscreen";
 import { ReportAdd } from "./Lab/js/ReportAdd";
 import { LabDashboard } from "./Lab/js/LabDashboard";
+import { Tasks } from "./Lab/js/Tasks";
 
 function App() {
     
@@ -21,6 +22,8 @@ function App() {
                 <Route path='/appointments' element={<Appscreen />} />
                 <Route path='/addReport/:patientId' element={<ReportAdd />} />
                 <Route path='/labdashboard' element={<LabDashboard />} />
+                <Route path='/lab/tasks' element={<Tasks />} />
+
 
             </Routes>
         </BrowserRouter>
