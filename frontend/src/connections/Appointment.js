@@ -227,7 +227,7 @@ export async function GetAppByDoctorId(
     }
 }
 export async function AssignLab(
-    appointment_id,lab_id
+    lab_id, appointment_id
 ){
     const url = "http://localhost:8081/appointment/assign_lab/" + lab_id + "/" + appointment_id
     let ret;

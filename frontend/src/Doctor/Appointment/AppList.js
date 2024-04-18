@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { GetAppByLabId, GetAppByPatId } from '../../connections/Appointment';
+import { GetAppByDoctorId, GetAppByLabId, GetAppByPatId } from '../../connections/Appointment';
 import { retrieveUserId } from '../../connections/CookieJWT';
 import AppComp from './AppComp';
 
@@ -10,7 +10,7 @@ const AppList = () => {
 
     useEffect (() => {
         // TODO change 
-        const data = Promise.resolve(GetAppByPatId(1));
+        const data = Promise.resolve(GetAppByDoctorId(patid));
         data.then(
             value => {
                 setList(value);
@@ -27,6 +27,7 @@ const AppList = () => {
                         key = {i++}
                         pname = {elem.user1.first_name}
                         dname = {elem.user2.first_name}
+                        appid = {elem.id}
                     /> : ""
                 );
             })}

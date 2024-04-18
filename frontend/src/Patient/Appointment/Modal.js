@@ -12,7 +12,7 @@ const Modal = (props) => {
 
     const [dateVar, setDateVar] = useState(new Date());
     const [user2, setUser2] = useState("");
-    const [list, setList] = useState("");
+    const [list, setList] = useState([]);
     var user1_id = retrieveUserId();
     const bookcall = () => {
         console.log(moment(dateVar).format());
