@@ -30,8 +30,6 @@ export async function LoginCall(email, pass) {
             dt.then(
                 value => {
                     id = value['id'];
-                    // console.log("haaa",);
-                    // console.log(value['id']);
                     login(jwt,value['id']);
                 }
             )

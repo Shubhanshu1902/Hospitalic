@@ -20,10 +20,6 @@ public class Report {
     private String photo_path;
     private String comments;
 
-    @OneToOne
-    @JoinColumn(name = "chat_id", referencedColumnName = "id")
-    private Chat chat;
-
     @ManyToOne()
     @JoinColumn(
             name = "lead_doctor_id",

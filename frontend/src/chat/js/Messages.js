@@ -13,7 +13,7 @@ const Messages = (props) => {
     )
 
     const p = name.first_name + " " + name.last_name;
-    console.log(p);
+    // console.log(p);
 
     return (
         <div className="messages">
