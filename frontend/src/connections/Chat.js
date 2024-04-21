@@ -7,7 +7,7 @@ export async function SaveChatCall(
     {
     const url = "http://localhost:8081/chat/save"; // Adjust URL if needed
     let token = retrieveJWT();
-    console.log("In Save Chat");
+    // console.log("In Save Chat");
     const response = await fetch(url, {
       method: "POST",
       headers: {
@@ -28,7 +28,7 @@ export async function SaveChatCall(
 
     try {
       const responseData = await response.json();
-      console.log("Chat saved successfully:", responseData);
+      // console.log("Chat saved successfully:", responseData);
       // Handle successful response (e.g., update UI)
     } catch (error) {
       console.error("Error parsing response:", error);
@@ -38,7 +38,7 @@ export async function SaveChatCall(
 export async function FetchChatEntities(reportId) {
     const url = `http://localhost:8081/chat/find_filter/${reportId}`;
     let token = retrieveJWT();
-    console.log("In Fetch Chat");
+    // console.log("In Fetch Chat");
 
     try {
         const response = await fetch(url, {

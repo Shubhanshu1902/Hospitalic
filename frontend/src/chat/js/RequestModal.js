@@ -21,7 +21,7 @@ const RequestModal = (props) => {
     };
 
     const requestcall = () => {
-        console.log(selectedOption.id);
+        // console.log(selectedOption.id);
 
         AddRadiologist('1', selectedOption.id);
 

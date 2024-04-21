@@ -16,7 +16,9 @@ const TaskList = () => {
                 setList(value);
             }
         )
-    }, [list]);
+    }, [] 
+    // [list]
+    );
 
     var i = 0;
     return (
@@ -28,6 +30,8 @@ const TaskList = () => {
                         id = {elem.id}
                         pname = {elem.user1.first_name}
                         dname = {elem.user2.first_name}
+                        pid = {elem.user1.id}
+                        did = {elem.user2.id}
                     /> : ""
                 );
             })}

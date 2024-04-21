@@ -15,8 +15,8 @@ const Modal = (props) => {
     const [list, setList] = useState([]);
     var user1_id = retrieveUserId();
     const bookcall = () => {
-        console.log(moment(dateVar).format());
-        console.log(user2.id);
+        // console.log(moment(dateVar).format());
+        // console.log(user2.id);
         BookAppointment( moment(dateVar).format('YYYY-MM-DD'), user1_id, user2.id);
         props.setTrigger(false);
     };
@@ -33,7 +33,7 @@ const Modal = (props) => {
         })
     }, []);
 
-    console.log(list);
+    // console.log(list);
 
   
     return(props.trigger) ? (

@@ -16,6 +16,7 @@ public class ReportController {
     private ReportService reportService;
     @PostMapping("/save")
     public Report save(@RequestBody Report reports){
+        System.out.println("HERE IN REPORT SAVE");
         return reportService.save(reports);
     }
 

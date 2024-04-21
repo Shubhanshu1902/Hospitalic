@@ -11,7 +11,7 @@ const TaskModal = (props) => {
     var app = props.app_id;
 
     const assigncall = () => {
-        console.log(lab.id);
+        // console.log(lab.id);
         AssignLab(lab.id, app);
         props.setTrigger(false);
     }

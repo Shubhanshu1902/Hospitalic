@@ -33,12 +33,12 @@ export async function RegisterCall(
             return data.json();
         })
         .then(data => {
-            console.log(data);
+            // console.log(data);
         })
         .catch(err => {
             ret = false;
-            console.log(err.message);
+            // console.log(err.message);
         });
-    console.log("RET: ", ret);
+    // console.log("RET: ", ret);
     return ret;
 }

@@ -6,7 +6,7 @@ export async function BookAppointment(
     user2_id
 ){
     const url = "http://localhost:8081/appointment/save";
-    console.log(user1_id + " "+ user2_id);
+    // console.log(user1_id + " "+ user2_id);
     let token = retrieveJWT();
     try{
         await fetch(url,

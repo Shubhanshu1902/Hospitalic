@@ -42,7 +42,7 @@ const Msgbox = props => {
     };
 
     const handleArrow = event => {
-        console.log(retrieveUserId);
+        // console.log(retrieveUserId);
         SaveChatCall(reportId, retrieveUserId() , inputValue); //Change the senderid with cookie's sender id
         setInputValue("");
     };

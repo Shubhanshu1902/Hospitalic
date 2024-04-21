@@ -7,9 +7,12 @@ const cookie = new Cookies();
 
 export const login = (jwtToken,userId) => {
     const decode = jwtDecode(jwtToken);
+    
+
     cookie.set("JWTtoken",jwtToken,{
         expires: new Date(decode.exp * 1000)
     });
+
     cookie.set("UserId",userId,{
         expires: new Date(decode.exp * 1000)
     });

@@ -17,7 +17,7 @@ const TaskComp = props => {
             </div>
             <button className="button" onClick={() => setButtonPopup(true)}> Upload Report </button>
             <TaskPop trigger={x} setTrigger={setButtonPopup}>
-                <TaskModal id={props.id} trigger={x} setTrigger={setButtonPopup} patient={props.pname}></TaskModal>
+                <TaskModal id={props.id} trigger={x} setTrigger={setButtonPopup} patient={props.pname} pid={props.pid} did={props.did}></TaskModal>
             </TaskPop>
         </div>
     );

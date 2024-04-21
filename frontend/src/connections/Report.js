@@ -1,15 +1,14 @@
 import {retrieveJWT} from "./CookieJWT";
 
 export async function saveReport(
-    rad_id,
     pic_path,
     comments,
-    chat_id,
     doc_id,
     pat_id,
     lab_id
 ){
     const url = "http://localhost:8081/report/save";
+    // http://localhost:8081/report/save
     let ret;
     let token = retrieveJWT();
     try {
@@ -17,12 +16,8 @@ export async function saveReport(
             {
                 method: "POST",
                 body: JSON.stringify({
-                    radiologist_id:rad_id,
                     photo_path:pic_path,
                     comments:comments,
-                    chat:{
-                        id:chat_id
-                    },
                     user1:{
                         id:doc_id
                     },
@@ -34,14 +29,16 @@ export async function saveReport(
                     }
                 }),
                 headers: {
-                    "Content-type": "application.json",
+                    "Content-type": "application/json",
                     "Authorization": `Bearer ${token}`
                 }
             })
             .then(response => {
+                // console.log(response);
                 return (response.json());
             })
             .then(data => {
+                // console.log(data);
                 ret = data;
             })
         return ret;
@@ -105,7 +102,7 @@ export async function GetAllLabReport(
 export async function GetDoctorByPatientId(
     pat_id
 ) {
-    const url = "http://localhost:8081/report/get_doctor_by_patient_id/" pat_id;
+    const url = "http://localhost:8081/report/get_doctor_by_patient_id/" + pat_id;
     let ret;
     let token = retrieveJWT();
     try {
@@ -132,7 +129,7 @@ export async function GetDoctorByPatientId(
 export async function GetPatientByDoctorId(
     doc_id
 ) {
-    const url = "http://localhost:8081/report/get_patient_by_doctor_id/" doc_id;
+    const url = "http://localhost:8081/report/get_patient_by_doctor_id/" + doc_id;
     let ret;
     let token = retrieveJWT();
     try {

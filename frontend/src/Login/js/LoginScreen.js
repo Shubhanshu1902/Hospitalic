@@ -10,7 +10,7 @@ export const LoginScreen = () => {
     
     const changeSelection = (i) => {
         setCurrSelection(i);
-        console.log(i);
+        // console.log(i);
     }
 
     return (

@@ -46,54 +46,56 @@ public class HospitalManagementApplication implements CommandLineRunner {
 		DateFormat formatter = new SimpleDateFormat(DEFAULT_PATTERN);
 		Date myDate = formatter.parse(yourDateString);
 
+		Integer temp = 1;
+		Long i = (long) temp;
 		// PATIENT ADD
-		UserEntity u1 = new UserEntity(1, "patient1@mail.com", passwordEncoder.encode("password"), "Patient1", "Chan", "M", myDate, "pa1", r1);
+		UserEntity u1 = new UserEntity(++i, "patient1@mail.com", passwordEncoder.encode("password"), "Patient1", "Chan", "M", myDate, "pa1", r1);
 		user_repo.save(u1);
-		u1 = new UserEntity(2, "patient2@mail.com", passwordEncoder.encode("password"), "Patient2", "Chan", "M", myDate, "pa1", r1);
+		u1 = new UserEntity(++i, "patient2@mail.com", passwordEncoder.encode("password"), "Patient2", "Chan", "M", myDate, "pa1", r1);
 		user_repo.save(u1);
-		u1 = new UserEntity(3, "patient3@mail.com", passwordEncoder.encode("password"), "Patient3", "Chan", "M", myDate, "pa1", r1);
+		u1 = new UserEntity(++i, "patient3@mail.com", passwordEncoder.encode("password"), "Patient3", "Chan", "M", myDate, "pa1", r1);
 		user_repo.save(u1);
-		u1 = new UserEntity(4, "patient4@mail.com", passwordEncoder.encode("password"), "Patient4", "Chan", "M", myDate, "pa1", r1);
+		u1 = new UserEntity(++i, "patient4@mail.com", passwordEncoder.encode("password"), "Patient4", "Chan", "M", myDate, "pa1", r1);
 		user_repo.save(u1);
-		u1 = new UserEntity(5, "patient5@mail.com", passwordEncoder.encode("password"), "Patient5", "Chan", "M", myDate, "pa1", r1);
+		u1 = new UserEntity(++i, "patient5@mail.com", passwordEncoder.encode("password"), "Patient5", "Chan", "M", myDate, "pa1", r1);
 		user_repo.save(u1);
 		
 
 		// DOCTOR ADD
-		UserEntity u2 = new UserEntity(6, "doctor1@mail.com", passwordEncoder.encode("password"), "Doctor1", "Chan", "M", myDate, "da1", r2);
+		UserEntity u2 = new UserEntity(++i, "doctor1@mail.com", passwordEncoder.encode("password"), "Doctor1", "Chan", "M", myDate, "da1", r2);
 		user_repo.save(u2);
-		u2 = new UserEntity(7, "doctor2@mail.com", passwordEncoder.encode("password"), "Doctor2", "Chan", "M", myDate, "da1", r2);
+		u2 = new UserEntity(++i, "doctor2@mail.com", passwordEncoder.encode("password"), "Doctor2", "Chan", "M", myDate, "da1", r2);
 		user_repo.save(u2);
-		u2 = new UserEntity(8, "doctor3@mail.com", passwordEncoder.encode("password"), "Doctor3", "Chan", "M", myDate, "da1", r2);
+		u2 = new UserEntity(++i, "doctor3@mail.com", passwordEncoder.encode("password"), "Doctor3", "Chan", "M", myDate, "da1", r2);
 		user_repo.save(u2);
-		u2 = new UserEntity(9, "doctor4@mail.com", passwordEncoder.encode("password"), "Doctor4", "Chan", "M", myDate, "da1", r2);
+		u2 = new UserEntity(++i, "doctor4@mail.com", passwordEncoder.encode("password"), "Doctor4", "Chan", "M", myDate, "da1", r2);
 		user_repo.save(u2);
-		u2 = new UserEntity(10, "doctor5@mail.com", passwordEncoder.encode("password"), "Doctor5", "Chan", "M", myDate, "da1", r2);
+		u2 = new UserEntity(++i, "doctor5@mail.com", passwordEncoder.encode("password"), "Doctor5", "Chan", "M", myDate, "da1", r2);
 		user_repo.save(u2);
 
 		// RADIOLOGIST Add
-		UserEntity u3 = new UserEntity(11, "radiologist1@mail.com", passwordEncoder.encode("password"), "Radiologist1", "Chan", "M", myDate, "ra1", r3);
+		UserEntity u3 = new UserEntity(++i, "radiologist1@mail.com", passwordEncoder.encode("password"), "Radiologist1", "Chan", "M", myDate, "ra1", r3);
 		user_repo.save(u3);
-		u3 = new UserEntity(12, "radiologist2@mail.com", passwordEncoder.encode("password"), "Radiologist2", "Chan", "M", myDate, "ra1", r3);
+		u3 = new UserEntity(++i, "radiologist2@mail.com", passwordEncoder.encode("password"), "Radiologist2", "Chan", "M", myDate, "ra1", r3);
 		user_repo.save(u3);
-		u3 = new UserEntity(13, "radiologist3@mail.com", passwordEncoder.encode("password"), "Radiologist3", "Chan", "M", myDate, "ra1", r3);
+		u3 = new UserEntity(++i, "radiologist3@mail.com", passwordEncoder.encode("password"), "Radiologist3", "Chan", "M", myDate, "ra1", r3);
 		user_repo.save(u3);
-		u3 = new UserEntity(14, "radiologist4@mail.com", passwordEncoder.encode("password"), "Radiologist4", "Chan", "M", myDate, "ra1", r3);
+		u3 = new UserEntity(++i, "radiologist4@mail.com", passwordEncoder.encode("password"), "Radiologist4", "Chan", "M", myDate, "ra1", r3);
 		user_repo.save(u3);
-		u3 = new UserEntity(15, "radiologist5@mail.com", passwordEncoder.encode("password"), "Radiologist5", "Chan", "M", myDate, "ra1", r3);
+		u3 = new UserEntity(++i, "radiologist5@mail.com", passwordEncoder.encode("password"), "Radiologist5", "Chan", "M", myDate, "ra1", r3);
 		user_repo.save(u3);
 
 
 		// LAB Add
-		UserEntity u4 = new UserEntity(16, "lab1@mail.com", passwordEncoder.encode("password"), "Lab1", "Chan", "M", myDate, "ra1", r4);
+		UserEntity u4 = new UserEntity(++i, "lab1@mail.com", passwordEncoder.encode("password"), "Lab1", "Chan", "M", myDate, "ra1", r4);
 		user_repo.save(u4);
-		u4 = new UserEntity(17, "lab2@mail.com", passwordEncoder.encode("password"), "Lab2", "Chan", "M", myDate, "ra1", r4);
+		u4 = new UserEntity(++i, "lab2@mail.com", passwordEncoder.encode("password"), "Lab2", "Chan", "M", myDate, "ra1", r4);
 		user_repo.save(u4);
-		u4 = new UserEntity(18, "lab3@mail.com", passwordEncoder.encode("password"), "Lab3", "Chan", "M", myDate, "ra1", r4);
+		u4 = new UserEntity(++i, "lab3@mail.com", passwordEncoder.encode("password"), "Lab3", "Chan", "M", myDate, "ra1", r4);
 		user_repo.save(u4);
-		u4 = new UserEntity(19, "lab4@mail.com", passwordEncoder.encode("password"), "Lab4", "Chan", "M", myDate, "ra1", r4);
+		u4 = new UserEntity(++i, "lab4@mail.com", passwordEncoder.encode("password"), "Lab4", "Chan", "M", myDate, "ra1", r4);
 		user_repo.save(u4);
-		u4 = new UserEntity(20, "lab5@mail.com", passwordEncoder.encode("password"), "Lab5", "Chan", "M", myDate, "ra1", r4);
+		u4 = new UserEntity(++i, "lab5@mail.com", passwordEncoder.encode("password"), "Lab5", "Chan", "M", myDate, "ra1", r4);
 		user_repo.save(u4);
 	}
 }

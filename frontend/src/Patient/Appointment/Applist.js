@@ -7,24 +7,26 @@ const Applist = () => {
 
     const [list, setList] = useState([]);
     var patid = retrieveUserId();
-    console.log(patid);
+    // console.log(patid);
 
     useEffect (() => {
         const data = Promise.resolve(GetAppByPatId(patid));
-        console.log("this is", data);
+        // console.log("this is", data);
         data.then(
             value => {
                 setList(value);
             }
         )
-    }, [list]);
+    }, [] 
+    // [list]
+    );
 
-    console.log(list);
+    // console.log(list);
 
     return (
         <div className= 'applist'>
             {list && list.map((elem) => {
-                console.log("this is elem", elem);
+                // console.log("this is elem", elem);
                 return(
                     !elem.status ? <AppComp
                         time = {elem.date}
