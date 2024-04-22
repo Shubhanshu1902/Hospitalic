@@ -13,6 +13,7 @@ import { RadReportScreen } from "./Radiologist/Report/ReportScreen";
 import Appscreen from "./Patient/Appointment/Appscreen";
 import { LabDashboard } from "./Lab/Dashboard/LabDashboard";
 import { Tasks } from "./Lab/Tasks/Tasks";
+import { ReportsLab } from "./Lab/Reports/ReportsLab";
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
                 {/* LAB */}
                 <Route path='/lab/dashboard' element={<LabDashboard />} />
                 <Route path='/lab/tasks' element={<Tasks />} />
+                <Route path='/lab/reports' element={<ReportsLab />} />
 
                 {/* RADIOLOGIST */}
                 <Route path='/radiologist/dashboard' element={<RadioDashboard />} />

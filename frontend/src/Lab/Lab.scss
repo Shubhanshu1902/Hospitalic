@@ -4,6 +4,23 @@ body {
     background: $color6;
 }
 
+.icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+
+    .pat-icon {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        .fonticon {
+            height: 20px;
+            width: 20px;
+        }
+    }
+}
+
 .dashboard {
     display: flex;
     // flex-direction: column;
