@@ -8,7 +8,7 @@ import Appscreen from "./appointments/js/Appscreen";
 import { ReportAdd } from "./Lab/js/ReportAdd";
 import { LabDashboard } from "./Lab/js/LabDashboard";
 import { Tasks } from "./Lab/js/Tasks";
-import { EmailVerification } from "./Login/js/otppage";
+
 function App() {
     
 
@@ -35,7 +35,7 @@ function App() {
                 {/* RADIOLOGIST */}
                 <Route path='/radiologist/dashboard' element={<Dash />} />
 
-                <Route path='/otp' element={<EmailVerification/>} />
+
 
             </Routes>
         </BrowserRouter>

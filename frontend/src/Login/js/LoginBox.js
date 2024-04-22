@@ -5,7 +5,6 @@ import { faEnvelope, faLock } from "@fortawesome/fontawesome-free-solid";
 import { useNavigate,Link } from "react-router-dom";
 import { LoginCall } from "../../connections/Login";
 import { SaveChatCall, FetchChatEntities } from "../../connections/Chat";
-import { sendEmail } from "./sendemail.js";
 
 export const LoginBox = (props) => {
     const [email, setEmail] = useState("")
@@ -26,7 +25,6 @@ export const LoginBox = (props) => {
     const onSignIn = () => {
         console.log(props.type)
         LoginCall(email, password);
-        sendEmail();
         if(props.type === "Patient") navigate("/patient/dashboard");
         else if(props.type === "Doctor") navigate("/doctor/dashboard");
         else if(props.type === "Lab") navigate("/lab/dashboard");

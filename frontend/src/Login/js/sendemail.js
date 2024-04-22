@@ -9,11 +9,11 @@ function generateSixDigitNumber() {
   return randomNumber.toString();
 }
 
-export const sendEmail = (props) => {
+export const SendEmail = (to_email,to_name) => {
   const otp = generateSixDigitNumber();
   const templateparams = {
-    to_email: "arinawasthi05@gmail.com",
-    to_name: "Vatsal",
+    to_email: to_email,
+    to_name: to_name,
     otp: otp
   }
   const serviceId = "service_ctxgr5n";

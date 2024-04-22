@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { sendEmail } from './sendemail';
+
 import { RegisterCall } from '../../connections/Register';
 import { Navigate, useNavigate } from "react-router-dom";
 
 const OtpPop = (props) => {
+  const ogotp = props.otp;
   let navigate = useNavigate();
   const [secondsRemaining, setSecondsRemaining] = useState(32);
     const [code, setCode] = useState('');
@@ -20,30 +21,15 @@ const OtpPop = (props) => {
     const handleCodeChange = (event) => {
         setCode(event.target.value);
     };
-    const register = () => {
-       {/* RegisterCall(
-       email,
-       Password,
-       "",
-       "",
-       "",
-       "",
-       "",
-       1
-       ) */}
-
-      let path = "/";
-      navigate(path);
-    };
 
     const checkVerification = () => {
-       {/* if(code == ogotp){
-         console.log("verified!");
-         register();
-       }
-       else{
-         console.log("not verified");
-       } */}
+      if(code == ogotp){
+        console.log("verified!");
+        RegisterCall(props.email,props.password,"","","","","",1);
+      }
+      else{
+        console.log("not verified");
+      }
     }
   return(props.trigger) ? (
     <div className='popup'>
