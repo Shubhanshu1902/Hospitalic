@@ -12,12 +12,7 @@ body {
     .pat-icon {
         display: flex;
         flex-direction: column;
-        gap: 8px;
-
-        .fonticon {
-            height: 20px;
-            width: 20px;
-        }
+        justify-content: space-evenly;
     }
 }
 
