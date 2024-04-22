@@ -2,6 +2,7 @@ import React from "react";
 import { Dashboard } from "akar-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+    faClock,
     faCog,
     faComment,
     faPhone,
@@ -52,6 +53,15 @@ export const Navbar = () => {
                     >
                         <FontAwesomeIcon icon={faTasks} />
                         Appointment
+                    </div>
+                    <div
+                        className="text"
+                        onClick={() => {
+                            navigate("/patient/history");
+                        }}
+                    >
+                        <FontAwesomeIcon icon={faClock} />
+                        History
                     </div>
 
                     <div
