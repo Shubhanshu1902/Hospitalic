@@ -7,7 +7,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { RegisterCall } from "../../connections/Register";
 import { Navigate, useNavigate } from "react-router-dom";
-
+import OtpPop from './OtpPop';
 
 export const Register = () => {
     const login_types = ["Patient", "Doctor", "Lab", "Radiologist"];
@@ -18,8 +18,8 @@ export const Register = () => {
     const [email, setEmail] = useState("");
     const [Address, setAddress] = useState("");
     const [Password, setPassword] = useState("");
-    let navigate = useNavigate()
-    
+    let navigate = useNavigate();
+    const [x, setButtonPopup] = useState(false);
 
     return (
         <div className="Login">
@@ -98,9 +98,11 @@ export const Register = () => {
                     <input placeholder="Password" />
                 </div>
 
-                <div className="register" onClick={() => navigate("/otp")}>
+                <button className="register" onClick={() => setButtonPopup(true)}>
                     Register
-                </div>
+                </button>
+                <OtpPop trigger={x} setTrigger={setButtonPopup}>
+                            </OtpPop>
             </div>
         </div>
     );
