@@ -12,7 +12,7 @@ import java.util.List;
 public interface AppointmentRepository extends JpaRepository<Appointment,Long>{
     @Query(
             nativeQuery = true,
-            value  = "select * from appointment where doctor_id = :doc_id"
+            value  = "select * from appointment where doctor_id = :doc_id and doctor_done=false"
     )
     List<Appointment> findAppointmentByDoctorId(@Param("doc_id") Long doc_id);
     @Query(
@@ -22,7 +22,7 @@ public interface AppointmentRepository extends JpaRepository<Appointment,Long>{
     List<Appointment> findAppointmentByPatientId(@Param("pat_id") Long pat_id);
     @Query(
             nativeQuery = true,
-            value  = "select * from appointment where lab_id = :lab_id"
+            value  = "select * from appointment where lab_id = :lab_id and lab_done=false"
     )
     List<Appointment> findAppointmentByLabId(@Param("lab_id") Long lab_id);
 
