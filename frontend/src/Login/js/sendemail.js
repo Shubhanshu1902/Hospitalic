@@ -6,27 +6,28 @@ function generateSixDigitNumber() {
   const max = 999999; // Maximum value (6 digits)
 
   const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-  return randomNumber;
+  return randomNumber.toString();
 }
 
-  export const sendEmail = (props) => {
-    const templateparams = {
-    to_email : "arinawasthi05@gmail.com",
-    to_name : "Vatsal",
-    otp : generateSixDigitNumber()
-    }
-    const serviceId = "service_axhgtbu";
-    const templateId = "template_8lzo7zr";
-    const publicKey = "PQZ1zIcY9TzRD0qEZ";
-    emailjs.send(serviceId, templateId, templateparams, publicKey)
+export const sendEmail = (props) => {
+  const otp = generateSixDigitNumber();
+  const templateparams = {
+    to_email: "arinawasthi05@gmail.com",
+    to_name: "Vatsal",
+    otp: otp
+  }
+  const serviceId = "service_ctxgr5n";
+  const templateId = "template_axp5e19";
+  const publicKey = "gi9hX02YfVgh9XP8n";
+  emailjs.send(serviceId, templateId, templateparams, publicKey)
     .then((response) => {
-    console.log("Email sent successfully !!", response);
-//    setName('');
-//    setEmail('');
-//    setMessage('');
+      console.log("Email sent successfully !!", response);
+      //    setName('');
+      //    setEmail('');
+      //    setMessage('');
     })
-    .catch((error) =>{
-        console.error('Error sending email:', error);
+    .catch((error) => {
+      console.error('Error sending email:', error);
     });
-    return templateparams.otp;
-  };
+  return otp;
+};

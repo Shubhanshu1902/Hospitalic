@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import "../css/EmailVerification.css";
+import { sendEmail } from './sendemail';
+import { RegisterCall } from '../../connections/Register';
+import { Navigate, useNavigate } from "react-router-dom";
+
+// const ogotp = sendEmail();
+const ogotp = 0;
+
 export const EmailVerification = () => {
+  let navigate = useNavigate()
+  
   const [secondsRemaining, setSecondsRemaining] = useState(32);
   const [code, setCode] = useState('');
   useEffect(() => {
@@ -16,7 +25,33 @@ export const EmailVerification = () => {
   };
   const handleCodeChange = (event) => {
       setCode(event.target.value);
-    };
+  };
+  const register = () => {
+    // RegisterCall(
+    // email,
+    // Password,
+    // "",
+    // "",
+    // "",
+    // "",
+    // "",
+    // 1
+    // )
+    
+    let path = "/";
+    navigate(path);
+  };
+
+  const checkVerification = () => {
+    // if(code == ogotp){
+    //   console.log("verified!");
+    //   register();
+    // }
+    // else{
+    //   console.log("not verified");
+    // }
+  }
+
   return (
     <div className="email-verification">
       <h2>Email Verification</h2>
@@ -27,7 +62,7 @@ export const EmailVerification = () => {
       <p>
         <span>0:{secondsRemaining.toString().padStart(2, '0')}</span> secs remaining
       </p>
-      <button >Verify account</button>
+      <button onClick={checkVerification}>Verify account</button>
       <button onClick={resendCode}>Didnt receive code, Resend</button>
     </div>
   );

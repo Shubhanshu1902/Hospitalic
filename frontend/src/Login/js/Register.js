@@ -6,7 +6,8 @@ import { LoginOptions } from "./LoginOptions";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { RegisterCall } from "../../connections/Register";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
+
 
 export const Register = () => {
     const login_types = ["Patient", "Doctor", "Lab", "Radiologist"];
@@ -18,22 +19,7 @@ export const Register = () => {
     const [Address, setAddress] = useState("");
     const [Password, setPassword] = useState("");
     let navigate = useNavigate()
-
-    const register = () => {
-        RegisterCall(
-        email,
-        Password,
-        fname,
-        lname,
-        gender,
-        startDate,
-        Address,
-        1
-        )
-        
-        let path = "/"
-        navigate(path)
-    };
+    
 
     return (
         <div className="Login">
@@ -112,7 +98,7 @@ export const Register = () => {
                     <input placeholder="Password" />
                 </div>
 
-                <div className="register" onClick={register}>
+                <div className="register" onClick={() => navigate("/otp")}>
                     Register
                 </div>
             </div>
