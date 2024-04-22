@@ -59,6 +59,15 @@ public class AppointmentController {
     public void updateLabStatus(@PathVariable("id") Long id){
         appointmentService.updateLabStatus(id);
     }
+    @PostMapping("add_prescription/{id}")
+    public void addPrescription(@PathVariable("id") Long id,@RequestBody String pres){
+        appointmentService.addPrescription(id,pres);
+    }
+
+    @PostMapping("add_lab_prescription/{id}")
+    public void addLabPrescription(@PathVariable("id") Long id,@RequestBody String pres){
+        appointmentService.addLabPrescription(id,pres);
+    }
     @DeleteMapping("delete_by_id/{id}")
     public ResponseEntity<?> deleteById(@PathVariable("id") Long id) {
         try {

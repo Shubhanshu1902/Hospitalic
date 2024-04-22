@@ -301,3 +301,61 @@ export async function updateLabStatus(
     }
     catch(error){console.error(error);}
 }
+export async function AddPrescription(
+    id,
+    pres
+){
+    const url = "http://localhost:8081/appointment/add_prescription/" + id;
+    let ret;
+    let token = retrieveJWT();
+    try {
+        await fetch(url,
+            {
+                method: "GET",
+                body:pres,
+                headers: {
+                    "Content-type": "application.json",
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+            .then(response => {
+                return (response.json());
+            })
+            .then(data => {
+                ret = data;
+            })
+        return ret;
+    }
+    catch(error){
+        console.error(error);
+    }
+}
+export async function AddLabPrescription(
+    id,
+    pres
+){
+    const url = "http://localhost:8081/appointment/add_lab_prescription/" + id;
+    let ret;
+    let token = retrieveJWT();
+    try {
+        await fetch(url,
+            {
+                method: "GET",
+                body:pres,
+                headers: {
+                    "Content-type": "application.json",
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+            .then(response => {
+                return (response.json());
+            })
+            .then(data => {
+                ret = data;
+            })
+        return ret;
+    }
+    catch(error){
+        console.error(error);
+    }
+}

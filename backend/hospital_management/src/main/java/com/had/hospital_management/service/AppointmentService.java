@@ -56,7 +56,14 @@ public class AppointmentService {
     public void updateLabStatus(Long id){
         appointmentRepository.updateLabStatus(id);
     }
-
+    @Transactional
+    public void addPrescription(Long id,String pres){
+        appointmentRepository.addPrescription(id,pres);
+    }
+    @Transactional
+    public void addLabPrescription(Long id,String pres){
+        appointmentRepository.addLabPrescription(id,pres);
+    }
     // None
     @Transactional
     public void deleteById(Long id) {
