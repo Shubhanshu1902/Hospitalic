@@ -40,7 +40,8 @@ public class RequestsService {
     public void approveRequestById(Long id){
         requestsRepository.approveRequestById(id);
     }
-
+    @Transactional
+    public void addComment(Long id,String new_com){requestsRepository.addComment(id,new_com);}
     @Transactional
     public void deleteById(Long id) {
         Requests Requests = requestsRepository.findById(id)
