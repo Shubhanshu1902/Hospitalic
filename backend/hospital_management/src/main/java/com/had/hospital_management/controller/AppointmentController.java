@@ -44,16 +44,20 @@ public class AppointmentController {
         return appointmentService.getAppointmentByPatientId(id);
     }
     @GetMapping("get_appointment_by_lab_id/{id}")
-    public List<Appointment> getAppointmentByLavId(@PathVariable("id")Long id){
+    public List<Appointment> getAppointmentByLabId(@PathVariable("id")Long id){
         return appointmentService.getAppointmentByLabId(id);
     }
     @PostMapping("assign_lab/{lab_id}/{id}")
     public void assignLab(@PathVariable("lab_id") Long lab_id,@PathVariable("id") Long id){
         appointmentService.assignLab(lab_id , id);
     }
-    @PostMapping("update_status/{id}")
-    public void updateStatus(@PathVariable("id") Long id){
-        appointmentService.updateStatus(id);
+    @PostMapping("update_doctor_status/{id}")
+    public void updateDoctorStatus(@PathVariable("id") Long id){
+        appointmentService.updateDoctorStatus(id);
+    }
+    @PostMapping("update_lab_status/{id}")
+    public void updateLabStatus(@PathVariable("id") Long id){
+        appointmentService.updateLabStatus(id);
     }
     @DeleteMapping("delete_by_id/{id}")
     public ResponseEntity<?> deleteById(@PathVariable("id") Long id) {

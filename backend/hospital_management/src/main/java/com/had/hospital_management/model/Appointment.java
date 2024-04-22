@@ -19,8 +19,8 @@ public class Appointment {
     @GeneratedValue
     private Long id;
     private Date date;
-    private Boolean status= false;
-
+    private Boolean doctor_done= false;
+    private Boolean lab_done= false;
     @ManyToOne()
     @JoinColumn(
             name = "patient_id",

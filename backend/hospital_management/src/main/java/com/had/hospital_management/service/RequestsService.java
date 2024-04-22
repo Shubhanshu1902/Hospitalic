@@ -49,7 +49,8 @@ public class RequestsService {
 
     // rad
     @Transactional
-    public void addComment(Long id,String new_com){requestsRepository.addComment(id,new_com);}
+    public void addComment(Long id,String new_com){
+        requestsRepository.addComment(id,new_com);}
     
     // none
     @Transactional

@@ -35,7 +35,13 @@ public interface AppointmentRepository extends JpaRepository<Appointment,Long>{
     @Modifying
     @Query(
             nativeQuery = true,
-            value = "update appointment set status = true where id = :id"
+            value = "update appointment set doctor_done = true where id = :id"
     )
-    void updateStatus(@Param("id") Long id);
+    void updateDoctorStatus(@Param("id") Long id);
+    @Modifying
+    @Query(
+            nativeQuery = true,
+            value = "update appointment set lab_done = true where id = :id"
+    )
+    void updateLabStatus(@Param("id") Long id);
 }

@@ -48,7 +48,8 @@ public class RequestsController {
         requestsService.approveRequestById(id);
     }
     @PostMapping("add_comment/{id}")
-    public void addComment(@PathVariable("id")Long id,@RequestBody String new_com){requestsService.addComment(id,new_com);}
+    public void addComment(@PathVariable("id")Long id,@RequestBody String new_com){
+        requestsService.addComment(id,new_com);}
 
     @DeleteMapping("/delete_by_id/{id}")
     public ResponseEntity<?> deleteById(@PathVariable("id") Long id) {
