@@ -15,22 +15,19 @@ const OtpPop = (props) => {
       return () => clearInterval(timerId);
     }, [secondsRemaining]);
 
-    const resendCode = () => {
-      console.log('Resend code');
-    };
     const handleCodeChange = (event) => {
         setCode(event.target.value);
     };
 
     const checkVerification = () => {
       if(code == ogotp){
-        console.log("verified!");
-//        console.log("From Frontend - ", props.fname, props.lname);
         RegisterCall(props.email,props.password,props.fname,props.lname,props.gender,props.startDate,props.address, 1);
+        alert("OTP verified successfully !! Please Login ....");
         navigate("/");
       }
       else{
-        console.log("not verified");
+        alert("Invalid OTP !! Please register again.... ");
+        navigate("/");
       }
     }
   return(props.trigger) ? (
