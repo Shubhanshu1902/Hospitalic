@@ -55,5 +55,5 @@ public interface AppointmentRepository extends JpaRepository<Appointment,Long>{
             nativeQuery = true,
             value = "update appointment set lab_prescription = :lab_pres where id = :id"
     )
-    void addLabPrescription(@Param("id") Long id,@Param("pres") String lab_pres);
+    void addLabPrescription(@Param("id") Long id,@Param("lab_pres") String lab_pres);
 }
