@@ -25,7 +25,9 @@ const OtpPop = (props) => {
     const checkVerification = () => {
       if(code == ogotp){
         console.log("verified!");
-        RegisterCall(props.email,props.password,"","","","","",1);
+//        console.log("From Frontend - ", props.fname, props.lname);
+        RegisterCall(props.email,props.password,props.fname,props.lname,props.gender,props.startDate,props.address, 1);
+        navigate("/");
       }
       else{
         console.log("not verified");

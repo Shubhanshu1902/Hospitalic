@@ -45,7 +45,7 @@ const RequestModal = (props) => {
                             <Select 
                                 options={list} 
                                 value={selectedOption}
-                                getOptionLabel={(opt) => opt.first_name}
+                                getOptionLabel={(opt) => opt.fname}
                                 getOptionValue={(opt) => opt.id}
                             onChange={handleChange}/>
                         </div>

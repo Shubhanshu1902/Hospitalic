@@ -30,7 +30,7 @@ const Applist = () => {
                 return(
                     !elem.status ? <AppComp
                         time = {elem.date}
-                        name = {elem.user2.first_name}
+                        name = {elem.user2.fname}
                     /> : ""
                 );
             })}
