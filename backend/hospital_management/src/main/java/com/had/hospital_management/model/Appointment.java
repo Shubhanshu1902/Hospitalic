@@ -19,7 +19,10 @@ public class Appointment {
     @GeneratedValue
     private Long id;
     private Date date;
-
+    private Boolean doctor_done= false;
+    private Boolean lab_done= false;
+    private String prescription = "";
+    private String lab_prescription = "";
     @ManyToOne()
     @JoinColumn(
             name = "patient_id",

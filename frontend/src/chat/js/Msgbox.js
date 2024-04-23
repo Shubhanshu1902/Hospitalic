@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import { faPaperPlane } from "@fortawesome/fontawesome-free-solid";
 import Messages from "./Messages";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FetchChatEntities } from "../../connections/Chat";
 import { SaveChatCall } from "../../connections/Chat";
-const Msgbox = (props) => {
+import { retrieveUserId } from "../../connections/CookieJWT";
+const Msgbox = props => {
     const reportId = props.reportProps.reportId;
 
     const [chatList, setChatList] = useState([]);
@@ -17,7 +18,7 @@ const Msgbox = (props) => {
                 const data = await FetchChatEntities(reportId);
                 setChatList(data); // Set the fetched chatList to state
             } catch (error) {
-                console.error('Error fetching chat entities:', error);
+                console.error("Error fetching chat entities:", error);
             }
         };
         const intervalId = setInterval(fetchData, 5000); // Fetch messages every 5 seconds
@@ -25,25 +26,28 @@ const Msgbox = (props) => {
         return () => clearInterval(intervalId); // Cleanup function to clear interval on component unmount
     }, [reportId]); // Dependency array ensures effect runs when reportId changes
 
-    console.log(chatList);
+    // console.log(chatList);
 
-    const [inputValue, setInputValue] = useState('');
+    const [inputValue, setInputValue] = useState("");
 
-      const handleInputChange = (event) => {
+    const handleInputChange = event => {
         setInputValue(event.target.value);
-      };
+    };
 
-      const handleKeyDown = (event) => {
-        if (event.key === 'Enter' && inputValue.trim()) {
-          SaveChatCall(reportId, "1", inputValue); //Change the senderid with cookie's sender id
-          setInputValue('');
+    const handleKeyDown = event => {
+        if (event.key === "Enter" && inputValue.trim()) {
+            SaveChatCall(reportId, retrieveUserId(), inputValue); //Change the senderid with cookie's sender id
+            setInputValue("");
         }
-      };
+    };
 
-      const handleArrow = (event) => {
-        SaveChatCall(reportId, "1", inputValue); //Change the senderid with cookie's sender id
-        setInputValue('');
-      }
+    const handleArrow = event => {
+        // console.log(retrieveUserId);
+        SaveChatCall(reportId, retrieveUserId() , inputValue); //Change the senderid with cookie's sender id
+        setInputValue("");
+    };
+
+    let y = 1;
     return (
         <div className="msgbox">
             <div className="title">
@@ -51,24 +55,29 @@ const Msgbox = (props) => {
             </div>
 
             <div className="chat-messages">
-                {chatList.map((chat, index) => (
-                    <Messages chat = {chat}/>
-                ))}
+                {chatList.map((chat, index) => {
+                    // console.log(chat);
+                    return <Messages key = {y++} sender_id = {chat.sender_id} chat={chat} />;
+                })}
             </div>
 
             <div className="input">
-                <input type="text"
-                placeholder= 'Input'
-                value={inputValue}
-                onChange={handleInputChange}
-                onKeyDown={handleKeyDown}
+                <input
+                    type="text"
+                    placeholder="Input"
+                    value={inputValue}
+                    onChange={handleInputChange}
+                    onKeyDown={handleKeyDown}
                 />
                 <div className="sendArrow">
-                    <FontAwesomeIcon icon={faPaperPlane} onClick={handleArrow}/>
+                    <FontAwesomeIcon
+                        icon={faPaperPlane}
+                        onClick={handleArrow}
+                    />
                 </div>
             </div>
         </div>
     );
-}
+};
 
 export default Msgbox;

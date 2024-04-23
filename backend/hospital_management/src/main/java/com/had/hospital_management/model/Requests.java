@@ -16,6 +16,7 @@ public class Requests {
     @GeneratedValue
     private Long id;
     private Long status;
+    private String comments;
 
     @ManyToOne()
     @JoinColumn(

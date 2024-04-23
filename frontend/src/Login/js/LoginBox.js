@@ -11,6 +11,7 @@ export const LoginBox = (props) => {
     const [eicon, setEicon] = useState(true)
     const [password, setPassword] = useState("")
     const [picon, setPicon] = useState(true)
+    const [ret,setRet] = useState(false)
     let navigate = useNavigate()
 
     const onChangeEBox = (event) => {
@@ -24,12 +25,21 @@ export const LoginBox = (props) => {
     // TODO
     const onSignIn = () => {
         console.log(props.type)
-        LoginCall(email, password);
-        if(props.type === "Patient") navigate("/patient/dashboard");
-        else if(props.type === "Doctor") navigate("/doctor/dashboard");
-        else if(props.type === "Lab") navigate("/lab/dashboard");
-        else if(props.type === "Radiologist") navigate("/radiologist/dashboard");
+        const data = Promise.resolve(LoginCall(email, password));
 
+        // data.then(
+        //     value => {
+        //         setRet(value)
+        //     }
+        // )
+        // console.log(data)
+        // console.log("Return from function", ret)
+        // if(ret === true) {
+            if(props.type === "Patient") navigate("/patient/dashboard");
+            else if(props.type === "Doctor") navigate("/doctor/dashboard");
+            else if(props.type === "Lab") navigate("/lab/dashboard");
+            else if(props.type === "Radiologist") navigate("/radiologist/dashboard");
+        // }
     }
 
     const onRegister = () => {

@@ -2,8 +2,8 @@ import { login } from "./CookieJWT";
 import {GetUserId} from "./User";
 export async function LoginCall(email, pass) {
     const url = "http://localhost:8081/api/auth/login";
-    console.log("hi here");
-    console.log(email,pass);
+    // console.log("hi here");
+    // console.log(email,pass);
     var ret,jwt;
     await fetch(url, {
         method: "POST",
@@ -23,24 +23,22 @@ export async function LoginCall(email, pass) {
         })
         .then((data) => {
             // console.log(data);
-            console.log(Object.values(data));
+            // console.log(Object.values(data));
             jwt = data["accessToken"];
             let id=0;
             const dt = Promise.resolve(GetUserId(email));
             dt.then(
                 value => {
                     id = value['id'];
-                    // console.log("haaa",);
-                    // console.log(value['id']);
                     login(jwt,value['id']);
                 }
             )
         })
         .catch((err) => {
             ret = false;
-            console.log(err);
-            console.log(err.message);
+            // console.log(err);
+            // console.log(err.message);
         });
-    console.log("RET: ", ret, "JWT: ", jwt);
+    // console.log("RET: ", ret, "JWT: ", jwt);
     return [ret, jwt];
 }
