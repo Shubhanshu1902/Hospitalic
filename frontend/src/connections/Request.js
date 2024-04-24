@@ -10,10 +10,10 @@ export async function AddComment(
     try {
         await fetch(url,
             {
-                method: "GET",
+                method: "POST",
                 body:new_comment,
                 headers: {
-                    "Content-type": "application.json",
+                    "Content-type": "application/json",
                     "Authorization": `Bearer ${token}`
                 }
             })

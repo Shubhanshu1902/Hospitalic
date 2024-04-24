@@ -104,7 +104,7 @@ export async function GetAllRadiologist(){
             {
                 method: "GET",
                 headers: {
-                    "Content-type": "application.json",
+                    "Content-type": "application/json",
                     "Authorization": `Bearer ${token}`
                 }
             })
@@ -129,7 +129,7 @@ export async function GetAllLab(){
             {
                 method: "GET",
                 headers: {
-                    "Content-type": "application.json",
+                    "Content-type": "application/json",
                     "Authorization": `Bearer ${token}`
                 }
             })
@@ -156,7 +156,7 @@ export async function GetAppByPatId(
             {
                 method: "GET",
                 headers: {
-                    "Content-type": "application.json",
+                    "Content-type": "application/json",
                     "Authorization": `Bearer ${token}`
                 }
             })
@@ -183,7 +183,7 @@ export async function GetAppByLabId(
             {
                 method: "GET",
                 headers: {
-                    "Content-type": "application.json",
+                    "Content-type": "application/json",
                     "Authorization": `Bearer ${token}`
                 }
             })
@@ -210,7 +210,7 @@ export async function GetAppByDoctorId(
             {
                 method: "GET",
                 headers: {
-                    "Content-type": "application.json",
+                    "Content-type": "application/json",
                     "Authorization": `Bearer ${token}`
                 }
             })
@@ -237,7 +237,7 @@ export async function AssignLab(
             {
                 method: "POST",
                 headers: {
-                    "Content-type": "application.json",
+                    "Content-type": "application/json",
                     "Authorization": `Bearer ${token}`
                 }
             })
@@ -262,7 +262,7 @@ export async function updateDoctorStatus(
             {
                 method: "POST",
                 headers: {
-                    "Content-type": "application.json",
+                    "Content-type": "application/json",
                     "Authorization": `Bearer ${token}`
                 }
             })
@@ -287,7 +287,7 @@ export async function updateLabStatus(
             {
                 method: "POST",
                 headers: {
-                    "Content-type": "application.json",
+                    "Content-type": "application/json",
                     "Authorization": `Bearer ${token}`
                 }
             })
@@ -311,10 +311,10 @@ export async function AddPrescription(
     try {
         await fetch(url,
             {
-                method: "GET",
+                method: "POST",
                 body:pres,
                 headers: {
-                    "Content-type": "application.json",
+                    "Content-type": "application/json",
                     "Authorization": `Bearer ${token}`
                 }
             })
@@ -340,10 +340,10 @@ export async function AddLabPrescription(
     try {
         await fetch(url,
             {
-                method: "GET",
+                method: "POST",
                 body:pres,
                 headers: {
-                    "Content-type": "application.json",
+                    "Content-type": "application/json",
                     "Authorization": `Bearer ${token}`
                 }
             })
