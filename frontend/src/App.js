@@ -16,6 +16,7 @@ import { Tasks } from "./Lab/Tasks/Tasks";
 import { ReportsLab } from "./Lab/Reports/ReportsLab";
 import { AllReportLab } from "./Lab/Reports/AllReportLab";
 import PatHis from "./Patient/History/PatHis";
+import DocHis from "./Doctor/History/DocHis";
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
                 <Route path='/doctor/chats/:reportId' element={<Chatscreen />} />
                 <Route path='/doctor/appointments' element={<DocAppointments />} />
                 <Route path='/doctor/reports' element={<DocReportScreen />} />
+                <Route path='/doctor/history' element={< DocHis/>} />
 
 
                 {/* PATIENT */}

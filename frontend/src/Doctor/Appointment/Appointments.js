@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 import { Navbar } from "../Dashboard/Navbar";
 import { TopBar } from "../Dashboard/TopBar";
 import AppList from "./AppList";
+import "../Doctor.scss"
 
 export const DocAppointments = () => {
     return (

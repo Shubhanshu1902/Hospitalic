@@ -1,8 +1,7 @@
-import React from 'react'
-import { useState, useEffect } from 'react';
+import { GetAppByPatId, GetAppByDoctorId} from '../../connections/Appointment';
 import { retrieveUserId } from '../../connections/CookieJWT';
-import { GetAppByPatId } from '../../connections/Appointment';
 import HisComp from './HisComp';
+import { useState, useEffect } from 'react';
 
 const HisContent = () => {
 
@@ -10,7 +9,7 @@ const HisContent = () => {
     var patid = retrieveUserId();
 
     useEffect (() => {
-        const data = Promise.resolve(GetAppByPatId(patid));
+        const data = Promise.resolve(GetAppByDoctorId(patid));
         data.then(
             value => {
                 setList(value);
@@ -18,12 +17,13 @@ const HisContent = () => {
         )
     }, [] 
     );
+    console.log(patid, list);
 
     return (
         <div className='applist2'>
             {list && list.map((elem) => {
                 return(
-                    elem.doctor_done && elem.lab_done ? <HisComp
+                    elem.doctor_done ? <HisComp
                         time = {elem.date}
                         name = {elem.user2.first_name}
                     /> : ""

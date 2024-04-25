@@ -7,6 +7,7 @@ import {
     faPhone,
     faReceipt,
     faTasks,
+    faClock,
 } from "@fortawesome/fontawesome-free-solid";
 import { useNavigate } from "react-router-dom";
 import main_logo from "../../icons/main_icon.png";
@@ -52,6 +53,16 @@ export const Navbar = () => {
                     >
                         <FontAwesomeIcon icon={faTasks} />
                         Appointments
+                    </div>
+
+                    <div
+                        className="text"
+                        onClick={() => {
+                            navigate("/doctor/history");
+                        }}
+                    >
+                        <FontAwesomeIcon icon={faClock} />
+                        History
                     </div>
 
                     <div

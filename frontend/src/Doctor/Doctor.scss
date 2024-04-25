@@ -2,6 +2,8 @@
 
 body {
     background: $color6;
+    font-family: $font;
+    font-size: large;
 }
 
 .dashboard {
@@ -46,6 +48,7 @@ body {
                     font: $font;
                     font-size: 20px;
                     font-weight: 500;
+                    align-items: center;
                 }
             }
 
@@ -152,6 +155,7 @@ body {
                         transform: translate(-50%, 0);
                         padding: 32 px;
                         width: 50%;
+                        height: 40%;
                         background-color: $color4;
                         border-radius: 15px;
     
@@ -165,6 +169,48 @@ body {
                 }
             }
 
+        }
+
+        .applist2{
+            display: flex;
+            flex-direction: column;
+            height: 90%;
+            width: 97%;
+            background-color: $color4;
+            justify-content: start;
+            align-items: start;
+            padding: 10px;
+            margin-top: 10px;
+            margin-left: 10px;
+            border-radius: 20px;
+            overflow: scroll;
+
+            .t1{
+                height: 12%;
+                width: 100%;
+                display: flex;
+                background-color: $color2;
+                justify-content: start;
+                align-items: center;
+                margin: 5px;
+                border-radius: 20px;
+
+                .t2{
+                    padding-left: 30px;
+                    font-size: large;
+                }
+            }
+        }
+
+        .textbox{
+            font-size: 18px;
+            height: 150px;
+            width: 300px;
+            overflow:'auto'; 
+            outline: none;
+            resize: none;
+            border-color: $color10;
+            border-radius: 5px;
         }
     }
     

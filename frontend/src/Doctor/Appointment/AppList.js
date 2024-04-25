@@ -23,7 +23,7 @@ const AppList = () => {
         <div className= 'applist'>
             {list && list.map((elem) => {
                 return(
-                    !elem.status ? <AppComp
+                    !elem.doctor_done ? <AppComp
                         key = {i++}
                         pname = {elem.user1.first_name}
                         dname = {elem.user2.first_name}
