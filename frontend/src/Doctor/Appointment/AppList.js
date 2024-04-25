@@ -25,8 +25,8 @@ const AppList = () => {
                 return(
                     !elem.doctor_done ? <AppComp
                         key = {i++}
-                        pname = {elem.user1.first_name}
-                        dname = {elem.user2.first_name}
+                        pname = {elem.user1.fname}
+                        dname = {elem.user2.fname}
                         appid = {elem.id}
                     /> : ""
                 );

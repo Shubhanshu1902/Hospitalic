@@ -13,7 +13,7 @@ const Messages = (props) => {
     )
 
     if(name != {}) 
-        var p = name.first_name + " " + name.last_name;
+        var p = name.fname + " " + name.lname;
     // console.log(p);
 
     return (

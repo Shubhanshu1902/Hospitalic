@@ -25,7 +25,7 @@ const HisContent = () => {
                 return(
                     elem.doctor_done && elem.lab_done ? <HisComp
                         time = {elem.date}
-                        name = {elem.user2.first_name}
+                        name = {elem.user2.fname}
                     /> : ""
                 );
             })}

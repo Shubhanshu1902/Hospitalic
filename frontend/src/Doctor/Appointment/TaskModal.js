@@ -48,7 +48,7 @@ const TaskModal = (props) => {
                         <Select 
                             options={list}
                             value={lab}
-                            getOptionLabel={(opt) => opt.first_name}
+                            getOptionLabel={(opt) => opt.fname}
                             getOptionValue={(opt) => opt.id}
                             onChange={handleChange}/>
                     </div>

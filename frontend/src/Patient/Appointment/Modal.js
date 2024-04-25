@@ -44,7 +44,7 @@ const Modal = (props) => {
                             <Select 
                                 options={list}
                                 value={user2}
-                                getOptionLabel={(opt) => opt.first_name}
+                                getOptionLabel={(opt) => opt.fname}
                                 getOptionValue={(opt) => opt.id}
                                 onChange={handleChange2}/>
                         </div>

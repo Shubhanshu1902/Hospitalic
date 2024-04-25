@@ -28,8 +28,8 @@ const TaskList = () => {
                     !elem.status ? <TaskComp
                         key = {i++}
                         id = {elem.id}
-                        pname = {elem.user1.first_name}
-                        dname = {elem.user2.first_name}
+                        pname = {elem.user1.fname}
+                        dname = {elem.user2.fname}
                         pid = {elem.user1.id}
                         did = {elem.user2.id}
                     /> : ""
