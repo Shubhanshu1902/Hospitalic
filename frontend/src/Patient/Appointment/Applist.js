@@ -28,9 +28,10 @@ const Applist = () => {
             {list && list.map((elem) => {
                 // console.log("this is elem", elem);
                 return(
-                    !elem.status ? <AppComp
+                    !elem.doctor_done || !elem.lab_done ? <AppComp
                         time = {elem.date}
-                        name = {elem.user2.fname}
+                        name = {elem.user2.first_name}
+                        text = {elem.prescription}
                     /> : ""
                 );
             })}
