@@ -26,7 +26,7 @@ export async function LoginCall(email, pass) {
             // console.log(Object.values(data));
             jwt = data["accessToken"];
             let id=0;
-            const dt = Promise.resolve(GetUserId(email));
+            const dt = Promise.resolve(GetUserId(email,jwt));
             dt.then(
                 value => {
                     id = value['id'];

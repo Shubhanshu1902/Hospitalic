@@ -1,11 +1,11 @@
 import {retrieveJWT} from "./CookieJWT";
 
 export async function GetUserId(
-    username
+    username,token
 ){
     const url = "http://localhost:8081/user/get_user_by_username/"+username
     let ret;
-    let token = retrieveJWT();
+
     try {
         await fetch(url,
             {
