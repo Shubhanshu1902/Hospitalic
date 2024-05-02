@@ -39,15 +39,15 @@ public class ReportController {
         return reportService.getReportByLabId(id);
     }
     @GetMapping("/get_patient_by_doctor_id/{id}")
-    public List<UserEntity> getPatientByDoctorId(@PathVariable("id") Long id){
+    public List<Long> getPatientByDoctorId(@PathVariable("id") Long id){
         return reportService.getPatientByDoctorId(id);
     }
     @GetMapping("/get_doctor_by_patient_id/{id}")
-    public List<UserEntity> getDoctorByPatientId(@PathVariable("id") Long id){
+    public List<Long> getDoctorByPatientId(@PathVariable("id") Long id){
         return reportService.getDoctorByPatientId(id);
     }
     @GetMapping("/get_patient_by_lab_id/{id}")
-    public List<UserEntity> getPatientByLabId(@PathVariable("id") Long id){
+    public List<Long> getPatientByLabId(@PathVariable("id") Long id){
         return reportService.getPatientByLabId(id);
     }
     @GetMapping("/get_report_by_doctor_and_patient_id/{doc_id}/{pat_id}")
@@ -56,7 +56,7 @@ public class ReportController {
     }
     @GetMapping("/get_report_by_lab_and_patient_id/{lab_id}/{pat_id}")
     public List<Report> getReportByLabAndPatientId(@PathVariable("lab_id") Long lab_id,@PathVariable("pat_id") Long pat_id){
-        return reportService.getReportByDoctorAndPatientId(lab_id,pat_id);
+        return reportService.getReportByLabAndPatientId(lab_id,pat_id);
     }
     @GetMapping("/get_by_id/{id}")
     public ResponseEntity<Report> getById(@PathVariable("id") Long id)
