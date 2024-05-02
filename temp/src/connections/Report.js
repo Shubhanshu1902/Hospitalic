@@ -180,3 +180,60 @@ export async function GetReportById(
         console.error(error);
     }
 }
+
+export async function GetReportByLabNPatId(
+    lab_id,
+    pat_id
+) {
+    const url = "http://localhost:8081/report/get_report_by_lab_and_patient_id/" + lab_id + "/" + pat_id;
+    let ret;
+    let token = retrieveJWT();
+    try {
+        await fetch(url,
+            {
+                method: "GET",
+                headers: {
+                    "Content-type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+            .then(response => {
+                return (response.json());
+            })
+            .then(data => {
+                ret = data;
+
+            })
+        return ret;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export async function GetPatientByLabId(
+    lab_id
+) {
+    const url = "http://localhost:8081/report/get_patient_by_lab_id/" + lab_id;
+    let ret;
+    let token = retrieveJWT();
+    try {
+        await fetch(url,
+            {
+                method: "GET",
+                headers: {
+                    "Content-type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+            .then(response => {
+                return (response.json());
+            })
+            .then(data => {
+                ret = data;
+
+            })
+        return ret;
+    } catch (error) {
+        console.error(error);
+    }
+}
