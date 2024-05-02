@@ -3,6 +3,8 @@ import moment from "moment";
 import React, { useState } from "react";
 import { Bookpop } from "./Bookpop";
 import { useParams } from "react-router-dom";
+import { TaskPop } from "./TaskPop";
+import { TaskModal } from "./TaskModal";
 
 export const ListComp = props => {
     const [x, setButtonPopup] = useState(false);

@@ -1,6 +1,7 @@
-import React from 'react'
-
-export const TaskModal = () => {
+import React, { useEffect, useState } from 'react'
+import { AddLabPrescription, AddPrescription, AssignLab, GetAllLab, updateDoctorStatus } from '../connections/Appointment';
+import Select from 'react-select'
+export const TaskModal = (props) => {
     const [lab, setLab] = useState("");
     const [list, setList] = useState([]);
     const [patpresc, setPresc] = useState("")
@@ -24,15 +25,13 @@ export const TaskModal = () => {
 
     useEffect (() => {
         const data = Promise.resolve(GetAllLab());
+        console.log(data)
         data.then(
         value => {
             setList(value);
         })
     }, []);
 
-    // console.log(list);
-    console.log("patient presc ", patpresc);
-    console.log("lab prescr ", labpresc);
 
 
     return(props.trigger) ? (
@@ -44,7 +43,7 @@ export const TaskModal = () => {
                         <Select 
                             options={list}
                             value={lab}
-                            getOptionLabel={(opt) => opt.fname}
+                            getOptionLabel={(opt) => opt.first_name}
                             getOptionValue={(opt) => opt.id}
                             onChange={handleChange}/>
                     </div>

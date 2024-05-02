@@ -25,6 +25,7 @@ import {
 import { Dashboard } from "./dashboard/Dashboard";
 import { Appointment } from "./Appointments/Appointment";
 import { Page404 } from "./Page404";
+import { Reports } from "./Reports/Reports";
 
 function App() {
     library.add(
@@ -54,6 +55,8 @@ function App() {
 
                     <Route path="/:type/dashboard" element={<Dashboard />} />
                     <Route path="/:type/appointments" element={<Appointment />} />
+                    <Route path="/:type/reports" element={<Reports />} />
+
                     <Route path="*" element={<Page404 />} />
                 </Routes>
             </BrowserRouter>
