@@ -43,7 +43,8 @@ public class SecurityConfig {
 
                         //auth
                         .requestMatchers("api/auth/**").permitAll()
-
+                        .requestMatchers("user/get_by_id/**").permitAll()
+                        .requestMatchers("user/get_all_doctor").permitAll()
                         //appointment
                         .requestMatchers("/appointment/get_appointment_by_doctor_id/**").hasAuthority("DOCTOR")
                         .requestMatchers("/appointment/assign_lab/**").hasAuthority("DOCTOR")
