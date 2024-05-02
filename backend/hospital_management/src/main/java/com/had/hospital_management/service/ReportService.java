@@ -52,12 +52,15 @@ public class ReportService {
     
     // Patient
     public List<UserEntity> getDoctorByPatientId(Long id){return reportRepository.getDoctorByPatientId(id);}
+    public List<UserEntity> getPatientByLabId(Long id){return reportRepository.getPatientByLabId(id);}
     
     // Doc and Pat
     public List<Report> getReportByDoctorAndPatientId(Long doc_id,Long pat_id){
         return reportRepository.getReportByDoctorAndPatientId(doc_id,pat_id);
     }
-
+    public List<Report> getReportByLabAndPatientId(Long lab_id,Long pat_id){
+        return reportRepository.getReportByDoctorAndPatientId(lab_id,pat_id);
+    }
     // None
     @Transactional
     public void deleteById(Long id) {
