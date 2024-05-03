@@ -1,11 +1,14 @@
 package com.had.hospital_management.security;
 
 import com.had.hospital_management.model.UserEntity;
+import com.had.hospital_management.repository.UserRepository;
+import com.had.hospital_management.service.UserService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import java.security.Key;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -16,10 +19,11 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
-import com.had.hospital_management.repository.UserRepository;
+
 
 @Component
 public class JWTGenerator {
+    @Autowired
     private UserRepository userRepository;
     //private static final KeyPair keyPair = Keys.keyPairFor(SignatureAlgorithm.RS256);
     private static final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS512);

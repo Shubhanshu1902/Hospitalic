@@ -50,7 +50,7 @@ export const Navbar = () => {
                         className="text"
                         onClick={() => {
                             navigate("/patient/appointments");
-                            console.log(retrieveUserId());
+//                            console.log(retrieveUserId());
                         }}
                     >
                         <FontAwesomeIcon icon={faTasks} />

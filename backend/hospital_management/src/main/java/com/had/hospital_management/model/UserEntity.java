@@ -18,6 +18,8 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+//    @Column(unique = true)
     private String username; //email
     private String password;
     private String first_name;
