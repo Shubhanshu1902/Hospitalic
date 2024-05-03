@@ -239,4 +239,15 @@ body {
         }
     }
     
+    .icons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+    
+        .pat-icon {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+    }
 }

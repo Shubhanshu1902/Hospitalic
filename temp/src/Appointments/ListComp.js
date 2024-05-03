@@ -55,7 +55,6 @@ export const ListComp = props => {
                         trigger={x}
                         setTrigger={setButtonPopup}
                         patient={props.pname}
-                        app_id={props.appid}
                     ></TaskModal>
                 </TaskPop>
             </div>

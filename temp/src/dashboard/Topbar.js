@@ -34,23 +34,21 @@ const RenderDate = () => {
 
 export const Topbar = () => {
     // TODO set username
-    var userId = retrieveUserId();
+    const userId = retrieveUserId();
     const [temp, setTemp] = useState([]);
     const [change, setChange] = useState(false);
     const [username,setUsername] = useState("")
 
-    const getUserName = () => {
-        var user = Promise.resolve(GetUser(userId));
-        user.then(value => setTemp(value));
-        if(temp.length === 0) setChange(!change); 
-        setUsername(`${temp.first_name} ${temp.last_name}`)
+
+    async function getUserName() {
+        console.log("test1",userId)
+        const user = await GetUser(userId);
+        setUsername(`${user.first_name} ${user.last_name}`)
     }
-
-    useEffect(() => {
-        getUserName()
-    }, [change]);
-
-    var type = useParams().type;
+    console.log("test2",userId)
+    getUserName()
+    
+    const type = useParams().type;
 
     return (
         <div className="Topbar">
