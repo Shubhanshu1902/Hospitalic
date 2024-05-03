@@ -9,6 +9,7 @@ import {
     faBell,
     faCalendarAlt,
     faEnvelope,
+    faFolder,
     faGear,
     faLock,
     faPhone,
@@ -43,7 +44,8 @@ function App() {
         faCalendarAlt,
         faBell,
         faRightFromBracket,
-        faArrowAltCircleRight
+        faArrowAltCircleRight,
+        faFolder
     );
 
     return (

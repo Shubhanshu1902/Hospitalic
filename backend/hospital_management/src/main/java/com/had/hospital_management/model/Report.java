@@ -16,6 +16,7 @@ public class Report {
     @Id
     @GeneratedValue
     private Long id;
+    private String name;
     private String photo_path;
     private String comments;
 

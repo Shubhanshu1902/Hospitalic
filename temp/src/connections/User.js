@@ -24,6 +24,7 @@ export async function GetUserId(
                 ret = data;
 
             })
+
         return ret;
     }
     catch(error){

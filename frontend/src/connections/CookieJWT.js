@@ -5,22 +5,14 @@ import {jwtDecode} from "jwt-decode"
 const cookie = new Cookies();
 
 export const login = (jwtToken,userId) => {
-    const decode = jwtDecode(jwtToken);
-    
-
-    cookie.set("JWTtoken",jwtToken,{
-        expires: new Date(decode.exp * 1000)
-    });
-
-    cookie.set("UserId",userId,{
-        expires: new Date(decode.exp * 1000)
-    });
+    localStorage.setItem('jwt-token', token);
 } 
 
 // retrieve JWT token
 export const retrieveJWT = () => {
-    return cookie.get("JWTtoken");
+    return localStorage.getItem('jwt-token');
 }
+
 export const retrieveUserId = () => {
     const decode = jwtDecode(retrieveJWT());
     return decode.userId;

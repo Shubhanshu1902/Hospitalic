@@ -1,27 +1,21 @@
 import Cookies  from 'universal-cookie'
 import {jwtDecode} from "jwt-decode"
 
-
 // STORE JWT TOKEN
 const cookie = new Cookies();
 
-export const login = (jwtToken,userId) => {
-    const decode = jwtDecode(jwtToken);
-    
-
-    cookie.set("JWTtoken",jwtToken,{
-        expires: new Date(decode.exp * 1000)
-    });
-
-    cookie.set("UserId",userId,{
-        expires: new Date(decode.exp * 1000)
-    });
+export const login = (jwtToken) => {
+    // console.log(jwtToken)
+    localStorage.setItem('jwt-token', jwtToken);
 } 
 
 // retrieve JWT token
 export const retrieveJWT = () => {
-    return cookie.get("JWTtoken")
+    return localStorage.getItem('jwt-token');
 }
+
 export const retrieveUserId = () => {
-    return cookie.get("UserId")
+    const decode = jwtDecode(retrieveJWT());
+    // console.log("decode", decode, retrieveJWT(), decode.userId);
+    return decode.userId;
 }

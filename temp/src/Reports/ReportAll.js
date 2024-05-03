@@ -6,28 +6,26 @@ import {
 } from "../connections/Report";
 import { retrieveUserId } from "../connections/CookieJWT";
 import { GetUser } from "../connections/User";
+import { FolderIcon } from "./FolderIcon";
 
 export const ReportAll = () => {
     const type = useParams().type;
     const [folderNames, setFolderNames] = useState([]);
     const ids = retrieveUserId();
     const [vals, setVals] = useState([]);
-    const [temp, setTemp] = useState("");
     const [data, setData] = useState([]);
 
     const ids_to_names = () => {
+        console.log("vals3", vals);
         for (let i = 0; i < vals.length; i++) {
-            console.log(vals[i]);
-            var user = Promise.resolve(GetUser(vals[i]));
-            user.then(value => {
-                setTemp(value);
-            });
-
-            setFolderNames(folderNames => [...folderNames, temp.first_name]);
-            console.log(temp);
+            console.log("val[i]", vals[i]);
+            let user = [];
+            async function fetchData() {
+                user = await GetUser(vals[i]);
+                setData(user);
+            }
+            fetchData();
         }
-
-        // console.log(folderNames);
     };
 
     async function fetchData() {
@@ -35,24 +33,39 @@ export const ReportAll = () => {
 
         if (type === "patient") {
             items = await GetDoctorByPatientId(ids);
-            console.log("items",items)
         } else if (type === "doctor") {
             items = await GetPatientByDoctorId(ids);
         } else if (type === "lab") {
         } else if (type === "radiologist") {
         }
-
-        setVals(items)
-        console.log("vals",vals)
-        ids_to_names(vals);
-
+        setVals(items);
     }
 
     useEffect(() => {
-        fetchData()
+        fetchData();
     }, []);
 
-    // console.log(vals);
+    useEffect(() => {
+        ids_to_names();
+    }, [vals]);
 
-    return <div className="icons">temp</div>;
+    useEffect(() => {
+        if (data.first_name !== undefined) {
+            setFolderNames(folderNames => [
+                ...folderNames,
+                { id: data.id, name: `${data.first_name} ${data.last_name}` },
+            ]);
+            
+        }
+    }, [data.first_name]);
+
+    console.log("folderNames", folderNames);
+    let key = 0;
+    return (
+        <div className="icons">
+            {folderNames.map(obj => {
+                return <FolderIcon key={key++} name={obj.name} id={obj.id} />;
+            })}
+        </div>
+    );
 };

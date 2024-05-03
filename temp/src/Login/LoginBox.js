@@ -19,10 +19,10 @@ export const LoginBox = (props) => {
     }
 
     // TODO
-    const onSignIn = () => {
+    async function onSignIn() {
         // console.log(props.type)
         // console.log(email,password)
-        const data = Promise.resolve(LoginCall(email, password));
+        const data = await LoginCall(email, password);
         navigate(`/${props.type.toLowerCase()}/dashboard`)
     }
 

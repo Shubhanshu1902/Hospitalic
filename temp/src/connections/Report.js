@@ -1,6 +1,7 @@
 import {retrieveJWT} from "./CookieJWT";
 
 export async function saveReport(
+    name,
     pic_path,
     comments,
     doc_id,
@@ -16,6 +17,7 @@ export async function saveReport(
             {
                 method: "POST",
                 body: JSON.stringify({
+                    name:name,
                     photo_path:pic_path,
                     comments:comments,
                     user1:{

@@ -41,11 +41,11 @@ export const Topbar = () => {
 
 
     async function getUserName() {
-        console.log("test1",userId)
+        // console.log("test1",userId)
         const user = await GetUser(userId);
         setUsername(`${user.first_name} ${user.last_name}`)
     }
-    console.log("test2",userId)
+    // console.log("test2",userId)
     getUserName()
     
     const type = useParams().type;
