@@ -5,6 +5,7 @@ import { verify } from "../connections/User";
 import { Page404 } from "../Page404";
 import { Navbar } from "../dashboard/Navbar";
 import { Topbar } from "../dashboard/Topbar";
+import { ReportAll } from "./ReportAll";
 
 export const Reports = () => {
     const type = useParams().type;
@@ -16,6 +17,7 @@ export const Reports = () => {
             <Navbar />
             <div className="AppContent">
                 <Topbar />
+                <ReportAll />
             </div>
         </div>
     ) : (

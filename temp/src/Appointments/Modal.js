@@ -25,7 +25,7 @@ export const Modal = (props) => {
 
     const handleChange2 = user2 => {
         setUser2(user2);
-        console.log(user2)
+        // console.log(user2)
     };
 
     useEffect(() => {

@@ -6,7 +6,7 @@ export const TaskModal = (props) => {
     const [list, setList] = useState([]);
     const [patpresc, setPresc] = useState("")
     const [labpresc, setLabPresc] = useState("")
-    var app = props.app_id;
+    var app = props.id;
 
     const assigncall = () => {
         // console.log(lab.id);
@@ -25,7 +25,7 @@ export const TaskModal = (props) => {
 
     useEffect (() => {
         const data = Promise.resolve(GetAllLab());
-        console.log(data)
+        // console.log(data)
         data.then(
         value => {
             setList(value);

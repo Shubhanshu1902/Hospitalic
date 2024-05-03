@@ -51,10 +51,7 @@ export async function GetUser(
                 return (response.json());
             })
             .then(data => {
-                // console.log(data)
-
                 ret = data;
-
             })
         return ret;
     }
@@ -72,7 +69,7 @@ export const getRole = () => {
 } 
 
 export const verify = (type) => {
-    console.log(getRole(),type)
+    // console.log(getRole(),type)
     if(type === getRole()) return true
     else return false
 }

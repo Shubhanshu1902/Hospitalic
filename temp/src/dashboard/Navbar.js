@@ -34,7 +34,7 @@ export const Navbar = props => {
 
     var ls = [];
     if(type === "lab") {
-        console.log("IN LAB")
+        // console.log("IN LAB")
         ls = lab;}
     else if(type === "doctor" || type === "patient") {
         ls = docPat;

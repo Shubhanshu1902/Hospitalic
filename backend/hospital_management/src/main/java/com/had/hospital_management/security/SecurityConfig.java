@@ -18,6 +18,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
@@ -53,17 +54,26 @@ public class SecurityConfig {
                         .requestMatchers("/appointment/get_appointment_by_patient_id/**").hasAuthority("PATIENT")
                         .requestMatchers("/appointment/save").hasAuthority("PATIENT")
                         .requestMatchers("/appointment/get_appointment_by_lab_id/**").hasAuthority("LAB")
-                        .requestMatchers("/appointment/update_doctor_status/**").hasAuthority("LAB")
+                        .requestMatchers("/appointment/update_doctor_status/**").hasAuthority("DOCTOR")
                         .requestMatchers("/appointment/update_lab_status/**").hasAuthority("LAB")
-                        .requestMatchers("/appointment/add_prescription/**").hasAuthority("LAB")
-                        .requestMatchers("/appointment/add_lab_prescription/**").hasAuthority("LAB")
+                        .requestMatchers("/appointment/add_prescription/**").hasAuthority("DOCTOR")
+                        .requestMatchers("/appointment/add_lab_prescription/**").hasAuthority("DOCTOR")
+
+                        // reports
+                        .requestMatchers("/report/save").hasAuthority("LAB")
+                        .requestMatchers("/report/get_report_by_patient_id/**").hasAuthority("PATIENT")
+                        .requestMatchers("/report/get_report_by_doctor_id/**").hasAuthority("DOCTOR")
+                        .requestMatchers("/report/get_report_by_lab_id/**").hasAuthority("LAB")
+                        .requestMatchers("/report/get_patient_by_doctor_id/**").hasAuthority("DOCTOR")
+                        .requestMatchers("/report/get_doctor_by_patient_id/**").hasAuthority("PATIENT")
+                        .requestMatchers("/report/get_report_by_doctor_and_patient_id/**").hasAnyAuthority("PATIENT","DOCTOR")
 
                         //requests
                         .requestMatchers("/requests/get_all_by_report_id/**").hasAnyAuthority("PATIENT","DOCTOR")
                         .requestMatchers("/requests/approve_request_by_id/**").hasAuthority("PATIENT")
                         .requestMatchers("/requests/save").hasAuthority("DOCTOR")
                         .requestMatchers("/requests/get_report_id_by_radiologist_id/**").hasAuthority("RADIOLOGIST")
-                        .requestMatchers("requests/add_comment/**").hasAuthority("RADIOLOGIST")
+                        .requestMatchers("/requests/add_comment/**").hasAuthority("RADIOLOGIST")
                         .anyRequest().authenticated());
 
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
