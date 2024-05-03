@@ -48,16 +48,19 @@ public class ReportService {
     }
 
     // Doctor
-    public List<UserEntity> getPatientByDoctorId(Long id){return reportRepository.getPatientByDoctorId(id);}
+    public List<Long> getPatientByDoctorId(Long id){return reportRepository.getPatientByDoctorId(id);}
     
     // Patient
-    public List<UserEntity> getDoctorByPatientId(Long id){return reportRepository.getDoctorByPatientId(id);}
+    public List<Long> getDoctorByPatientId(Long id){return reportRepository.getDoctorByPatientId(id);}
+    public List<Long> getPatientByLabId(Long id){return reportRepository.getPatientByLabId(id);}
     
     // Doc and Pat
     public List<Report> getReportByDoctorAndPatientId(Long doc_id,Long pat_id){
         return reportRepository.getReportByDoctorAndPatientId(doc_id,pat_id);
     }
-
+    public List<Report> getReportByLabAndPatientId(Long lab_id,Long pat_id){
+        return reportRepository.getReportByLabAndPatientId(lab_id,pat_id);
+    }
     // None
     @Transactional
     public void deleteById(Long id) {

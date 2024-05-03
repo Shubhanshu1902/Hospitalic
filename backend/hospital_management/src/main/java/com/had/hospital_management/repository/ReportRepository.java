@@ -34,10 +34,20 @@ public interface ReportRepository extends JpaRepository<Report,Long>{
             nativeQuery = true,
             value = "select distinct patient_id from report where lead_doctor_id = :doc_id"
     )
-    List<UserEntity> getPatientByDoctorId(@Param("doc_id") Long doc_id);
+    List<Long> getPatientByDoctorId(@Param("doc_id") Long doc_id);
+    @Query(
+        nativeQuery = true,
+        value = "select distinct patient_id from report where lab_id = :lab_id"
+        )
+        List<Long> getPatientByLabId(@Param("lab_id") Long lab_id);
+        @Query(
+                nativeQuery = true,
+                value = "select * from report where lab_id = :lab_id and patient_id = :pat_id"
+        )
+        List<Report> getReportByLabAndPatientId(@Param("lab_id") Long lab_id,@Param("pat_id") Long pat_id);
     @Query(
             nativeQuery = true,
             value = "select distinct lead_doctor_id from report where patient_id = :pat_id"
     )
-    List<UserEntity> getDoctorByPatientId(@Param("pat_id") Long pat_id);
+    List<Long> getDoctorByPatientId(@Param("pat_id") Long pat_id);
 }

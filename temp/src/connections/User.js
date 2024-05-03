@@ -1,4 +1,6 @@
+import { jwtDecode } from "jwt-decode";
 import {retrieveJWT} from "./CookieJWT";
+import { useNavigate } from "react-router-dom";
 
 export async function GetUserId(
     username,token
@@ -45,9 +47,12 @@ export async function GetUser(
                 }
             })
             .then(response => {
+                // console.log(response)
                 return (response.json());
             })
             .then(data => {
+                // console.log(data)
+
                 ret = data;
 
             })
@@ -57,4 +62,17 @@ export async function GetUser(
         console.error(error);
     }
 
+}
+
+export const getRole = () => {
+    const token = retrieveJWT();
+    if(token === undefined) return "";
+    let decode = jwtDecode(token)
+    return decode.roles[0].toLowerCase();
+} 
+
+export const verify = (type) => {
+    console.log(getRole(),type)
+    if(type === getRole()) return true
+    else return false
 }

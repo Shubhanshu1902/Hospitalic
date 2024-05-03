@@ -1,0 +1,242 @@
+@import "./App.scss";
+
+body {
+    background: $color6;
+}
+
+.icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+
+    .pat-icon {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+}
+
+.dashboard {
+    display: flex;
+
+    .navbar {
+        height: 100vh;
+        color: $color4;
+        background: $color4;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding-left: 0.7%;
+        padding-right: 0.7%;
+        filter: drop-shadow(0 0 0.1rem 0.1rem #ffffff);
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: $color4;
+            background: $color4;
+            padding-bottom: 50px;
+
+            .Box {
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+
+                .icon-box {
+                    display: flex;
+                    flex-direction: column;
+                    .image {
+                        height: 80px;
+                    }
+                }
+
+                .text {
+                    display: flex;
+                    gap: 12px;
+                    color: $color10;
+                    font: $font;
+                    font-size: 20px;
+                    font-weight: 500;
+                }
+            }
+
+        }
+    }
+
+    .AppContent {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        .Topbar {
+            background-color: $color4;
+            display: flex;
+            height: 85px;
+            gap: 50px;
+            align-items: center;
+            padding-left: 50px;
+    
+            .search {
+                height: 40px;
+                width: 40%;
+                border-radius: 10px solid rgba(42, 91, 195, 0.35);
+                box-shadow: none;
+                filter: drop-shadow(0 0 0 0 #ffffff);
+                font: $font;
+                font-size: 14px;
+                font-weight: map-get($map: $font-weight, $key: normal);
+            }
+    
+            .search::placeholder {
+                text-align: center;
+                font: $font;
+                font-size: 14px;
+                font-weight: map-get($map: $font-weight, $key: normal);
+            }
+    
+            .name_and_title {
+                display: flex;
+                flex-direction: column;
+                font: $font;
+                font-size: 16px;
+            }
+        }
+
+        .bookapp{
+            display: flex;
+            height: 20%;
+            width: 50%;
+            background-color: $color4;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+            margin-left: 10px;
+            border-radius: 20px;
+
+            .book{
+                height: 50%;
+                width: 35%;
+                font-size: x-large;
+                color: $color4;
+                border-radius: 20px;
+                background-color: $color1;
+                // position: relative;
+            }
+            .popup{
+                display: flex;
+                align-items: center;
+                justify-items: center;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: rgba(0,0,0,0.2);
+
+                .pop-in{
+                    display: flex;
+                    flex-direction: column;
+                    position: absolute;
+                    top : 1;
+                    left: 50%;
+                    transform: translate(-50%, 0);
+                    padding: 32 px;
+                    width: 50%;
+                    background-color: $color4;
+                    border-radius: 15px;
+
+                    .close{
+                        position: absolute;
+                        top: 16px;
+                        right: 16px;
+                    }
+
+                }
+            }
+        }
+
+        .applist{
+            display: flex;
+            flex-direction: column;
+            height: 66%;
+            width: 98%;
+            background-color: $color4;
+            justify-content: start;
+            align-items: start;
+            padding: 10px;
+            margin-top: 10px;
+            margin-left: 10px;
+            border-radius: 20px;
+            overflow: scroll;
+
+            .t1{
+                height: 12%;
+                width: 60%;
+                display: flex;
+                background-color: $color2;
+                justify-content: space-between;
+                padding-left: 10px;
+                padding-right: 20px;
+                align-items: center;
+                margin: 5px;
+                border-radius: 20px;
+
+                .t2{
+                    padding-left: 30px;
+                    font-size: large;
+                }
+
+                .button {
+                    background: $color7;
+                    width: 15%;
+                    height: 70%;
+                    color: #ffffff;
+                    font: $font;
+                    font-size: 20px;
+                    font-weight: 400;
+                }
+
+                .prescbutton{
+                    margin-right: 30px;
+                    background-color: $color4;
+                    color: $color1;
+                }
+
+                .popup{
+                    display: flex;
+                    align-items: center;
+                    justify-items: center;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100vh;
+                    background-color: rgba(0,0,0,0.2);
+    
+                    .pop-in{
+                        display: flex;
+                        flex-direction: column;
+                        position: absolute;
+                        top : 1;
+                        left: 50%;
+                        transform: translate(-50%, 0);
+                        padding: 32 px;
+                        width: 50%;
+                        background-color: $color4;
+                        border-radius: 15px;
+    
+                        .close{
+                            position: absolute;
+                            top: 16px;
+                            right: 16px;
+                        }
+    
+                    }
+                }
+            }
+
+        }
+    }
+    
+}
