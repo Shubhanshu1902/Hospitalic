@@ -11,6 +11,7 @@ import {
 } from "@fortawesome/fontawesome-free-solid";
 import { useNavigate } from "react-router-dom";
 import main_logo from "../../icons/main_icon.png";
+import { retrieveUserId } from "../../connections/CookieJWT";
 
 export const Navbar = () => {
     const navigate = useNavigate();
@@ -49,6 +50,7 @@ export const Navbar = () => {
                         className="text"
                         onClick={() => {
                             navigate("/patient/appointments");
+                            console.log(retrieveUserId());
                         }}
                     >
                         <FontAwesomeIcon icon={faTasks} />

@@ -1,7 +1,6 @@
 import Cookies  from 'universal-cookie'
 import {jwtDecode} from "jwt-decode"
 
-
 // STORE JWT TOKEN
 const cookie = new Cookies();
 
@@ -20,8 +19,9 @@ export const login = (jwtToken,userId) => {
 
 // retrieve JWT token
 export const retrieveJWT = () => {
-    return cookie.get("JWTtoken")
+    return cookie.get("JWTtoken");
 }
 export const retrieveUserId = () => {
-    return cookie.get("UserId")
+    const decode = jwtDecode(retrieveJWT());
+    return decode.userId;
 }

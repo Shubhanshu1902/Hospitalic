@@ -1,5 +1,6 @@
 package com.had.hospital_management.security;
 
+import com.had.hospital_management.model.UserEntity;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
@@ -15,9 +16,11 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
+import com.had.hospital_management.repository.UserRepository;
 
 @Component
 public class JWTGenerator {
+    private UserRepository userRepository;
     //private static final KeyPair keyPair = Keys.keyPairFor(SignatureAlgorithm.RS256);
     private static final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS512);
 
@@ -32,10 +35,12 @@ public class JWTGenerator {
                 .collect(Collectors.toList());
 
         System.out.println(roleNames);
-
+        UserEntity newuser = userRepository.getUserByUsername(username);
+        Long userid = newuser.getId();
         String token = Jwts.builder()
                 .setSubject(username)
                 .claim("roles",roleNames)
+                .claim("userId", userid)
                 .setIssuedAt( new Date())
                 .setExpiration(expireDate)
                 .signWith(key,SignatureAlgorithm.HS512)
