@@ -27,7 +27,7 @@ export const Navbar = props => {
         {
             name: "Tasks",
             icon: "fa-solid fa-tasks",
-            path: `../${type}/tasks`,
+            path: `../${type}/appointments`,
             key: 1
         }
     ]

@@ -5,6 +5,8 @@ import { Bookpop } from "./Bookpop";
 import { useParams } from "react-router-dom";
 import { TaskPop } from "./TaskPop";
 import { TaskModal } from "./TaskModal";
+import { LabModal } from "./LabModal";
+import { LabPop } from "./LabPop";
 
 export const ListComp = props => {
     const [x, setButtonPopup] = useState(false);
@@ -58,6 +60,23 @@ export const ListComp = props => {
                     ></TaskModal>
                 </TaskPop>
             </div>
+        );
+    else if (type === "lab")
+        return(
+            <div className="t1">
+                <div className="t2">
+                    <FontAwesomeIcon 
+                        icon="fas fa-arrow-alt-circle-right"
+                        style={{padding:"5px"}} />{" "} 
+                    Upload report for patient {props.pname} appointed by {props.dname}
+                </div>
+            <button className="button" onClick={() => setButtonPopup(true)}>{" "}
+                Upload Report {" "} 
+            </button>
+            <LabPop trigger={x} setTrigger={setButtonPopup}>
+                <LabModal id={props.id} trigger={x} setTrigger={setButtonPopup} patient={props.pname} pid={props.pid} did={props.did}></LabModal>
+            </LabPop>
+        </div>
         );
     else return "";
 };
