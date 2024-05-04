@@ -17,7 +17,7 @@ public class Requests {
     private Long id;
     private Long status;
     private String comments;
-
+    private Long patient_id;
     @ManyToOne()
     @JoinColumn(
             name = "report_id",

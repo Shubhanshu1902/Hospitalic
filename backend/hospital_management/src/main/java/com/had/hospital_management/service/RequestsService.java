@@ -40,6 +40,9 @@ public class RequestsService {
     public List<Long> getReportIdByRadiologistId(Long id){
         return requestsRepository.getReportIdByRadiologistId(id);
     }
+    public List<Long> getPatientIdByRadiologistId(Long id){
+        return requestsRepository.getPatientIdByRadiologistId(id);
+    }
 
     // pat
     @Transactional

@@ -76,6 +76,7 @@ public class SecurityConfig {
                         .requestMatchers("/requests/approve_request_by_id/**").hasAuthority("PATIENT")
                         .requestMatchers("/requests/save").hasAuthority("DOCTOR")
                         .requestMatchers("/requests/get_report_id_by_radiologist_id/**").hasAuthority("RADIOLOGIST")
+                        .requestMatchers("/requests/get_patient_id_by_radiologist_id/**").hasAuthority("RADIOLOGIST")
                         .requestMatchers("/requests/add_comment/**").hasAuthority("RADIOLOGIST")
                         .anyRequest().authenticated());
 
