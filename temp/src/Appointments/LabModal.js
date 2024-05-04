@@ -58,7 +58,7 @@ export const LabModal = props => {
         const a = getURLfromBUCKET(myBucket,"" + props.id + ".dcm")
         updateLabStatus(props.id);
         // console.log(a,props.pid, props.did);
-        saveReport(a,"",""+props.did, ""+props.pid, ""+retrieveUserId());
+        saveReport("",a,"",""+props.did, ""+props.pid, ""+retrieveUserId());
         props.setTrigger(false)
     };
 

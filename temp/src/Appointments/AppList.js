@@ -35,14 +35,14 @@ export const AppList = () => {
 
     useEffect(() => {
         getData();
-    }, [list]);
+    }, []);
 
     var i = 0;
     return (
         <div className="applist">
             {list &&
                 list.map(elem =>
-                    !elem.status ? (
+                    !((type === "doctor" || type === "patient") && elem.doctor_done || type==="lab" && elem.lab_done)? (
                         <ListComp
                             key={i++}
                             id={elem.id}
@@ -50,6 +50,7 @@ export const AppList = () => {
                             dname={elem.user2.first_name}
                             pid={elem.user1.id}
                             did={elem.user2.id}
+                            time={elem.date}
                         />
                     ) : (
                         ""

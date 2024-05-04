@@ -9,6 +9,7 @@ import {
     faBell,
     faCalendarAlt,
     faEnvelope,
+    faFile,
     faFolder,
     faGear,
     faLock,
@@ -27,6 +28,8 @@ import { Dashboard } from "./dashboard/Dashboard";
 import { Appointment } from "./Appointments/Appointment";
 import { Page404 } from "./Page404";
 import { Reports } from "./Reports/Reports";
+import { ReportsFile } from "./Reports/ReportsFile";
+import { ReportChat } from "./ChatScreen/ReportChat";
 
 function App() {
     library.add(
@@ -45,7 +48,8 @@ function App() {
         faBell,
         faRightFromBracket,
         faArrowAltCircleRight,
-        faFolder
+        faFolder,
+        faFile
     );
 
     return (
@@ -58,6 +62,8 @@ function App() {
                     <Route path="/:type/dashboard" element={<Dashboard />} />
                     <Route path="/:type/appointments" element={<Appointment />} />
                     <Route path="/:type/reports" element={<Reports />} />
+                    <Route path="/:type/reports/:userid" element={<ReportsFile />} />
+                    <Route path="/:type/report/:reportid" element={<ReportChat />}/>
 
                     <Route path="*" element={<Page404 />} />
                 </Routes>

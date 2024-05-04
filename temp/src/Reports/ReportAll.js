@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import {
     GetDoctorByPatientId,
     GetPatientByDoctorId,
+    GetPatientByLabId,
 } from "../connections/Report";
 import { retrieveUserId } from "../connections/CookieJWT";
 import { GetUser } from "../connections/User";
@@ -16,9 +17,9 @@ export const ReportAll = () => {
     const [data, setData] = useState([]);
 
     const ids_to_names = () => {
-        console.log("vals3", vals);
+        // console.log("vals3", vals);
         for (let i = 0; i < vals.length; i++) {
-            console.log("val[i]", vals[i]);
+            // console.log("val[i]", vals[i]);
             let user = [];
             async function fetchData() {
                 user = await GetUser(vals[i]);
@@ -36,6 +37,7 @@ export const ReportAll = () => {
         } else if (type === "doctor") {
             items = await GetPatientByDoctorId(ids);
         } else if (type === "lab") {
+            items = await GetPatientByLabId(ids);
         } else if (type === "radiologist") {
         }
         setVals(items);
@@ -59,7 +61,7 @@ export const ReportAll = () => {
         }
     }, [data.first_name]);
 
-    console.log("folderNames", folderNames);
+    // console.log("folderNames", folderNames);
     let key = 0;
     return (
         <div className="icons">

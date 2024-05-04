@@ -57,13 +57,15 @@ const TaskModal = props => {
         const a = getURLfromBUCKET(myBucket,"" + props.id + ".dcm")
         updateLabStatus(props.id);
         // console.log(a,props.pid, props.did);
-        saveReport(a,"",""+props.did, ""+props.pid, ""+retrieveUserId());
+        // saveReport(a,"",""+props.did, ""+props.pid, ""+retrieveUserId());
         props.setTrigger(false)
     };
 
     return props.trigger ? (
         <div>
             <div>Native SDK File Upload Progress is {progress}%</div>
+
+            {/* name of report*/}
             <input type="file" onChange={handleFileInput} />
             <button onClick={() => uploadFile(selectedFile)}>
                 {" "}

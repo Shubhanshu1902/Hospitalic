@@ -244,9 +244,9 @@ export async function AssignLab(
             .then(response => {
                 return (response.json());
             })
-            .then(data => {
-                ret = data;
-            })
+            // .then(data => {
+            //     ret = data;
+            // })
         return ret;
     }
     catch(error){console.error(error);}

@@ -19,17 +19,17 @@ export const ListComp = props => {
                         icon="fas fa-arrow-alt-circle-right"
                         style={{ padding: "5px" }}
                     />
-                    Appointment at Dr. {props.name} on{" "}
+                    Appointment at Dr. {props.dname} on{" "}
                     {moment(props.time).format("MMM Do YY")}
                 </div>
-                <button
+                {/* <button
                     className="prescbutton"
                     style={{ fontSize: "large", height: "40px" }}
                     onClick={() => setButtonPopup(true)}
                 >
                     {" "}
                     View Prescription{" "}
-                </button>
+                </button> */}
                 <Bookpop trigger={x} setTrigger={setButtonPopup}>
                     <p style={{ fontSize: "large", padding: "3%" }}>
                         {props.text}

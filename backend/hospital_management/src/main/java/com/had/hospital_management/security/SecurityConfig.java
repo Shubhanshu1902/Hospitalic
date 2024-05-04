@@ -67,6 +67,9 @@ public class SecurityConfig {
                         .requestMatchers("/report/get_patient_by_doctor_id/**").hasAuthority("DOCTOR")
                         .requestMatchers("/report/get_doctor_by_patient_id/**").hasAuthority("PATIENT")
                         .requestMatchers("/report/get_report_by_doctor_and_patient_id/**").hasAnyAuthority("PATIENT","DOCTOR")
+                        .requestMatchers("/report/get_patient_by_lab_id/**").hasAuthority("LAB")
+                        .requestMatchers("/report/get_report_by_lab_and_patient_id/**").hasAnyAuthority("PATIENT","LAB")
+                        .requestMatchers("/report/get_by_id/**").permitAll()
 
                         //requests
                         .requestMatchers("/requests/get_all_by_report_id/**").hasAnyAuthority("PATIENT","DOCTOR")
