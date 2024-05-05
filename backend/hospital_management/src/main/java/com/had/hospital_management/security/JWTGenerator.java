@@ -1,7 +1,9 @@
 package com.had.hospital_management.security;
 
 import com.had.hospital_management.model.UserEntity;
+import com.had.hospital_management.repository.TokenRepository;
 import com.had.hospital_management.repository.UserRepository;
+import com.had.hospital_management.service.TokenService;
 import com.had.hospital_management.service.UserService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -25,7 +27,9 @@ import java.util.stream.Collectors;
 public class JWTGenerator {
     @Autowired
     private UserRepository userRepository;
-    //private static final KeyPair keyPair = Keys.keyPairFor(SignatureAlgorithm.RS256);
+
+    @Autowired
+    private TokenService tokenService;
     private static final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS512);
 
     public String generateToken(Authentication authentication) {
@@ -68,6 +72,13 @@ public class JWTGenerator {
                     .setSigningKey(key)
                     .build()
                     .parseClaimsJws(token);
+
+            Boolean isvalid = tokenService.isValid(token);
+            System.out.println("validity"+isvalid);
+
+            if(!isvalid) {
+                throw new AuthenticationCredentialsNotFoundException("JWT is not valid");
+            }
             return true;
         } catch (Exception ex) {
             throw new AuthenticationCredentialsNotFoundException("JWT was exprired or incorrect",ex.fillInStackTrace());
