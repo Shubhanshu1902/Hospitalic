@@ -66,6 +66,16 @@ public class JWTGenerator {
         return claims.getSubject();
     }
 
+    public Long getUserIdFromJWT(String token){
+        token = token.substring(7);
+        Claims claims = Jwts.parserBuilder()
+                .setSigningKey(key)
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
+        return Long.parseLong(claims.get("userId").toString());
+    }
+
     public boolean validateToken(String token) {
         try {
             Jwts.parserBuilder()

@@ -1,6 +1,7 @@
 package com.had.hospital_management.controller;
 
 import com.had.hospital_management.model.UserEntity;
+import com.had.hospital_management.security.JWTGenerator;
 import com.had.hospital_management.service.UserService;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,8 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserService userService ;
-
+    @Autowired
+    private JWTGenerator jwtgen;
     @PostMapping("/save")
     public UserEntity save(@RequestBody UserEntity userEntity) {
         System.out.println(userEntity);
@@ -39,8 +41,9 @@ public class UserController {
         }
     }
     @GetMapping("/hello")
-    public String helloWorld() {
+    public String helloWorld(@RequestHeader (name="Authorization") String token) {
         System.out.println("hello reached");
+        System.out.println(jwtgen.getUserIdFromJWT(token));
         return "Hello wordl";
     }
 
