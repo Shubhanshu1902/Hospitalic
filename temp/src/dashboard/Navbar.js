@@ -18,7 +18,7 @@ export const Navbar = props => {
         {
             name: "Done Appointments",
             icon: "fas fa-calendar-alt",
-            path: `../${type}/done-appointments`,
+            path: `../${type}/doneappointments`,
             key: 2
         },
     ]
