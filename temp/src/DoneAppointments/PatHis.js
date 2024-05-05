@@ -4,8 +4,8 @@ import { Navbar } from '../dashboard/Navbar'
 import "../css/Main.scss"
 import { getRole, verify } from "../connections/User";
 import { useNavigate, useParams } from "react-router-dom";
-import { Page404 } from "../Page404";
 import HisContent from './HisContent';
+import { Page404 } from '../Page404/Page404';
 
 const PatHis = () => {
 

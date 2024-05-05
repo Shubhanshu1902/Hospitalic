@@ -8,6 +8,7 @@ import { GetAllDoctorPatientReport, GetReportByLabNPatId } from "../connections/
 import { retrieveUserId } from "../connections/CookieJWT";
 import { FileIcon } from "./FileIcon";
 import { Page404 } from "../Page404/Page404";
+import { getReportByPatAndRad } from "../connections/Request";
 
 export const ReportsFile = () => {
     const type = useParams().type;
@@ -27,7 +28,10 @@ export const ReportsFile = () => {
             items = await GetAllDoctorPatientReport(ids,userId);
         } else if(type === "lab") {
             items = await GetReportByLabNPatId(ids,userId);
+        } else if(type === "radiologist") {
+            items = await getReportByPatAndRad(ids,userId);
         }
+
         setVals(items);
     }
 

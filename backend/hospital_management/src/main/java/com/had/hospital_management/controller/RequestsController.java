@@ -50,7 +50,7 @@ public class RequestsController {
     }
 
     @GetMapping("/get_report_by_radiologist_and_patient/{rad_id}/{pat_id}")
-    public List<Long> getReportByRadiologistAndPatient(@PathVariable("rad_id") Long rad_id,@PathVariable("pat_id") Long pat_id) {
+    public List<Report> getReportByRadiologistAndPatient(@PathVariable("rad_id") Long rad_id,@PathVariable("pat_id") Long pat_id) {
         return requestsService.getReportByRadiologistAndPatient(rad_id, pat_id);
     }
 

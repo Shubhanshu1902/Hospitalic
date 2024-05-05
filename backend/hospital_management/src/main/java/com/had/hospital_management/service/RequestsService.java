@@ -2,17 +2,22 @@ package com.had.hospital_management.service;
 
 import com.had.hospital_management.model.Report;
 import com.had.hospital_management.model.Requests;
+import com.had.hospital_management.repository.ReportRepository;
 import com.had.hospital_management.repository.RequestsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class RequestsService {
     @Autowired
     private RequestsRepository requestsRepository;
+
+    @Autowired
+    private ReportRepository reportRepository;
 
     // Doc
     public Requests save(Requests Requests)
@@ -45,8 +50,14 @@ public class RequestsService {
         return requestsRepository.getPatientIdByRadiologistId(id);
     }
 
-    public List<Long> getReportByRadiologistAndPatient(Long rad_id, Long pat_id) {
-        return requestsRepository.getReportByRadiologistAndPatient(rad_id, pat_id);
+    public List<Report> getReportByRadiologistAndPatient(Long rad_id, Long pat_id) {
+        List<Report> ls = new ArrayList<Report>();
+        List<Long> l = requestsRepository.getReportByRadiologistAndPatient(rad_id, pat_id);
+        for(int i = 0; i < l.size(); i++) {
+            Report r = reportRepository.findById(l.get(i)).orElse(null);
+            ls.add(r);
+        }
+        return ls;
     }
 
     // pat

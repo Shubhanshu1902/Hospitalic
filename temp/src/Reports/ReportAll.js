@@ -8,6 +8,7 @@ import {
 import { retrieveUserId } from "../connections/CookieJWT";
 import { GetUser } from "../connections/User";
 import { FolderIcon } from "./FolderIcon";
+import { getPatientIdByRadiologistId } from "../connections/Request";
 
 export const ReportAll = () => {
     const type = useParams().type;
@@ -39,6 +40,7 @@ export const ReportAll = () => {
         } else if (type === "lab") {
             items = await GetPatientByLabId(ids);
         } else if (type === "radiologist") {
+            items = await getPatientIdByRadiologistId(ids);
         }
         setVals(items);
     }
