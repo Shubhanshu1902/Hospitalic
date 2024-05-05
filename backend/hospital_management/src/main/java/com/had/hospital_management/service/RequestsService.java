@@ -1,5 +1,6 @@
 package com.had.hospital_management.service;
 
+import com.had.hospital_management.model.Report;
 import com.had.hospital_management.model.Requests;
 import com.had.hospital_management.repository.RequestsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,10 @@ public class RequestsService {
     }
     public List<Long> getPatientIdByRadiologistId(Long id){
         return requestsRepository.getPatientIdByRadiologistId(id);
+    }
+
+    public List<Long> getReportByRadiologistAndPatient(Long rad_id, Long pat_id) {
+        return requestsRepository.getReportByRadiologistAndPatient(rad_id, pat_id);
     }
 
     // pat

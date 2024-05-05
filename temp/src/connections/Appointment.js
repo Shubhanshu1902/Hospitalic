@@ -36,7 +36,8 @@ export async function BookAppointment(
 }
 export async function AddRadiologist(
     report_id,
-    radiologist_id
+    radiologist_id,
+    pat_id
 ){
     const url = "http://localhost:8081/requests/save"
     let token = retrieveJWT();
@@ -46,6 +47,7 @@ export async function AddRadiologist(
                 method: "POST",
                 body: JSON.stringify(
                     {
+                        patient_id:pat_id,
                         report:
                             {
                                 id: report_id.toString()

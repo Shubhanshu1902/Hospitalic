@@ -13,6 +13,7 @@ import {
     faFolder,
     faGear,
     faLock,
+    faPaperPlane,
     faPhone,
     faReceipt,
     faRightFromBracket,
@@ -26,10 +27,10 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { Dashboard } from "./dashboard/Dashboard";
 import { Appointment } from "./Appointments/Appointment";
-import { Page404 } from "./Page404";
 import { Reports } from "./Reports/Reports";
 import { ReportsFile } from "./Reports/ReportsFile";
 import { ReportChat } from "./ChatScreen/ReportChat";
+import { Page404 } from "./Page404/Page404";
 
 function App() {
     library.add(
@@ -49,7 +50,8 @@ function App() {
         faRightFromBracket,
         faArrowAltCircleRight,
         faFolder,
-        faFile
+        faFile,
+        faPaperPlane
     );
 
     return (

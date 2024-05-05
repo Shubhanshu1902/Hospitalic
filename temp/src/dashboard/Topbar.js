@@ -37,17 +37,20 @@ export const Topbar = () => {
     const userId = retrieveUserId();
     const [temp, setTemp] = useState([]);
     const [change, setChange] = useState(false);
-    const [username,setUsername] = useState("")
-
+    const [username, setUsername] = useState("");
 
     async function getUserName() {
         // console.log("test1",userId)
-        const user = await GetUser(userId);
-        setUsername(`${user.first_name} ${user.last_name}`)
+        try {
+            const user = await GetUser(userId);
+            setUsername(`${user.first_name} ${user.last_name}`);
+        } catch (error) {
+            console.log(error)
+        }
     }
     // console.log("test2",userId)
-    getUserName()
-    
+    getUserName();
+
     const type = useParams().type;
 
     return (

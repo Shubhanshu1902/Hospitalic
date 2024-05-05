@@ -72,12 +72,21 @@ public class SecurityConfig {
                         .requestMatchers("/report/get_by_id/**").permitAll()
 
                         //requests
-                        .requestMatchers("/requests/get_all_by_report_id/**").hasAnyAuthority("PATIENT","DOCTOR")
-                        .requestMatchers("/requests/approve_request_by_id/**").hasAuthority("PATIENT")
                         .requestMatchers("/requests/save").hasAuthority("DOCTOR")
+                        .requestMatchers("/requests/get_by_id/**").hasAnyAuthority("DOCTOR","PATIENT","RADIOLOGIST")
                         .requestMatchers("/requests/get_report_id_by_radiologist_id/**").hasAuthority("RADIOLOGIST")
                         .requestMatchers("/requests/get_patient_id_by_radiologist_id/**").hasAuthority("RADIOLOGIST")
+                        .requestMatchers("/requests/get_all_by_report_id/**").hasAnyAuthority("PATIENT","DOCTOR")
+                        .requestMatchers("/requests/get_report_by_radiologist_and_patient/**").hasAnyAuthority("RADIOLOGIST")
+                        .requestMatchers("/requests/approve_request_by_id/**").hasAuthority("PATIENT")
                         .requestMatchers("/requests/add_comment/**").hasAuthority("RADIOLOGIST")
+
+                        // chats
+                        .requestMatchers("/chat/save").hasAnyAuthority("RADIOLOGIST", "DOCTOR")
+                        .requestMatchers("/chat/find_all").hasAnyAuthority("RADIOLOGIST", "DOCTOR")
+                        .requestMatchers("/find_filter/**").hasAnyAuthority("RADIOLOGIST", "DOCTOR")
+
+
                         .anyRequest().authenticated());
 
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
