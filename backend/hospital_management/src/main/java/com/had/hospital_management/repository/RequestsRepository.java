@@ -1,6 +1,7 @@
 package com.had.hospital_management.repository;
 
 import com.had.hospital_management.model.Appointment;
+import com.had.hospital_management.model.Report;
 import com.had.hospital_management.model.Requests;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -14,9 +15,14 @@ import java.util.List;
 public interface RequestsRepository extends JpaRepository<Requests , Long> {
     @Query(
             nativeQuery = true,
-            value = "select * from requests where report_id = :report_id"
+            value = "select * from requests where report_id = :report_id and status=1"
     )
-    List<Requests> findRequestsByReportId(@Param("report_id") Long report_id);
+    List<Requests> findAcceptedRequestsByReportId(@Param("report_id") Long report_id);
+    @Query(
+            nativeQuery = true,
+            value = "select * from requests where patient_id = :pat_id and status = 0"
+    )
+    List<Requests> findNotAcceptedRequestsByPatientId(@Param("pat_id") Long pat_id);
     @Modifying
     @Query(
             nativeQuery = true,
@@ -25,7 +31,26 @@ public interface RequestsRepository extends JpaRepository<Requests , Long> {
     void approveRequestById(@Param("request_id") Long request_id);
     @Query(
             nativeQuery = true,
-            value = "select * from requests where radiologist_id = :radiologist_id and status =1"
+            value = "select report_id from requests where radiologist_id = :radiologist_id and status =1"
     )
     List<Long> getReportIdByRadiologistId(@Param("radiologist_id") Long radiologist_id);
+    @Query(
+            nativeQuery = true,
+            value = "select patient_id from requests where radiologist_id = :radiologist_id and status =1"
+    )
+    List<Long> getPatientIdByRadiologistId(@Param("radiologist_id") Long radiologist_id);
+    @Modifying
+    @Query(
+            nativeQuery = true,
+            value = "update requests set comments= CONCAT(comments,:new_com) where id = :req_id"
+    )
+    void addComment(@Param("req_id")Long req_id,@Param("new_com") String new_com);
+
+    @Query(
+            nativeQuery = true,
+            value = "select report_id from requests where radiologist_id = :radiologist_id and patient_id = :patient_id and status =1"
+    )
+    List<Long> getReportByRadiologistAndPatient(@Param("radiologist_id") Long radiologist_id, @Param("patient_id") Long patient_id);
+
+
 }

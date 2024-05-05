@@ -43,6 +43,31 @@ public class AppointmentController {
     public List<Appointment> getAppointmentByPatientId(@PathVariable("id")Long id){
         return appointmentService.getAppointmentByPatientId(id);
     }
+    @GetMapping("get_appointment_by_lab_id/{id}")
+    public List<Appointment> getAppointmentByLabId(@PathVariable("id")Long id){
+        return appointmentService.getAppointmentByLabId(id);
+    }
+    @PostMapping("assign_lab/{lab_id}/{id}")
+    public void assignLab(@PathVariable("lab_id") Long lab_id,@PathVariable("id") Long id){
+        appointmentService.assignLab(lab_id , id);
+    }
+    @PostMapping("update_doctor_status/{id}")
+    public void updateDoctorStatus(@PathVariable("id") Long id){
+        appointmentService.updateDoctorStatus(id);
+    }
+    @PostMapping("update_lab_status/{id}")
+    public void updateLabStatus(@PathVariable("id") Long id){
+        appointmentService.updateLabStatus(id);
+    }
+    @PostMapping("add_prescription/{id}")
+    public void addPrescription(@PathVariable("id") Long id,@RequestBody String pres){
+        appointmentService.addPrescription(id,pres);
+    }
+
+    @PostMapping("add_lab_prescription/{id}")
+    public void addLabPrescription(@PathVariable("id") Long id,@RequestBody String pres){
+        appointmentService.addLabPrescription(id,pres);
+    }
     @DeleteMapping("delete_by_id/{id}")
     public ResponseEntity<?> deleteById(@PathVariable("id") Long id) {
         try {
@@ -52,6 +77,5 @@ public class AppointmentController {
             return new ResponseEntity<>("Failed to delete doctor", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
 
 }

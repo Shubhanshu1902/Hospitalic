@@ -16,10 +16,13 @@ import java.util.Date;
 @Builder
 public class Appointment {
     @jakarta.persistence.Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
     private Date date;
-
+    private Boolean doctor_done= false;
+    private Boolean lab_done= false;
+    private String prescription = "";
+    private String lab_prescription = "";
     @ManyToOne()
     @JoinColumn(
             name = "patient_id",
@@ -33,4 +36,10 @@ public class Appointment {
             referencedColumnName = "id"
     )
     private UserEntity user2;
+    @ManyToOne()
+    @JoinColumn(
+            name = "lab_id",
+            referencedColumnName = "id"
+    )
+    private UserEntity lab;
 }

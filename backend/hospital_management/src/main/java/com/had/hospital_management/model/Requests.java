@@ -13,9 +13,11 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Requests {
     @jakarta.persistence.Id
+    @GeneratedValue
     private Long id;
     private Long status;
-
+    private String comments;
+    private Long patient_id;
     @ManyToOne()
     @JoinColumn(
             name = "report_id",

@@ -1,10 +1,16 @@
 package com.had.hospital_management.security;
 
+import com.had.hospital_management.model.UserEntity;
+import com.had.hospital_management.repository.TokenRepository;
+import com.had.hospital_management.repository.UserRepository;
+import com.had.hospital_management.service.TokenService;
+import com.had.hospital_management.service.UserService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import java.security.Key;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -16,9 +22,14 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 @Component
 public class JWTGenerator {
-    //private static final KeyPair keyPair = Keys.keyPairFor(SignatureAlgorithm.RS256);
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private TokenService tokenService;
     private static final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS512);
 
     public String generateToken(Authentication authentication) {
@@ -32,10 +43,12 @@ public class JWTGenerator {
                 .collect(Collectors.toList());
 
         System.out.println(roleNames);
-
+        UserEntity newuser = userRepository.getUserByUsername(username);
+        Long userid = newuser.getId();
         String token = Jwts.builder()
                 .setSubject(username)
                 .claim("roles",roleNames)
+                .claim("userId", userid)
                 .setIssuedAt( new Date())
                 .setExpiration(expireDate)
                 .signWith(key,SignatureAlgorithm.HS512)
@@ -59,6 +72,11 @@ public class JWTGenerator {
                     .setSigningKey(key)
                     .build()
                     .parseClaimsJws(token);
+
+//            Checking token validity
+            if(!tokenService.isValid(token)) {
+                throw new AuthenticationCredentialsNotFoundException("JWT is not valid");
+            }
             return true;
         } catch (Exception ex) {
             throw new AuthenticationCredentialsNotFoundException("JWT was exprired or incorrect",ex.fillInStackTrace());

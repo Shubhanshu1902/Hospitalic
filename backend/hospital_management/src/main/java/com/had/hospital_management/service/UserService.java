@@ -23,6 +23,10 @@ public class UserService {
     public UserEntity findById(Long Id){
         return userRepository.findById(Id).orElse(null);
     }
+    public List<UserEntity> getAllDoctor(){return userRepository.getAllDoctor();}
+    public List<UserEntity> getAllRadiologist(){return userRepository.getAllRadiologist();}
+    public List<UserEntity> getAllLab(){return userRepository.getAllLab();}
+    public UserEntity getUserByUsername(String username){ return userRepository.getUserByUsername(username);}
 
     @Transactional
     public void deleteById(Long id) {

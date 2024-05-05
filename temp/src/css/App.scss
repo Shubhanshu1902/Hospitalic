@@ -1,0 +1,29 @@
+$color1 : #2F80ED;
+$color2 : #F1FAFF;
+$color3 : #000000;
+$color4 : #ffffff;
+$color5 : #BBE3FA;
+$color6 : #E0E0E0;
+$color7 : #2A72B9;
+$color8 : #F9F9F9;
+$color9: #e0e0e0;
+$color10: #828282;
+$color11: #8a8a8a;
+
+// @import "@fontsource/mukta";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+$font : 'Poppins', sans-serif;
+$font-weight : (
+    "normal" : 400,
+    "bold" : 500,
+    "regular" : 300
+);
+$font-size : (
+    "title" : 45px,
+    "normal" : 30px,
+    "regular" : 20px,
+    "type3" : 36px
+);
+
+
