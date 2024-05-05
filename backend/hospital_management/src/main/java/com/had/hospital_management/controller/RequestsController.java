@@ -44,9 +44,14 @@ public class RequestsController {
     public List<Long> getPatientIdByRadiologistId(@PathVariable("id") Long id){
         return requestsService.getPatientIdByRadiologistId(id);
     }
-    @GetMapping("/get_all_by_report_id/{id}")
-    public List<Requests> getByReportId(@PathVariable("id") Long id){
-        return requestsService.getRequestByReportId(id);
+    @GetMapping("/get_accepted_request_by_report_id/{id}")
+    public List<Requests> getAcceptedequestByReportId(@PathVariable("id") Long id){
+        System.out.println("hii");
+        return requestsService.getAcceptedRequestByReportId(id);
+    }
+    @GetMapping("/get_not_accepted_request_by_patient_id/{id}")
+    public List<Requests> getNotAcceptedequestByPatientId(@PathVariable("id") Long id){
+        return requestsService.getNotAcceptedRequestByPatientId(id);
     }
 
     @GetMapping("/get_report_by_radiologist_and_patient/{rad_id}/{pat_id}")

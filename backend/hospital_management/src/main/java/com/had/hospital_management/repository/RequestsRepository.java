@@ -15,9 +15,14 @@ import java.util.List;
 public interface RequestsRepository extends JpaRepository<Requests , Long> {
     @Query(
             nativeQuery = true,
-            value = "select * from requests where report_id = :report_id"
+            value = "select * from requests where report_id = :report_id and status=1"
     )
-    List<Requests> findRequestsByReportId(@Param("report_id") Long report_id);
+    List<Requests> findAcceptedRequestsByReportId(@Param("report_id") Long report_id);
+    @Query(
+            nativeQuery = true,
+            value = "select * from requests where patient_id = :pat_id and status = 0"
+    )
+    List<Requests> findNotAcceptedRequestsByPatientId(@Param("pat_id") Long pat_id);
     @Modifying
     @Query(
             nativeQuery = true,

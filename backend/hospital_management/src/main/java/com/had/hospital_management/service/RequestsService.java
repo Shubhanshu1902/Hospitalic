@@ -38,8 +38,11 @@ public class RequestsService {
     }
 
     // Doctor and Patient
-    public List<Requests> getRequestByReportId(Long id){
-        return requestsRepository.findRequestsByReportId(id);
+    public List<Requests> getAcceptedRequestByReportId(Long id){
+        return requestsRepository.findAcceptedRequestsByReportId(id);
+    }
+    public List<Requests> getNotAcceptedRequestByPatientId(Long id){
+        return requestsRepository.findNotAcceptedRequestsByPatientId(id);
     }
 
     // Rad
