@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import "../css/Main.scss";
 import { useNavigate, useParams } from "react-router-dom";
 import { verify } from "../connections/User";
-import { Page404 } from "../Page404";
 import { Navbar } from "../dashboard/Navbar";
 import { Topbar } from "../dashboard/Topbar";
-import { GetAllDoctorPatientReport } from "../connections/Report";
+import { GetAllDoctorPatientReport, GetReportByLabNPatId } from "../connections/Report";
 import { retrieveUserId } from "../connections/CookieJWT";
 import { FileIcon } from "./FileIcon";
+import { Page404 } from "../Page404/Page404";
 
 export const ReportsFile = () => {
     const type = useParams().type;
@@ -23,8 +23,11 @@ export const ReportsFile = () => {
         let items = [];
         if (type === "patient") {
             items = await GetAllDoctorPatientReport(userId, ids);
+        } else if(type === "doctor") {
+            items = await GetAllDoctorPatientReport(ids,userId);
+        } else if(type === "lab") {
+            items = await GetReportByLabNPatId(ids,userId);
         }
-
         setVals(items);
     }
 

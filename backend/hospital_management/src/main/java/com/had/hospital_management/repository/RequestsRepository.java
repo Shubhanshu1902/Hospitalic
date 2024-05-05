@@ -1,6 +1,7 @@
 package com.had.hospital_management.repository;
 
 import com.had.hospital_management.model.Appointment;
+import com.had.hospital_management.model.Report;
 import com.had.hospital_management.model.Requests;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -39,4 +40,12 @@ public interface RequestsRepository extends JpaRepository<Requests , Long> {
             value = "update requests set comments= CONCAT(comments,:new_com) where id = :req_id"
     )
     void addComment(@Param("req_id")Long req_id,@Param("new_com") String new_com);
+
+    @Query(
+            nativeQuery = true,
+            value = "select report_id from requests where radiologist_id = :radiologist_id and patient_id = :patient_id and status =1"
+    )
+    List<Long> getReportByRadiologistAndPatient(@Param("radiologist_id") Long radiologist_id, @Param("patient_id") Long patient_id);
+
+
 }

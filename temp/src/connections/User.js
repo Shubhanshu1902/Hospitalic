@@ -71,6 +71,8 @@ export const getRole = () => {
 
 export const verify = (type) => {
     // console.log(getRole(),type)
+    // console.log(retrieveJWT())
+    if(retrieveJWT() === null) return false
     if(type === getRole()) return true
     else return false
 }

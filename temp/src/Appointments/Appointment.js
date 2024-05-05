@@ -6,7 +6,7 @@ import { AppList } from "./AppList";
 import { BookApp } from "./BookApp";
 import { getRole, verify } from "../connections/User";
 import { useNavigate, useParams } from "react-router-dom";
-import { Page404 } from "../Page404";
+import { Page404 } from "../Page404/Page404";
 
 export const Appointment = () => {
     const type = useParams().type;
