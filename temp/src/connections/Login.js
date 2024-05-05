@@ -23,7 +23,7 @@ export async function LoginCall(email, pass) {
         .then(data => {
             jwt = data["accessToken"];
             let id = 0;
-            
+            console.log(jwt);
             login(jwt)
         })
         .catch(err => {

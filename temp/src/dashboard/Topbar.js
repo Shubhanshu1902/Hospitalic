@@ -1,8 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { retrieveUserId } from "../connections/CookieJWT";
 import { GetUser } from "../connections/User";
+import { LogoutCall } from "../connections/Logout";
 // import main_logo from "../../icons/main_icon.png";
 
 const RenderDate = () => {
@@ -38,6 +39,7 @@ export const Topbar = () => {
     const [temp, setTemp] = useState([]);
     const [change, setChange] = useState(false);
     const [username, setUsername] = useState("");
+    const navigate = useNavigate();
 
     async function getUserName() {
         // console.log("test1",userId)
@@ -50,6 +52,13 @@ export const Topbar = () => {
     }
     // console.log("test2",userId)
     getUserName();
+
+    function handleLogout() {
+        console.log("logout triggered");
+        LogoutCall();
+        localStorage.clear();
+        navigate("../");
+    }
 
     const type = useParams().type;
 
@@ -75,6 +84,7 @@ export const Topbar = () => {
                 color="#828282"
                 size="lg"
                 icon="fa-solid fa-right-from-bracket"
+                onClick={()=> handleLogout()}
             />
         </div>
     );

@@ -72,7 +72,7 @@ public class AuthController {
         return new ResponseEntity<>(new AuthResponseDTO(token), HttpStatus.OK);
     }
 
-    @GetMapping("logout")
+    @PostMapping("logout")
     public String logout(@RequestBody String tokenval){
         System.out.println("logout reached"+ tokenval);
         tokenService.logout(tokenval);

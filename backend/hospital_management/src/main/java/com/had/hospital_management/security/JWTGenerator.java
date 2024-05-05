@@ -73,10 +73,8 @@ public class JWTGenerator {
                     .build()
                     .parseClaimsJws(token);
 
-            Boolean isvalid = tokenService.isValid(token);
-            System.out.println("validity"+isvalid);
-
-            if(!isvalid) {
+//            Checking token validity
+            if(!tokenService.isValid(token)) {
                 throw new AuthenticationCredentialsNotFoundException("JWT is not valid");
             }
             return true;
