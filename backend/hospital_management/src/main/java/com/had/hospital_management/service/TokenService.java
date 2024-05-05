@@ -16,8 +16,7 @@ public class TokenService {
         Optional<Token> tokenOptional = tokenRepository.findById(tokenval);
         if (tokenOptional.isPresent()) {
             Token token = tokenOptional.get();
-            token.setStatus(false); // Set status to false
-            tokenRepository.save(token);
+            tokenRepository.delete(token);
         } else {
             System.out.println("error in changing token val / token does not exist");
         }
@@ -27,16 +26,9 @@ public class TokenService {
         Optional<Token> tokenOptional = tokenRepository.findById(tokenval);
         if (tokenOptional.isPresent()) {
             Token token = tokenOptional.get();
-            Boolean status = token.getStatus();
 
-            if(status){
-                System.out.println("valid token");
-                return true;
-            }
-            else{
-                System.out.println("invalid token");
-                return false;
-            }
+            System.out.println("valid token");
+            return true;
         } else {
             System.out.println("invalid token");
             return false;

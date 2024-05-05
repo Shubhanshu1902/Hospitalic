@@ -52,7 +52,6 @@ public class AuthController {
     private void saveToken(String token){
         Token newToken = new Token();
         newToken.setValue(token);
-        newToken.setStatus(true);
 
         System.out.println(tokenRepository.save(newToken));
     }

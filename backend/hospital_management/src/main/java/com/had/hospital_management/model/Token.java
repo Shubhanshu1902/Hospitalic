@@ -16,5 +16,4 @@ import lombok.NoArgsConstructor;
 public class Token {
     @Id
     private String value;
-    private Boolean status;
 }
