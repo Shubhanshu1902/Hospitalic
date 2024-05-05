@@ -30,6 +30,7 @@ import { Page404 } from "./Page404";
 import { Reports } from "./Reports/Reports";
 import { ReportsFile } from "./Reports/ReportsFile";
 import { ReportChat } from "./ChatScreen/ReportChat";
+import PatHis from "./DoneAppointments/PatHis";
 
 function App() {
     library.add(
@@ -64,6 +65,7 @@ function App() {
                     <Route path="/:type/reports" element={<Reports />} />
                     <Route path="/:type/reports/:userid" element={<ReportsFile />} />
                     <Route path="/:type/report/:reportid" element={<ReportChat />}/>
+                    <Route path="/:type/doneappointments" element={<PatHis />}/>
 
                     <Route path="*" element={<Page404 />} />
                 </Routes>
