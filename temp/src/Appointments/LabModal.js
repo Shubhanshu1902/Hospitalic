@@ -18,7 +18,7 @@ const myBucket = new AWS.S3({
 });
 
 export const LabModal = props => {
-    const [name,setName] = useState("")
+    const [name, setName] = useState("");
 
     const [progress, setProgress] = useState(0);
     const [selectedFile, setSelectedFile] = useState(null);
@@ -51,30 +51,82 @@ export const LabModal = props => {
                 setProgress(Math.round((evt.loaded / evt.total) * 100));
             })
             .send(err => {
-                if (err) {//console.log(err); 
-                    return}
+                if (err) {
+                    //console.log(err);
+                    return;
+                }
             });
-        
-        
-        const a = getURLfromBUCKET(myBucket,"" + props.id + ".dcm")
+
+        params = {
+            ACL: "public-read",
+            Body: "{}",
+            Bucket: S3_BUCKET,
+            Key: "" + props.id + ".json",
+        };
+
+        myBucket
+            .putObject(params)
+            .on("httpUploadProgress", evt => {
+                setProgress(Math.round((evt.loaded / evt.total) * 100));
+            })
+            .send(err => {
+                if (err) {
+                    //console.log(err);
+                    return;
+                }
+            });
+
+        const a = getURLfromBUCKET(myBucket, "" + props.id + ".dcm");
         updateLabStatus(props.id);
         // console.log(a,props.pid, props.did);
-        saveReport(name,a,"",""+props.did, ""+props.pid, ""+retrieveUserId());
-        props.setTrigger(false)
+        saveReport(
+            name,
+            a,
+            "",
+            "" + props.did,
+            "" + props.pid,
+            "" + retrieveUserId()
+        );
+        props.setTrigger(false);
     };
 
-  return props.trigger ? (
-
-    <div style={{display:"flex", flexDirection:"column", height:"20vh", padding:"10px", gap:"20px", fontSize:"larger", justifyContent:"space-around"}}>
-      <div>UPLOAD REPORT</div>
-      <input type="text" onChange={(event) => setName(event.target.value)} value={name} />
-      <input type="file" onChange={handleFileInput} style={{fontSize:"large"}} />
-      <button style={{width:"50%", height:"15%", alignSelf:"center", fontSize:"large"}} onClick={() => uploadFile(selectedFile)}> 
-        {" "} Upload to S3
-      </button>
-    </div>
-
-  ) : (
-    " "
-  );
-}
+    return props.trigger ? (
+        <div
+            style={{
+                display: "flex",
+                flexDirection: "column",
+                height: "20vh",
+                padding: "10px",
+                gap: "20px",
+                fontSize: "larger",
+                justifyContent: "space-around",
+            }}
+        >
+            <div>UPLOAD REPORT</div>
+            <input
+                type="text"
+                onChange={event => setName(event.target.value)}
+                value={name}
+            />
+            <input
+                type="file"
+                onChange={handleFileInput}
+                style={{ fontSize: "large" }}
+            />
+            <button
+                style={{
+                    width: "50%",
+                    height: "15%",
+                    alignSelf: "center",
+                    fontSize: "large",
+                }}
+                onClick={() => uploadFile(selectedFile)}
+            >
+                {" "}
+                Upload to S3
+            </button>
+        </div>
+    ) : (
+        " "
+    );
+};
