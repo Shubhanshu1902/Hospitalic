@@ -82,7 +82,7 @@ public class ReportController {
         }
     }
     @PostMapping("/add_comment/{id}")
-    @PreAuthorize("reportService.getById(#id).getUser1().getUsername() == authentication.principal.username")
+    @PreAuthorize("@userService.hasreportAuthority(authentication.principal.username,#id)")
     public void addComment(@PathVariable("id")Long id,@RequestBody String new_com){
         reportService.addComment(id,new_com);}
 }

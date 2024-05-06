@@ -13,6 +13,8 @@ import java.util.List;
 public class UserService {
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private ReportService reportService;
 
     public UserEntity save(UserEntity user) {
         return userRepository.save(user);
@@ -34,13 +36,17 @@ public class UserService {
     }
     public Long getUserIdByUsername(String username) { return userRepository.getUserIdByUsername(username);}
 
-    public boolean hasAuthoritySaveApp(String username, Appointment appointment)
+    public boolean hasAuthorityUsingUserId(String username, Long id)
     {
 //        System.out.println(findById(appointment.getUser1().getId()).getUsername() + ' ' + username);
-        String s1 = findById(appointment.getUser1().getId()).getUsername();
+        String s1 = findById(id).getUsername();
         System.out.println(s1 + " "+ username);
         System.out.println( s1.equals(username));
         return  s1.equals(username);
+    }
+    public boolean hasreportAuthority(String username,Long id){
+       String s1 =  reportService.getById(id).getUser1().getUsername();
+       return s1.equals(username);
     }
 
 

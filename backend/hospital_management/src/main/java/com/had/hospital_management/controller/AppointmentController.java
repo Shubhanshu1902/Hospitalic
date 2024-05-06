@@ -20,7 +20,7 @@ public class AppointmentController {
     private UserService userService;
 
     @PostMapping("/save")
-    @PreAuthorize("(@userService.hasAuthoritySaveApp(authentication.principal.username, #appointment))")
+    @PreAuthorize("(@userService.hasAuthorityUsingUserId(authentication.principal.username, #appointment.user1.id))")
     public Appointment save(@RequestBody Appointment appointment) {
         return appointmentService.save(appointment);
     }
