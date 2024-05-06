@@ -69,6 +69,10 @@ public class ReportController {
     public List<Report> getReportByLabAndPatientId(@PathVariable("lab_id") Long lab_id,@PathVariable("pat_id") Long pat_id){
         return reportService.getReportByLabAndPatientId(lab_id,pat_id);
     }
+
+    // Doctor - Report Id
+    // Patient
+    // Radiologist who have access (reportId, status)
     @GetMapping("/get_by_id/{id}")
     public ResponseEntity<Report> getById(@PathVariable("id") Long id)
     {

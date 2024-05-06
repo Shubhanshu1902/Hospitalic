@@ -19,8 +19,8 @@ public class RequestsController {
     private RequestsService requestsService;
     @Autowired
     private UserService userService;
-    @PostMapping("/save")
 
+    @PostMapping("/save")
     public Requests save(@RequestBody Requests requests){
         return requestsService.save(requests);
     }
@@ -51,10 +51,15 @@ public class RequestsController {
     public List<Long> getPatientIdByRadiologistId(@PathVariable("id") Long id){
         return requestsService.getPatientIdByRadiologistId(id);
     }
+
+    // Doctor - Report Id
+    // Patient
+    // Radiologist who have access (reportId, status)
     @GetMapping("/get_accepted_request_by_report_id/{id}")
     public List<Requests> getAcceptedequestByReportId(@PathVariable("id") Long id){
         return requestsService.getAcceptedRequestByReportId(id);
     }
+
     @GetMapping("/get_not_accepted_request_by_patient_id/{id}")
     @PreAuthorize("@userService.hasAuthorityUsingUserId(authentication.principal.username,#id)")
     public List<Requests> getNotAcceptedequestByPatientId(@PathVariable("id") Long id){
@@ -71,11 +76,13 @@ public class RequestsController {
     public void approveRequestById(@PathVariable("id")Long id){
         requestsService.approveRequestById(id);
     }
+    
     @PostMapping("/add_comment/{rep_id}/{rad_id}")
     @PreAuthorize("@userService.hasAuthorityUsingUserId(authentication.principal.username,#rad_id)")
     public void addComment(@PathVariable("rep_id")Long rep_id,@PathVariable("rad_id")Long rad_id,@RequestBody String new_com){
         requestsService.addComment(rep_id,rad_id,new_com);}
 
+    // Delete when status 0
     @DeleteMapping("/delete_by_id/{id}")
     public ResponseEntity<?> deleteById(@PathVariable("id") Long id) {
         try {
