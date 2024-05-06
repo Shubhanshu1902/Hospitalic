@@ -1,17 +1,17 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-// import { approveRequestByRequestId, deleteRequestByRequestId } from "../../connections/Request";
+import { approveRequestByRequestId, deleteRequestByRequestId } from "../../connections/Request";
 
 export const RequestCard = (props) => {
 
     function handleAcceptRequest(id) {
         console.log("accept request triggered")
-        // approveRequestByRequestId(id)
+        approveRequestByRequestId(id)
     }
 
     function handleCancelRequest(id) {
         console.log("cancel request triggered")
-        // deleteRequestByRequestId(id)
+        deleteRequestByRequestId(id)
     }
 
     return (

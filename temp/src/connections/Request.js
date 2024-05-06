@@ -163,7 +163,59 @@ export async function getReportByPatAndRad(rad_id,pat_id) {
     }
 }
 
+export async function approveRequestByRequestId(request_id) {
+    const url = `http://localhost:8081/requests/approve_request_by_id/${request_id}`;
+    let ret = false;
+    let token = retrieveJWT();
+    try {
+        await fetch(url,
+            {
+                method: "POST",
+                body:"",
+                headers: {
+                    "Content-type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+            .then(response => {
+                return (response.json());
+            })
+            .then(data => {
+                ret = data;
+            })
+        return ret;
+    }
+    catch(error){
+        console.error(error);
+    }
+}
 
+export async function deleteRequestByRequestId(request_id) {
+    const url = `http://localhost:8081/requests/delete_by_id/${request_id}`;
+    let ret = false;
+    let token = retrieveJWT();
+    try {
+        await fetch(url,
+            {
+                method: "DELETE",
+                body:"",
+                headers: {
+                    "Content-type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+            .then(response => {
+                return (response.json());
+            })
+            .then(data => {
+                ret = data;
+            })
+        return ret;
+    }
+    catch(error){
+        console.error(error);
+    }
+}
 
 
 
