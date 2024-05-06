@@ -70,6 +70,7 @@ public class SecurityConfig {
                         .requestMatchers("/report/get_patient_by_lab_id/**").hasAuthority("LAB")
                         .requestMatchers("/report/get_report_by_lab_and_patient_id/**").hasAnyAuthority("PATIENT","LAB")
                         .requestMatchers("/report/get_by_id/**").permitAll()
+                        .requestMatchers("/report/add_comment/**").hasAuthority("DOCTOR")
 
                         //requests
                         .requestMatchers("/requests/save").hasAuthority("DOCTOR")

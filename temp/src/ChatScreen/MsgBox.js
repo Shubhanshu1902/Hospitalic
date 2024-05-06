@@ -48,10 +48,7 @@ export const MsgBox = props => {
 
     return (
         <div className="msgbox">
-            <div className="title">
-                <span>Discussion</span>
-            </div>
-
+            
             <div className="chat-messages">
                 {chatList.map((chat, index) => {
                     // console.log(chat);

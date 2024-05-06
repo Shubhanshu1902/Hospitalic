@@ -15,7 +15,7 @@ export const TaskModal = props => {
     var app = props.id;
 
     const assigncall = () => {
-        console.log(lab.id,app);
+        // console.log(lab.id,app);
         AssignLab(lab.id, app);
         updateDoctorStatus(app);
         AddPrescription(app, patpresc);

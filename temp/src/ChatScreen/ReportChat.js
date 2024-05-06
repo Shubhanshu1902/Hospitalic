@@ -10,6 +10,8 @@ import { BottomCont } from "./BottomCont";
 import { DicomLoader } from "./DicomLoader";
 import { MsgBox } from "./MsgBox";
 import { Page404 } from "../Page404/Page404";
+import { Comments } from "./Comments";
+import { Box } from "./Box";
 
 export const ReportChat = () => {
     const type = useParams().type;
@@ -67,7 +69,9 @@ export const ReportChat = () => {
                 <div className="chat">
                     <div className="reportCont">
                         <DicomLoader viewerProps={viewerProps} />
-                        <MsgBox controllers= {controllers} report={report} />
+                        <Box controllers= {controllers} report={report}/>
+                        {/* {type === "patient" ? <Comments /> : ""}
+                        {type === "doctor" || type === "radiologist" ? <MsgBox controllers= {controllers} report={report} /> : ""}                         */}
                     </div>
                     <BottomCont controllers={controllers} reportId={ids} />
                 </div>

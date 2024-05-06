@@ -19,16 +19,10 @@ public class Requests {
     private String comments;
     private Long patient_id;
     @ManyToOne()
-    @JoinColumn(
-            name = "report_id",
-            referencedColumnName = "id"
-    )
+    @JoinColumn(name = "report_id", referencedColumnName = "id")
     private Report report;
 
     @ManyToOne()
-    @JoinColumn(
-            name = "radiologist_id",
-            referencedColumnName = "id"
-    )
-    private UserEntity user;
+    @JoinColumn(name = "radiologist_id", referencedColumnName = "id")
+    private UserEntity user1;
 }

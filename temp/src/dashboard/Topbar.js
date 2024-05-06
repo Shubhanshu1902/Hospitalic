@@ -54,9 +54,8 @@ export const Topbar = () => {
     getUserName();
 
     function handleLogout() {
-        console.log("logout triggered");
+        // console.log("logout triggered");
         LogoutCall();
-        localStorage.clear();
         navigate("../");
     }
 

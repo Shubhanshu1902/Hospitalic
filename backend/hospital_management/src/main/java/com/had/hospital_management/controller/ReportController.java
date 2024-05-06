@@ -16,7 +16,7 @@ public class ReportController {
     private ReportService reportService;
     @PostMapping("/save")
     public Report save(@RequestBody Report reports){
-        System.out.println("HERE IN REPORT SAVE");
+        // System.out.println("HERE IN REPORT SAVE");
         return reportService.save(reports);
     }
 
@@ -68,4 +68,8 @@ public class ReportController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @PostMapping("/add_comment/{id}")
+    public void addComment(@PathVariable("id")Long id,@RequestBody String new_com){
+        reportService.addComment(id,new_com);}
 }

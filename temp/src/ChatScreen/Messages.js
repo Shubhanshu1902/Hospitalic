@@ -9,7 +9,7 @@ export const Messages = props => {
     useEffect(() => {
         let sender = [];
         async function fetchdata() {
-            console.log(props.sender_id)
+            // console.log(props.sender_id)
             sender = await GetUser(props.sender_id);
             // console.log(sender)
             setUser(sender)

@@ -1,6 +1,6 @@
 import {retrieveJWT} from "./CookieJWT";
 
-export async function AddComment(
+export async function ReqAddComment(
     id,
     new_comment
 ){
@@ -57,6 +57,84 @@ export async function GetReportIdByRadiologistId(
     }
 }
 
+export async function getPatientIdByRadiologistId(rad_id,pat_id) {
+    const url = `http://localhost:8081/requests/get_patient_id_by_radiologist_id/${rad_id}`;
+    let ret = false;
+    let token = retrieveJWT();
+    try {
+        await fetch(url,
+            {
+                method: "GET",
+                headers: {
+                    "Content-type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+            .then(response => {
+                return (response.json());
+            })
+            .then(data => {
+                ret = data;
+            })
+        return ret;
+    }
+    catch(error){
+        console.error(error);
+    }
+}
+
+export async function getAcceptedequestByReportId(report_id) {
+    const url = `http://localhost:8081/requests/get_accepted_request_by_report_id/${report_id}`;
+    let ret = false;
+    let token = retrieveJWT();
+    try {
+        await fetch(url,
+            {
+                method: "GET",
+                headers: {
+                    "Content-type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+            .then(response => {
+                return (response.json());
+            })
+            .then(data => {
+                ret = data;
+            })
+        return ret;
+    }
+    catch(error){
+        console.error(error);
+    }
+}
+
+export async function getNotAcceptedRequestByPatientId(report_id) {
+    const url = `http://localhost:8081/requests/get_accepted_request_by_report_id/${report_id}`;
+    let ret = false;
+    let token = retrieveJWT();
+    try {
+        await fetch(url,
+            {
+                method: "GET",
+                headers: {
+                    "Content-type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+            .then(response => {
+                return (response.json());
+            })
+            .then(data => {
+                ret = data;
+            })
+        return ret;
+    }
+    catch(error){
+        console.error(error);
+    }
+}
+
 export async function getReportByPatAndRad(rad_id,pat_id) {
     const url = `http://localhost:8081/requests/get_report_by_radiologist_and_patient/${rad_id}/${pat_id}`;
     let ret = false;
@@ -83,28 +161,4 @@ export async function getReportByPatAndRad(rad_id,pat_id) {
     }
 }
 
-export async function getPatientIdByRadiologistId(rad_id,pat_id) {
-    const url = `http://localhost:8081/requests/get_patient_id_by_radiologist_id/${rad_id}`;
-    let ret = false;
-    let token = retrieveJWT();
-    try {
-        await fetch(url,
-            {
-                method: "GET",
-                headers: {
-                    "Content-type": "application/json",
-                    "Authorization": `Bearer ${token}`
-                }
-            })
-            .then(response => {
-                return (response.json());
-            })
-            .then(data => {
-                ret = data;
-            })
-        return ret;
-    }
-    catch(error){
-        console.error(error);
-    }
-}
+

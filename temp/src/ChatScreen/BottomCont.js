@@ -29,7 +29,7 @@ export const BottomCont = (props) => {
                     patientId = {props.patientId}
                 ></RequestModal>
             </RequestPop>
-            <div className="summary">Write summary and diagnosis</div>
+            {/* <div className="summary">Write summary and diagnosis</div> */}
         </div>
     );
 };

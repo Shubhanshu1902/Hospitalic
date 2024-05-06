@@ -69,4 +69,8 @@ public class ReportService {
         reportRepository.delete(reports);
     }
 
+    @Transactional
+    public void addComment(Long id,String new_com){
+        reportRepository.addComment(id,new_com);}
+
 }

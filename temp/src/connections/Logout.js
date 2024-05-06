@@ -4,7 +4,6 @@ export async function LogoutCall()
 {
     const url = "http://localhost:8081/api/auth/logout";
     let token = retrieveJWT();
-    console.log("In logout call");
 
     const response = await fetch(url, {
         method: "POST",
@@ -15,6 +14,7 @@ export async function LogoutCall()
         body: token,
     });
 
+    localStorage.clear();
     if (!response.ok) {
         throw new Error(`logout failed: ${response.statusText}`);
     }
