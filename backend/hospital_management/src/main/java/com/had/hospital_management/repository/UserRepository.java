@@ -31,4 +31,10 @@ public interface UserRepository extends JpaRepository<UserEntity,Long> {
             value = "select * from users where username = :username"
     )
     UserEntity getUserByUsername(@Param("username") String username);
+
+    @Query(
+            nativeQuery = true,
+            value = "select id from users where username = :username"
+    )
+    Long getUserIdByUsername(@Param("username") String username);
 }

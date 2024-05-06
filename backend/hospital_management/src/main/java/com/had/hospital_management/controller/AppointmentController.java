@@ -20,9 +20,8 @@ public class AppointmentController {
     private UserService userService;
 
     @PostMapping("/save")
-    @PreAuthorize("#appointment.getUser1().getUsername() == authentication.principal.username")
+    @PreAuthorize("(@userService.hasChatAuthority(authentication.principal.username, #appointment.user1.id))")
     public Appointment save(@RequestBody Appointment appointment) {
-        System.out.println(appointment);
         return appointmentService.save(appointment);
     }
 
@@ -42,43 +41,43 @@ public class AppointmentController {
         }
     }
     @GetMapping("get_appointment_by_doctor_id/{id}")
-    @PreAuthorize("userService.findById(#id).getUsername() == authentication.principal.username")
+    @PreAuthorize("(@userService.hasAuthorityUsingUserId(authentication.principal.username, #id))")
     public List<Appointment> getAppointmentByDoctorId(@PathVariable("id")Long id){
         return appointmentService.getAppointmentByDoctorId(id);
     }
     @GetMapping("get_appointment_by_patient_id/{id}")
-    @PreAuthorize("userService.findById(#id).getUsername() == authentication.principal.username")
+    @PreAuthorize("(@userService.hasAuthorityUsingUserId(authentication.principal.username, #id))")
     public List<Appointment> getAppointmentByPatientId(@PathVariable("id")Long id){
         return appointmentService.getAppointmentByPatientId(id);
     }
     @GetMapping("get_appointment_by_lab_id/{id}")
-    @PreAuthorize("userService.findById(#id).getUsername() == authentication.principal.username")
+    @PreAuthorize("(@userService.hasAuthorityUsingUserId(authentication.principal.username, #id))")
     public List<Appointment> getAppointmentByLabId(@PathVariable("id")Long id){
         return appointmentService.getAppointmentByLabId(id);
     }
     @PostMapping("assign_lab/{lab_id}/{id}")
-    @PreAuthorize("appointmentService.getById(#id).getUser2().getUsername() == authentication.principal.username")
+    @PreAuthorize("(@userService.hasAuthorityUsingAppIdDoc(authentication.principal.username, #id))")
     public void assignLab(@PathVariable("lab_id") Long lab_id,@PathVariable("id") Long id){
         appointmentService.assignLab(lab_id , id);
     }
     @PostMapping("update_doctor_status/{id}")
-    @PreAuthorize("appointmentService.getById(#id).getUser2().getUsername() == authentication.principal.username")
+    @PreAuthorize("(@userService.hasAuthorityUsingAppIdDoc(authentication.principal.username, #id))")
     public void updateDoctorStatus(@PathVariable("id") Long id){
         appointmentService.updateDoctorStatus(id);
     }
     @PostMapping("update_lab_status/{id}")
-    @PreAuthorize("appointmentService.getById(#id).getLab().getUsername() == authentication.principal.username")
+    @PreAuthorize("(@userService.hasAuthorityUsingAppIdLab(authentication.principal.username, #id))")
     public void updateLabStatus(@PathVariable("id") Long id){
         appointmentService.updateLabStatus(id);
     }
     @PostMapping("add_prescription/{id}")
-    @PreAuthorize("appointmentService.getById(#id).getUser2().getUsername() == authentication.principal.username")
+    @PreAuthorize("(@userService.hasAuthorityUsingAppIdDoc(authentication.principal.username, #id))")
     public void addPrescription(@PathVariable("id") Long id,@RequestBody String pres){
         appointmentService.addPrescription(id,pres);
     }
 
     @PostMapping("add_lab_prescription/{id}")
-    @PreAuthorize("appointmentService.getById(#id).getLab().getUsername() == authentication.principal.username")
+    @PreAuthorize("(@userService.hasAuthorityUsingAppIdDoc(authentication.principal.username, #id))")
     public void addLabPrescription(@PathVariable("id") Long id,@RequestBody String pres){
         appointmentService.addLabPrescription(id,pres);
     }
