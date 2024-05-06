@@ -110,8 +110,8 @@ export async function getAcceptedequestByReportId(report_id) {
     }
 }
 
-export async function getNotAcceptedRequestByPatientId(report_id) {
-    const url = `http://localhost:8081/requests/get_accepted_request_by_report_id/${report_id}`;
+export async function getNotAcceptedRequestByPatientId(patient_id) {
+    const url = `http://localhost:8081/requests/get_not_accepted_request_by_patient_id/${patient_id}`;
     let ret = false;
     let token = retrieveJWT();
     try {
@@ -135,6 +135,7 @@ export async function getNotAcceptedRequestByPatientId(report_id) {
         console.error(error);
     }
 }
+
 
 export async function getReportByPatAndRad(rad_id,pat_id) {
     const url = `http://localhost:8081/requests/get_report_by_radiologist_and_patient/${rad_id}/${pat_id}`;
@@ -161,5 +162,8 @@ export async function getReportByPatAndRad(rad_id,pat_id) {
         console.error(error);
     }
 }
+
+
+
 
 
