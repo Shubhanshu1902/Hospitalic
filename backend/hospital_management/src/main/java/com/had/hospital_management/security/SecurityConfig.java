@@ -77,7 +77,7 @@ public class SecurityConfig {
                         .requestMatchers("/requests/get_by_id/**").hasAnyAuthority("DOCTOR","PATIENT","RADIOLOGIST")
                         .requestMatchers("/requests/get_report_id_by_radiologist_id/**").hasAuthority("RADIOLOGIST")
                         .requestMatchers("/requests/get_patient_id_by_radiologist_id/**").hasAuthority("RADIOLOGIST")
-                        .requestMatchers("/requests/get_accepted_request_by_report_id/**").hasAnyAuthority("PATIENT","DOCTOR")
+                        .requestMatchers("/requests/get_accepted_request_by_report_id/**").hasAnyAuthority("PATIENT","DOCTOR","RADIOLOGIST")
                         .requestMatchers("/requests/get_report_by_radiologist_and_patient/**").hasAnyAuthority("RADIOLOGIST")
                         .requestMatchers("/requests/approve_request_by_id/**").hasAuthority("PATIENT")
                         .requestMatchers("/requests/add_comment/**").hasAuthority("RADIOLOGIST")

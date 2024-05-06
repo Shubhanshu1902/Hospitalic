@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { retrieveUserId } from "../connections/CookieJWT";
 import { useParams } from "react-router-dom";
 import { GetReportById, RepAddComment } from "../connections/Report";
-import { getAcceptedequestByReportId } from "../connections/Request";
+import { getAcceptedequestByReportId, ReqAddComment } from "../connections/Request";
 import hasbulla from "../icons/Untitled.jpeg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // Get all not accpted requests by pat_id
 export const Comments = () => {
     const ids = retrieveUserId();
+    const type = useParams().type
     const reportId = useParams().reportid;
     const [data, setData] = useState([]);
 
@@ -19,7 +20,7 @@ export const Comments = () => {
     useEffect(() => {
         async function fetchCommentFromReport() {
             let items = await GetReportById(reportId);
-            // console.log("items", items);
+            console.log("items", items);
             setData(items);
         }
 
@@ -28,10 +29,9 @@ export const Comments = () => {
     }, []);
 
     useEffect(() => {
-        let items = [];
         async function fetchCommentsFromRequest() {
-            items = await getAcceptedequestByReportId(reportId);
-            // console.log(items);
+            let items = await getAcceptedequestByReportId(reportId);
+            console.log(items);
             // setData(items);
             for (let i = 0; i < items.length; i++) {
                 setData(items[i]);
@@ -42,12 +42,13 @@ export const Comments = () => {
     }, []);
 
     useEffect(() => {
-        if (data.length != 0 && data.comment !== undefined) {
+        // console.log(data.comments)
+        if (data.length != 0 && data.comments !== null) {
             setComments(comments => [
                 ...comments,
                 {
                     name: `${data.user1.first_name} ${data.user1.last_name}`,
-                    comment: `${data.comment}`,
+                    comment: `${data.comments}`,
                 },
             ]);
         }
@@ -56,7 +57,10 @@ export const Comments = () => {
     const handleKeyDown = event => {
         if (event.key === "Enter" && cmnt.trim()) {
             // console.log("ENTERED")
-            RepAddComment(reportId, cmnt);
+            if(type === "doctor")
+                RepAddComment(reportId, cmnt);
+
+            else if(type === "radiologist") ReqAddComment(reportId,cmnt);
             setCmnt("");
         }
     };
