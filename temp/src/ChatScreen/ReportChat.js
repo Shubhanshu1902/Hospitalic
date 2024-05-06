@@ -42,7 +42,6 @@ export const ReportChat = () => {
         primaryDrag: "pan", // The Dicom Image is moved by the left mouse drag.
     });
 
-
     const controllers = {
         pan: () => {
             setInteraction(prev => ({ ...prev, primaryDrag: "pan" }));
@@ -69,9 +68,11 @@ export const ReportChat = () => {
                 <div className="chat">
                     <div className="reportCont">
                         <DicomLoader viewerProps={viewerProps} />
-                        <Box controllers= {controllers} report={report}/>
-                        {/* {type === "patient" ? <Comments /> : ""}
-                        {type === "doctor" || type === "radiologist" ? <MsgBox controllers= {controllers} report={report} /> : ""}                         */}
+                        {type != "lab" ? (
+                            <Box controllers={controllers} report={report} />
+                        ) : (
+                            ""
+                        )}
                     </div>
                     <BottomCont controllers={controllers} reportId={ids} />
                 </div>

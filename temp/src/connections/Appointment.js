@@ -39,6 +39,7 @@ export async function AddRadiologist(
     radiologist_id,
     pat_id
 ){
+    // console.log(radiologist_id)
     const url = "http://localhost:8081/requests/save"
     let token = retrieveJWT();
     try {
@@ -48,13 +49,14 @@ export async function AddRadiologist(
                 body: JSON.stringify(
                     {
                         patient_id:pat_id,
+                        comments:"",
                         report:
                             {
-                                id: report_id.toString()
+                                id: report_id
                             },
-                        user:
+                        user1:
                             {
-                                id: radiologist_id.toString()
+                                id: radiologist_id
                             }
 
 

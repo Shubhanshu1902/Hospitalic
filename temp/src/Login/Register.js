@@ -1,11 +1,15 @@
 import React, { useState } from "react";
+import "../css/Login.scss";
 import main_logo from "../icons/main_icon.png";
 import { LoginOptions } from "./LoginOptions";
 // import {DatePicker} from '@mui/x-date-pickers/DatePicker'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { RegisterCall } from "../connections/Register";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
+import OtpPop from './OtpPop';
+import { SendEmail } from "./SendEmail";
+import moment, { fn } from "moment";
 
 export const Register = () => {
     const login_types = ["Patient", "Doctor", "Lab", "Radiologist"];
@@ -16,24 +20,20 @@ export const Register = () => {
     const [email, setEmail] = useState("");
     const [Address, setAddress] = useState("");
     const [Password, setPassword] = useState("");
-    let navigate = useNavigate()
+    let navigate = useNavigate();
+    const [x, setButtonPopup] = useState(false);
+    const [otp,setOtp] = useState(0);
 
-    const register = () => {
-        RegisterCall(
-        email,
-        Password,
-        fname,
-        lname,
-        gender,
-        startDate,
-        Address,
-        1
-        )
-        
-        let path = "/"
-        navigate(path)
-    };
+    // console.log(moment(startDate).format("YYYY-MM-DD"))
+    // console.log(`${startDate.getDate()/$}`)
 
+
+    function registerButtonClick(){
+        setButtonPopup(true);
+        setOtp(SendEmail(email,fname));
+    }
+
+    // console.log(gender)
     return (
         <div className="Login">
             <div className="options">
@@ -92,6 +92,7 @@ export const Register = () => {
                     <div className="gender">
                         Date Of Birth
                         <DatePicker
+                            className="try2"
                             selected={startDate}
                             onChange={date => setStartDate(date)}
                         />
@@ -111,9 +112,11 @@ export const Register = () => {
                     <input placeholder="Password" />
                 </div>
 
-                <div className="register" onClick={register}>
+                <button className="register" onClick={() => registerButtonClick()}>
                     Register
-                </div>
+                </button>
+                <OtpPop trigger={x} setTrigger={setButtonPopup} email={email} password={Password} gender={gender} startDate={startDate} fname={fname} lname={lname} address={Address} otp={otp}>
+                </OtpPop>
             </div>
         </div>
     );

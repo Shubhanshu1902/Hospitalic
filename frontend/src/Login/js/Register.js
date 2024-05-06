@@ -102,7 +102,7 @@ export const Register = () => {
                     onChange={a => setPassword(a.target.value)}
                 >
                     Password
-                    <input placeholder="Password" />
+                    <input placeholder="Password" type="password"/>
                 </div>
 
                 <button className="register" onClick={() => registerButtonClick()}>

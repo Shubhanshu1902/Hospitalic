@@ -30,8 +30,8 @@ public interface RequestsRepository extends JpaRepository<Requests, Long> {
     List<Long> getPatientIdByRadiologistId(@Param("radiologist_id") Long radiologist_id);
 
     @Modifying
-    @Query(nativeQuery = true, value = "update requests set comments= CONCAT(comments,:new_com) where id = :req_id")
-    void addComment(@Param("req_id") Long req_id, @Param("new_com") String new_com);
+    @Query(nativeQuery = true, value = "update requests set comments= CONCAT(comments,:new_com) where radiologist_id = :rad_id and report_id=:rep_id and status=1")
+    void addComment(@Param("rep_id") Long rep_id,@Param("rad_id") Long rad_id, @Param("new_com") String new_com);
 
     @Query(nativeQuery = true, value = "select report_id from requests where radiologist_id = :radiologist_id and patient_id = :patient_id and status =1")
     List<Long> getReportByRadiologistAndPatient(@Param("radiologist_id") Long radiologist_id,

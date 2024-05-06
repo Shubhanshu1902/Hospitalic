@@ -1,10 +1,11 @@
 import {retrieveJWT} from "./CookieJWT";
 
 export async function ReqAddComment(
-    id,
+    rep_id,
+    rad_id,
     new_comment
 ){
-    const url = "http://localhost:8081/requests/add_comment/" + id;
+    const url = `http://localhost:8081/requests/add_comment/${rep_id}/${rad_id}`;
     let ret;
     let token = retrieveJWT();
     try {

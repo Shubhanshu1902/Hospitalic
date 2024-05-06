@@ -20,7 +20,11 @@ export const MsgBox = props => {
                 console.error("Error fetching chat entities:", error);
             }
         };
-        const intervalId = setInterval(fetchData, 5000); // Fetch messages every 5 seconds
+
+        fetchData()
+        const intervalId = setInterval(() => {
+            fetchData();
+        }, 5000); // Fetch messages every 5 seconds
 
         return () => clearInterval(intervalId); // Cleanup function to clear interval on component unmount
     }, [reportId]); // Dependency array ensures effect runs when reportId changes
@@ -48,8 +52,10 @@ export const MsgBox = props => {
 
     return (
         <div className="msgbox">
-            
-            <div className="chat-messages">
+            <div className="title">
+                <span>Discussion</span>
+            </div>
+            <div className="all-msg">
                 {chatList.map((chat, index) => {
                     // console.log(chat);
                     return (

@@ -10,16 +10,18 @@ export async function RegisterCall(
 ) {
     const url = "http://localhost:8081/api/auth/register";
     let ret;
-//    console.log("From connection file ", fname, lname);
+    console.log(fname);
+    console.log(lname)
+    //    console.log("From connection file ", fname, lname);
     await fetch(url, {
         method: "POST",
         body: JSON.stringify({
             username: uname,
             password: pass,
-            fname: fname,
-            lname: lname,
-            gender: genderr,
-//            dob: dobb,
+            first_name: fname,
+            last_name: lname,
+            gender: genderr === "male" ? "M" : "F",
+            // dob: dobb,
             address: addresss,
             role: {
                 id: "1",

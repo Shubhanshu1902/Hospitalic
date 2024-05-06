@@ -14,7 +14,7 @@ export const RequestModal = props => {
 
     const requestcall = () => {
         // console.log(selectedOption.id);
-
+        // console.log(selectedOption.id)
         AddRadiologist(props.reportId, selectedOption.id,patId);
         props.setTrigger(false);
     };
