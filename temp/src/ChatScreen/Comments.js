@@ -23,7 +23,7 @@ export const Comments = () => {
     useEffect(() => {
         async function fetchCommentFromReport() {
             let items = await GetReportById(reportId);
-            console.log("items", items);
+            // console.log("items", items);
             if (items.length != 0 && items.comments !== "") {
                 setComments(comments => [
                     ...comments,
@@ -44,7 +44,7 @@ export const Comments = () => {
     useEffect(() => {
         async function fetchCommentsFromRequest() {
             let items = await getAcceptedequestByReportId(reportId);
-            console.log(items);
+            // console.log(items);
             // setData(items);
             for (let i = 0; i < items.length; i++) {
                 setData(items[i]);
@@ -84,7 +84,7 @@ export const Comments = () => {
         setCmnt("");
     };
 
-    console.log("comments", comments);
+    // console.log("comments", comments);
     let key = 0;
 
     return (
