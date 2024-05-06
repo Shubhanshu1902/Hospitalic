@@ -62,19 +62,23 @@ public class AppointmentController {
         appointmentService.assignLab(lab_id , id);
     }
     @PostMapping("update_doctor_status/{id}")
+    @PreAuthorize("appointmentService.getById(#id).getUser2().getUsername() == authentication.principal.username")
     public void updateDoctorStatus(@PathVariable("id") Long id){
         appointmentService.updateDoctorStatus(id);
     }
     @PostMapping("update_lab_status/{id}")
+    @PreAuthorize("appointmentService.getById(#id).getLab().getUsername() == authentication.principal.username")
     public void updateLabStatus(@PathVariable("id") Long id){
         appointmentService.updateLabStatus(id);
     }
     @PostMapping("add_prescription/{id}")
+    @PreAuthorize("appointmentService.getById(#id).getUser2().getUsername() == authentication.principal.username")
     public void addPrescription(@PathVariable("id") Long id,@RequestBody String pres){
         appointmentService.addPrescription(id,pres);
     }
 
     @PostMapping("add_lab_prescription/{id}")
+    @PreAuthorize("appointmentService.getById(#id).getLab().getUsername() == authentication.principal.username")
     public void addLabPrescription(@PathVariable("id") Long id,@RequestBody String pres){
         appointmentService.addLabPrescription(id,pres);
     }
