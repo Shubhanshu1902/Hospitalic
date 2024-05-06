@@ -20,7 +20,7 @@ public class AppointmentController {
     private UserService userService;
 
     @PostMapping("/save")
-    @PreAuthorize("(@userService.hasAuthorityUsingUserId(authentication.principal.username, #appointment.user1.id))")
+    @PreAuthorize("(@userService.hasChatAuthority(authentication.principal.username, #appointment.user1.id))")
     public Appointment save(@RequestBody Appointment appointment) {
         return appointmentService.save(appointment);
     }
@@ -61,12 +61,12 @@ public class AppointmentController {
         appointmentService.assignLab(lab_id , id);
     }
     @PostMapping("update_doctor_status/{id}")
-    @PreAuthorize("(@userService.hasAuthorityUsingUserId(authentication.principal.username, #id))")
+    @PreAuthorize("(@userService.hasAuthorityUsingAppIdDoc(authentication.principal.username, #id))")
     public void updateDoctorStatus(@PathVariable("id") Long id){
         appointmentService.updateDoctorStatus(id);
     }
     @PostMapping("update_lab_status/{id}")
-    @PreAuthorize("(@userService.hasAuthorityUsingUserId(authentication.principal.username, #id))")
+    @PreAuthorize("(@userService.hasAuthorityUsingAppIdLab(authentication.principal.username, #id))")
     public void updateLabStatus(@PathVariable("id") Long id){
         appointmentService.updateLabStatus(id);
     }
@@ -77,7 +77,7 @@ public class AppointmentController {
     }
 
     @PostMapping("add_lab_prescription/{id}")
-    @PreAuthorize("(@userService.hasAuthorityUsingAppIdLab(authentication.principal.username, #id))")
+    @PreAuthorize("(@userService.hasAuthorityUsingAppIdDoc(authentication.principal.username, #id))")
     public void addLabPrescription(@PathVariable("id") Long id,@RequestBody String pres){
         appointmentService.addLabPrescription(id,pres);
     }

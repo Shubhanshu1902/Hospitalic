@@ -41,8 +41,8 @@ public class UserService {
     public boolean hasAuthorityUsingUserId(String username, Long id)
     {
         String s1 = findById(id).getUsername();
-        System.out.println(s1 + " "+ username);
-        System.out.println( s1.equals(username));
+//        System.out.println(s1 + " "+ username);
+//        System.out.println( s1.equals(username));
         return  s1.equals(username);
     }
     public boolean hasreportAuthority(String username,Long id)
@@ -53,7 +53,7 @@ public class UserService {
     public boolean hasAuthorityUsingAppIdLab(String username, Long Id)
     {
         String s = findById(appointmentService.getById(Id).getLab().getId()).getUsername();
-        System.out.println(s + ' ' + username);
+//        System.out.println(s + ' ' + username);
         return  s.equals(username);
     }
     public boolean hasAuthorityUsingAppIdDoc(String username, Long Id)
