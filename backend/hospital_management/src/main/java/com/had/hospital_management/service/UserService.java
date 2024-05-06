@@ -1,5 +1,6 @@
 package com.had.hospital_management.service;
 
+import com.had.hospital_management.model.Appointment;
 import com.had.hospital_management.model.UserEntity;
 import com.had.hospital_management.repository.UserRepository;
 import jakarta.transaction.Transactional;
@@ -27,9 +28,20 @@ public class UserService {
     public List<UserEntity> getAllRadiologist(){return userRepository.getAllRadiologist();}
     public List<UserEntity> getAllLab(){return userRepository.getAllLab();}
     public UserEntity getUserByUsername(String username){ return userRepository.getUserByUsername(username);}
-
     @Transactional
     public void deleteById(Long id) {
         UserEntity userEntity = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Patient with id " + id + " not found"));
     }
+    public Long getUserIdByUsername(String username) { return userRepository.getUserIdByUsername(username);}
+
+    public boolean hasAuthoritySaveApp(String username, Appointment appointment)
+    {
+//        System.out.println(findById(appointment.getUser1().getId()).getUsername() + ' ' + username);
+        String s1 = findById(appointment.getUser1().getId()).getUsername();
+        System.out.println(s1 + " "+ username);
+        System.out.println( s1.equals(username));
+        return  s1.equals(username);
+    }
+
+
 }

@@ -88,7 +88,6 @@ public class AuthController {
         UserEntity user = new UserEntity();
         user.setUsername(registerDto.getUsername());
         user.setPassword(passwordEncoder.encode(registerDto.getPassword()));
-
         user.setRole(registerDto.getRole());
 
         userRepository.save(user);

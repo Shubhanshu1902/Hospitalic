@@ -20,9 +20,8 @@ public class AppointmentController {
     private UserService userService;
 
     @PostMapping("/save")
-    @PreAuthorize("#appointment.getUser1().getUsername() == authentication.principal.username")
+    @PreAuthorize("(@userService.hasAuthoritySaveApp(authentication.principal.username, #appointment))")
     public Appointment save(@RequestBody Appointment appointment) {
-        System.out.println(appointment);
         return appointmentService.save(appointment);
     }
 
@@ -42,7 +41,7 @@ public class AppointmentController {
         }
     }
     @GetMapping("get_appointment_by_doctor_id/{id}")
-    @PreAuthorize("userService.findById(#id).getUsername() == authentication.principal.username")
+    @PreAuthorize("#userService.findById(8).getUsername() == authentication.principal.username")
     public List<Appointment> getAppointmentByDoctorId(@PathVariable("id")Long id){
         return appointmentService.getAppointmentByDoctorId(id);
     }
