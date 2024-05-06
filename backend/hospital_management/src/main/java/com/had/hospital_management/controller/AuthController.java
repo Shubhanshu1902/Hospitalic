@@ -52,7 +52,6 @@ public class AuthController {
     private void saveToken(String token){
         Token newToken = new Token();
         newToken.setValue(token);
-
         System.out.println(tokenRepository.save(newToken));
     }
 
@@ -88,6 +87,11 @@ public class AuthController {
         UserEntity user = new UserEntity();
         user.setUsername(registerDto.getUsername());
         user.setPassword(passwordEncoder.encode(registerDto.getPassword()));
+        user.setFirst_name(registerDto.getFirst_name());
+        user.setLast_name(registerDto.getLast_name());
+        user.setGender(registerDto.getGender());
+        user.setDob(registerDto.getDob());
+        user.setAddress(registerDto.getAddress());
         user.setRole(registerDto.getRole());
 
         userRepository.save(user);

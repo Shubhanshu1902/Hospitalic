@@ -19,9 +19,13 @@ public class ChatService {
 
     public List<Chat> findByReportIdSortByTime(Long reportId) {return chatRepository.findByReportIdOrderByTime(reportId);}
 
-    public boolean hasChatAuthority(String username,Long id)
+    public boolean hasChatAuthority(String username,Long id, Long reportid)
     {
-        String s1 = userService.findById(id).getUsername();
-        return  s1.equals(username);
+        if(userService.hasReportAuthority(username, reportid))
+        {
+            String s1 = userService.findById(id).getUsername();
+            return  s1.equals(username);
+        }
+        return false;
     }
 }
