@@ -59,7 +59,7 @@ public class SecurityConfig {
                         .requestMatchers("/appointment/update_doctor_status/**").hasAuthority("DOCTOR")
                         .requestMatchers("/appointment/update_lab_status/**").hasAuthority("LAB")
                         .requestMatchers("/appointment/add_prescription/**").hasAuthority("DOCTOR")
-                        .requestMatchers("/appointment/add_lab_prescription/**").hasAuthority("DOCTOR")
+                        .requestMatchers("/appointment/add_lab_prescription/**").hasAuthority("LAB")
 
                         // reports
                         .requestMatchers("/report/save").hasAuthority("LAB")
