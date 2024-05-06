@@ -18,6 +18,7 @@ const myBucket = new AWS.S3({
 });
 
 export const LabModal = props => {
+    const [name,setName] = useState("")
 
     const [progress, setProgress] = useState(0);
     const [selectedFile, setSelectedFile] = useState(null);
@@ -58,14 +59,15 @@ export const LabModal = props => {
         const a = getURLfromBUCKET(myBucket,"" + props.id + ".dcm")
         updateLabStatus(props.id);
         // console.log(a,props.pid, props.did);
-        saveReport("",a,"",""+props.did, ""+props.pid, ""+retrieveUserId());
+        saveReport(name,a,"",""+props.did, ""+props.pid, ""+retrieveUserId());
         props.setTrigger(false)
     };
 
   return props.trigger ? (
 
     <div style={{display:"flex", flexDirection:"column", height:"20vh", padding:"10px", gap:"20px", fontSize:"larger", justifyContent:"space-around"}}>
-      <div>Native SDK File Upload Progress is {progress}%</div>
+      <div>UPLOAD REPORT</div>
+      <input type="text" onChange={(event) => setName(event.target.value)} value={name} />
       <input type="file" onChange={handleFileInput} style={{fontSize:"large"}} />
       <button style={{width:"50%", height:"15%", alignSelf:"center", fontSize:"large"}} onClick={() => uploadFile(selectedFile)}> 
         {" "} Upload to S3
