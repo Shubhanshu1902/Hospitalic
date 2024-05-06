@@ -56,6 +56,7 @@ public class RequestsController {
     // Patient
     // Radiologist who have access (reportId, status)
     @GetMapping("/get_accepted_request_by_report_id/{id}")
+    @PreAuthorize("@userService.hasReportAuthority(authentication.principal.username,#id)")
     public List<Requests> getAcceptedequestByReportId(@PathVariable("id") Long id){
         return requestsService.getAcceptedRequestByReportId(id);
     }

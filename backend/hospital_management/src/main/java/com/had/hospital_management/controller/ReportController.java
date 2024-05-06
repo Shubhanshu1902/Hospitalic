@@ -74,6 +74,7 @@ public class ReportController {
     // Patient
     // Radiologist who have access (reportId, status)
     @GetMapping("/get_by_id/{id}")
+    @PreAuthorize("@userService.hasReportAuthority(authentication.principal.username,#id)")
     public ResponseEntity<Report> getById(@PathVariable("id") Long id)
     {
         Report reports = reportService.getById(id);
@@ -84,7 +85,7 @@ public class ReportController {
         }
     }
     @PostMapping("/add_comment/{id}")
-    @PreAuthorize("@userService.hasreportAuthority(authentication.principal.username,#id)")
+    @PreAuthorize("@userService.hasReportCommentAuthority(authentication.principal.username,#id)")
     public void addComment(@PathVariable("id")Long id,@RequestBody String new_com){
         reportService.addComment(id,new_com);}
 }
