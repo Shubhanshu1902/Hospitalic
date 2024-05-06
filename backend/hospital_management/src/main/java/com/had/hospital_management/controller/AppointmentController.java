@@ -2,9 +2,11 @@ package com.had.hospital_management.controller;
 
 import com.had.hospital_management.model.Appointment;
 import com.had.hospital_management.service.AppointmentService;
+import com.had.hospital_management.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,8 +16,11 @@ import java.util.List;
 public class AppointmentController {
     @Autowired
     private AppointmentService appointmentService;
+    @Autowired
+    private UserService userService;
 
     @PostMapping("/save")
+    @PreAuthorize("#appointment.getUser1().getUsername() == authentication.principal.username")
     public Appointment save(@RequestBody Appointment appointment) {
         System.out.println(appointment);
         return appointmentService.save(appointment);
@@ -25,6 +30,7 @@ public class AppointmentController {
     public List<Appointment> findAll(){
         return appointmentService.findAll();
     }
+
     @GetMapping("get_by_id/{id}")
     public ResponseEntity<Appointment> getById(@PathVariable("id") Long id){
         Appointment appointment= appointmentService.getById(id);
@@ -36,18 +42,22 @@ public class AppointmentController {
         }
     }
     @GetMapping("get_appointment_by_doctor_id/{id}")
+    @PreAuthorize("userService.findById(#id).getUsername() == authentication.principal.username")
     public List<Appointment> getAppointmentByDoctorId(@PathVariable("id")Long id){
         return appointmentService.getAppointmentByDoctorId(id);
     }
     @GetMapping("get_appointment_by_patient_id/{id}")
+    @PreAuthorize("userService.findById(#id).getUsername() == authentication.principal.username")
     public List<Appointment> getAppointmentByPatientId(@PathVariable("id")Long id){
         return appointmentService.getAppointmentByPatientId(id);
     }
     @GetMapping("get_appointment_by_lab_id/{id}")
+    @PreAuthorize("userService.findById(#id).getUsername() == authentication.principal.username")
     public List<Appointment> getAppointmentByLabId(@PathVariable("id")Long id){
         return appointmentService.getAppointmentByLabId(id);
     }
     @PostMapping("assign_lab/{lab_id}/{id}")
+    @PreAuthorize("appointmentService.getById(#id).getUser2().getUsername() == authentication.principal.username")
     public void assignLab(@PathVariable("lab_id") Long lab_id,@PathVariable("id") Long id){
         appointmentService.assignLab(lab_id , id);
     }
