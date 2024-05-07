@@ -40,6 +40,7 @@ export const AppList = () => {
     var i = 0;
     return (
         <div className="applist">
+            <h1 style={{ color: '#777777' }}> Appointment List</h1>
             {list &&
                 list.map(elem =>
                     !((type === "doctor" || type === "patient") && elem.doctor_done || type==="lab" && elem.lab_done)? (

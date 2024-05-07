@@ -6,6 +6,9 @@ import { useParams } from "react-router-dom";
 import { verify } from "../connections/User";
 import { Page404 } from "../Page404/Page404";
 import { AllRequests } from "./AllRequests";
+import { Appointment } from "../Appointments/Appointment";
+import { BookApp } from "../Appointments/BookApp";
+import { AppList } from "../Appointments/AppList";
 
 export const Dashboard = (props) => {
     const type = useParams().type;
@@ -16,7 +19,10 @@ export const Dashboard = (props) => {
             <Navbar />
             <div className="AppContent">
                 <Topbar />
+
                 {type === "patient" ? <AllRequests /> : ""}
+
+                {type === "patient" ? <AppList /> : ""}
             </div>
         </div> 
     : <Page404 />;
