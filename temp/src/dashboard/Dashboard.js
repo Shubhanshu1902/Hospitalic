@@ -22,7 +22,7 @@ export const Dashboard = (props) => {
 
                 {type === "patient" ? <AllRequests /> : ""}
 
-                {type === "patient" ? <AppList /> : ""}
+                {type !== "radiologist" ? <AppList /> : ""}
             </div>
         </div> 
     : <Page404 />;
