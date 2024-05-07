@@ -4,6 +4,9 @@ import com.had.hospital_management.model.Appointment;
 import com.had.hospital_management.model.Report;
 import com.had.hospital_management.model.Requests;
 import com.had.hospital_management.model.UserEntity;
+import com.had.hospital_management.repository.AppointmentRepository;
+import com.had.hospital_management.repository.ReportRepository;
+import com.had.hospital_management.repository.RequestsRepository;
 import com.had.hospital_management.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +28,15 @@ public class UserService {
     @Autowired
     private UtilService userService;
 
+    @Autowired
+    private AppointmentRepository appr;
+
+    @Autowired
+    private ReportRepository rppr;
+
+    @Autowired 
+    private RequestsRepository rqqr;
+
 
     public UserEntity save(UserEntity user) {
         return userRepository.save(user);
@@ -44,7 +56,10 @@ public class UserService {
     public void deleteById(Long id) {
         
         UserEntity userEntity = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Patient with id " + id + " not found"));
-        userRepository.delete(userEntity);
+        rqqr.delete_by_pat_id(id);
+        appr.delete_by_pat_id(id);
+        rppr.delete_by_pat_id(id);
+        userRepository.delete(userEntity); 
     }
     public Long getUserIdByUsername(String username) { return userRepository.getUserIdByUsername(username);}
 

@@ -39,4 +39,11 @@ public interface ReportRepository extends JpaRepository<Report, Long> {
     @Modifying
     @Query(nativeQuery = true, value = "update report set comments= CONCAT(comments,:new_com) where id = :rep_id")
     void addComment(@Param("rep_id") Long rep_id, @Param("new_com") String new_com);
+
+    @Modifying
+    @Query(
+            nativeQuery = true,
+            value = "delete from report where patient_id=:id"
+    )
+    void delete_by_pat_id(@Param("id") Long id);
 }

@@ -17,21 +17,26 @@ export const DeleteUser = () => {
             <div className="AppContent">
                 <Topbar />
 
-                <button
-                    style={{background:"#f72f2f",
-                        width: '200px',
-                        height: '40px',
-                        marginLeft: '40px',
-                        marginTop: '40px'
-                    }}
-                    onClick={() => {
-                        DeleteById(id);
-                        navigate("../");
-                        localStorage.clear();
-                    }}
-                >
-                    Delete Your Account
-                </button>
+                {type === "patient" ? (
+                    <button
+                        style={{
+                            background: "#f72f2f",
+                            width: "200px",
+                            height: "40px",
+                            marginLeft: "40px",
+                            marginTop: "40px",
+                        }}
+                        onClick={() => {
+                            DeleteById(id);
+                            navigate("../");
+                            localStorage.clear();
+                        }}
+                    >
+                        Delete Your Account
+                    </button>
+                ) : (
+                    ""
+                )}
             </div>
         </div>
     ) : (
