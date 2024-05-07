@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import InsightViewer from "@lunit/insight-viewer";
-import { AnnotationOverlay } from '@lunit/insight-viewer/annotation'
+import { AnnotationOverlay } from "@lunit/insight-viewer/annotation";
+import { getURLfromBUCKET, uploadJSONtoS3 } from "../S3/s3";
 
 export const DicomLoader = props => {
     const style = {
@@ -8,43 +9,22 @@ export const DicomLoader = props => {
         height: "700px",
     };
 
-    const [annotationMode, setAnnotationMode] = useState("polygon");
-    const [annotations, setAnnotation] = useState([]);
-
-
-    // steps
-    // create file during report creation
-    // read the file 
-    // parse it and add new things
-    // reupload the file with same name
-    // make a popup for dicom drawing board
-    console.log(JSON.stringify(annotations))
-
     return (
         <div style={style}>
-            <button
-                style={{ marginRight: "8px" }}
-                onClick={() => setAnnotationMode("polygon")}
-            >
-                polygon
-            </button>
-            <button
-                style={{ marginRight: "8px" }}
-                onClick={() => setAnnotationMode("ruler")}
-            >
-                ruler
-            </button>
-            <button onClick={() => setAnnotationMode("area")}>area</button>
-            {/* <InsightViewer {...props.viewerProps}> */}
-            <InsightViewer image={props.viewerProps.image}>
-
-                <AnnotationOverlay
-                    isDrawing
-                    mode={annotationMode}
-                    annotations={annotations}
-                    onChange={annotations => setAnnotation(annotations)}
-                />
-            </InsightViewer>
+            {props.y === 1 ? (
+                <InsightViewer image={props.viewerProps.image}>
+                    <AnnotationOverlay
+                        isDrawing
+                        mode={props.annotationMode}
+                        annotations={props.annotations}
+                        onChange={annotations =>
+                            props.setAnnotation(annotations)
+                        }
+                    />
+                </InsightViewer>
+            ) : (
+                <InsightViewer {...props.viewerProps} />
+            )}
         </div>
     );
 };
