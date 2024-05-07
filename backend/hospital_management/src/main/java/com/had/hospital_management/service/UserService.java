@@ -79,4 +79,10 @@ public class UserService {
         if(r.getUser1().getUsername().equals(username) || r.getUser2().getUsername().equals(username) || r.getLab().getUsername().equals(username)) return true;
         return false;
     }
+    public boolean hasApproveReqAuthority(String username,Long req_id){
+        System.out.println(username);
+        Long pid = requestsService.getById(req_id).getPatient_id();
+        System.out.println(pid);
+        return findById(pid).getUsername().equals(username);
+    }
 }

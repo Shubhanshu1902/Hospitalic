@@ -21,6 +21,7 @@ public class RequestsController {
     private UserService userService;
 
     @PostMapping("/save")
+    @PreAuthorize("@userService.hasReportCommentAuthority(authentication.principal.username,#requests.report.id)")
     public Requests save(@RequestBody Requests requests){
         return requestsService.save(requests);
     }
@@ -74,6 +75,7 @@ public class RequestsController {
     }
 
     @PostMapping("/approve_request_by_id/{id}")
+    @PreAuthorize("@userService.hasApproveReqAuthority(authentication.principal.username,#id)")
     public void approveRequestById(@PathVariable("id")Long id){
         requestsService.approveRequestById(id);
     }
