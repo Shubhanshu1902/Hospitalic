@@ -28,8 +28,8 @@ export const AllRequests = () => {
     }, [retrieveUserId()]);
     
     return (
-        <div>
-
+        <div className="AllRequests">
+            <h1 style={{ color: '#777777' }}> Access Requests</h1>
             {requestList.map((request,index) => {
                 return (
                     <RequestCard key ={index} index={index+1} request = {request}></RequestCard>

@@ -54,6 +54,46 @@ body {
             }
         }
     }
+    .AllRequests {
+        
+        background: $color4;
+        margin: 1%;
+        border-radius: 20px;
+        padding: 1%;
+
+        display: flex;
+        flex-direction: column;
+        height: 50%;
+        gap: 2%;
+        overflow-y: auto;
+        
+        
+
+        
+        .RequestCard{
+            background: $color2;
+            border-radius: 20px;
+            padding: 1%;
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+
+            .RequestCardInfo{
+                display: flex;
+                flex-direction: column;
+            }
+            .RequestCardButtons{
+
+                width: 20%;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+            }
+        }
+
+    }
 
     .AppContent {
         display: flex;

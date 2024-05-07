@@ -11,11 +11,13 @@ export const Dashboard = (props) => {
     const type = useParams().type;
 
 
-    return verify(type) ? <div className="dashboard">
-        <Navbar />
-        <div className="AppContent">
-            <Topbar />
-            {type === "patient" ? <AllRequests /> : ""}
-        </div>
-    </div> : <Page404 />;
+    return verify(type) ? 
+        <div className="dashboard">
+            <Navbar />
+            <div className="AppContent">
+                <Topbar />
+                {type === "patient" ? <AllRequests /> : ""}
+            </div>
+        </div> 
+    : <Page404 />;
 };
