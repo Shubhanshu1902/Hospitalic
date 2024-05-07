@@ -52,6 +52,7 @@ export const AppList = () => {
                             pid={elem.user1.id}
                             did={elem.user2.id}
                             time={elem.date}
+                            lab_pres = {elem.lab_prescription}
                         />
                     ) : (
                         ""

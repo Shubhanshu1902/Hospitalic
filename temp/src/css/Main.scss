@@ -226,12 +226,15 @@ body {
                     font: $font;
                     font-size: 20px;
                     font-weight: 400;
+                    cursor: pointer;
                 }
 
                 .prescbutton {
                     margin-right: 30px;
                     background-color: $color4;
                     color: $color1;
+                    cursor: pointer;
+                    
                 }
 
                 .popup {
@@ -459,6 +462,7 @@ body {
                     padding-right: 20px;
                     border-radius: 40px;
                     font: $font;
+                    cursor: pointer;
                     color: $color2;
                 }
 
