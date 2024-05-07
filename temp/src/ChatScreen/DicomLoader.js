@@ -18,6 +18,8 @@ export const DicomLoader = props => {
     // parse it and add new things
     // reupload the file with same name
     // make a popup for dicom drawing board
+    console.log(JSON.stringify(annotations))
+
     return (
         <div style={style}>
             <button
