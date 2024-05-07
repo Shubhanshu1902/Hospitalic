@@ -44,6 +44,9 @@ public class RequestsService {
     public List<Requests> getNotAcceptedRequestByPatientId(Long id){
         return requestsRepository.findNotAcceptedRequestsByPatientId(id);
     }
+    public List<Requests> getAcceptedRequestByPatientId(Long id){
+        return requestsRepository.findAcceptedRequestsByPatientId(id);
+    }
 
     // Rad
     public List<Long> getReportIdByRadiologistId(Long id){
