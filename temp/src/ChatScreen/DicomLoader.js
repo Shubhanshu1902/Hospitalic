@@ -9,6 +9,8 @@ export const DicomLoader = props => {
         height: "700px",
     };
 
+    // console.log(props.annotations)
+
     return (
         <div style={style}>
             {props.y === 1 ? (

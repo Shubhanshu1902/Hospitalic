@@ -12,6 +12,7 @@ export const AllRequests = () => {
         const fetchData = async () => {
             try {
                 const data = await getNotAcceptedRequestByPatientId(retrieveUserId());
+                if(data !== undefined)
                 setRequestList(data);
             }
             catch (error) {

@@ -7,6 +7,7 @@ import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -70,7 +71,9 @@ public class UserController {
         }
     }
 
+    
     @DeleteMapping("delete_by_id/{id}")
+    @PreAuthorize("@userService.hasAuthorityUsingUserId(authentication.principal.username,#id)")
     public ResponseEntity<?> deleteById(@PathVariable("id") Long id) {
         try {
             userService.deleteById(id);

@@ -84,16 +84,17 @@ export const ReportChat = () => {
                 .then(list => setList(list))
                 .catch(error => console.log(error));
 
-            console.log(a);
+            // console.log(a);
         }
     }, [report.id]);
 
     useEffect(() => {
-        if (list !== undefined) setAnnotation(list);
+        // console.log(Object.keys(list).length)
+        if (list !== undefined && Object.keys(list).length !== 0) setAnnotation(list);
     }, [list]);
 
     const handleClick = () => {
-        if (list === undefined) setList(annotations);
+        if (list === undefined || Object.keys(list).length === 0) setList(annotations);
         else {
             for (let i = 0; i < annotations.length; i++) {
                 setList(list => [...list, annotations[i]]);
@@ -103,13 +104,14 @@ export const ReportChat = () => {
     };
 
     useEffect(() => {
+        console.log(list)
         if (done == true) {
             uploadJSONtoS3(JSON.stringify(list), report.id);
             setDone(false);
         }
     }, [done]);
 
-    console.log(report);
+    // console.log(report);
 
     return verify(type) ? (
         <div className="dashboard">

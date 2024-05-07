@@ -76,3 +76,33 @@ export const verify = (type) => {
     if(type === getRole()) return true
     else return false
 }
+
+export async function DeleteById(
+    id
+){
+    const url = "http://localhost:8081/user/delete_by_id/"+id;
+    let ret;
+    let token = retrieveJWT();
+    try {
+        await fetch(url,
+            {
+                method: "DELETE",
+                headers: {
+                    "Content-type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+            .then(response => {
+                // console.log(response)
+                return (response.json());
+            })
+            .then(data => {
+                ret = data;
+            })
+        return ret;
+    }
+    catch(error){
+        console.error(error);
+    }
+
+}

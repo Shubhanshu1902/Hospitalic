@@ -24,7 +24,7 @@ export const MsgBox = props => {
         fetchData()
         const intervalId = setInterval(() => {
             fetchData();
-        }, 5000); // Fetch messages every 5 seconds
+        }, 1000); // Fetch messages every 5 seconds
 
         return () => clearInterval(intervalId); // Cleanup function to clear interval on component unmount
     }, [reportId]); // Dependency array ensures effect runs when reportId changes

@@ -7,6 +7,7 @@ import com.had.hospital_management.model.UserEntity;
 import com.had.hospital_management.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,6 +22,9 @@ public class UserService {
     private AppointmentService appointmentService;
     @Autowired
     private RequestsService requestsService;
+    @Autowired
+    private UtilService userService;
+
 
     public UserEntity save(UserEntity user) {
         return userRepository.save(user);
@@ -38,15 +42,15 @@ public class UserService {
     public UserEntity getUserByUsername(String username){ return userRepository.getUserByUsername(username);}
     @Transactional
     public void deleteById(Long id) {
+        
         UserEntity userEntity = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Patient with id " + id + " not found"));
+        userRepository.delete(userEntity);
     }
     public Long getUserIdByUsername(String username) { return userRepository.getUserIdByUsername(username);}
 
     public boolean hasAuthorityUsingUserId(String username, Long id)
     {
         String s1 = findById(id).getUsername();
-//        System.out.println(s1 + " "+ username);
-//        System.out.println( s1.equals(username));
         return  s1.equals(username);
     }
     public boolean hasReportCommentAuthority(String username,Long id)
