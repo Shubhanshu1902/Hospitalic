@@ -5,20 +5,9 @@ body {
     font-family: $font;
 }
 
-.icons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-
-    .pat-icon {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-    }
-}
-
 .dashboard {
     display: flex;
+    // @extend .navbar;
 
     .navbar {
         height: 100vh;
@@ -53,6 +42,7 @@ body {
                 }
 
                 .text {
+                    cursor: pointer;
                     display: flex;
                     gap: 12px;
                     color: $color10;
@@ -62,8 +52,47 @@ body {
                     align-items: center;
                 }
             }
-
         }
+    }
+    .AllRequests {
+        
+        background: $color4;
+        margin: 1%;
+        border-radius: 20px;
+        padding: 1%;
+
+        display: flex;
+        flex-direction: column;
+        height: 50%;
+        gap: 2%;
+        overflow-y: auto;
+        
+        
+
+        
+        .RequestCard{
+            background: $color2;
+            border-radius: 20px;
+            padding: 1%;
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+
+            .RequestCardInfo{
+                display: flex;
+                flex-direction: column;
+            }
+            .RequestCardButtons{
+
+                width: 20%;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+            }
+        }
+
     }
 
     .AppContent {
@@ -78,7 +107,7 @@ body {
             gap: 50px;
             align-items: center;
             padding-left: 50px;
-    
+
             .search {
                 height: 40px;
                 width: 40%;
@@ -89,14 +118,14 @@ body {
                 font-size: 14px;
                 font-weight: map-get($map: $font-weight, $key: normal);
             }
-    
+
             .search::placeholder {
                 text-align: center;
                 font: $font;
                 font-size: 14px;
                 font-weight: map-get($map: $font-weight, $key: normal);
             }
-    
+
             .name_and_title {
                 display: flex;
                 flex-direction: column;
@@ -105,7 +134,7 @@ body {
             }
         }
 
-        .bookapp{
+        .bookapp {
             display: flex;
             height: 20%;
             width: 50%;
@@ -116,7 +145,7 @@ body {
             margin-left: 10px;
             border-radius: 20px;
 
-            .book{
+            .book {
                 height: 50%;
                 width: 35%;
                 font-size: x-large;
@@ -125,7 +154,7 @@ body {
                 background-color: $color1;
                 // position: relative;
             }
-            .popup{
+            .popup {
                 display: flex;
                 align-items: center;
                 justify-items: center;
@@ -134,13 +163,13 @@ body {
                 left: 0;
                 width: 100%;
                 height: 100vh;
-                background-color: rgba(0,0,0,0.2);
+                background-color: rgba(0, 0, 0, 0.2);
 
-                .pop-in{
+                .pop-in {
                     display: flex;
                     flex-direction: column;
                     position: absolute;
-                    top : 1;
+                    top: 1;
                     left: 50%;
                     transform: translate(-50%, 0);
                     padding: 32 px;
@@ -148,31 +177,29 @@ body {
                     background-color: $color4;
                     border-radius: 15px;
 
-                    .close{
+                    .close {
                         position: absolute;
                         top: 16px;
                         right: 16px;
                     }
-
                 }
             }
         }
 
-        .applist{
+        .applist {
             display: flex;
             flex-direction: column;
             height: 66%;
-            width: 98%;
+
             background-color: $color4;
             justify-content: start;
             align-items: start;
-            padding: 10px;
-            margin-top: 10px;
-            margin-left: 10px;
+            padding: 1%;
+            margin: 1%;
             border-radius: 20px;
             overflow: scroll;
 
-            .t1{
+            .t1 {
                 height: 12%;
                 width: 60%;
                 display: flex;
@@ -184,7 +211,7 @@ body {
                 margin: 5px;
                 border-radius: 20px;
 
-                .t2{
+                .t2 {
                     display: flex;
                     padding-left: 30px;
                     font-size: large;
@@ -199,15 +226,18 @@ body {
                     font: $font;
                     font-size: 20px;
                     font-weight: 400;
+                    cursor: pointer;
                 }
 
-                .prescbutton{
+                .prescbutton {
                     margin-right: 30px;
                     background-color: $color4;
                     color: $color1;
+                    cursor: pointer;
+                    
                 }
 
-                .popup{
+                .popup {
                     display: flex;
                     align-items: center;
                     justify-items: center;
@@ -216,30 +246,28 @@ body {
                     left: 0;
                     width: 100%;
                     height: 100vh;
-                    background-color: rgba(0,0,0,0.2);
-    
-                    .pop-in{
+                    background-color: rgba(0, 0, 0, 0.2);
+
+                    .pop-in {
                         display: flex;
                         flex-direction: column;
                         position: absolute;
-                        top : 1;
+                        top: 1;
                         left: 50%;
                         transform: translate(-50%, 0);
                         padding: 32 px;
                         width: 50%;
                         background-color: $color4;
                         border-radius: 15px;
-    
-                        .close{
+
+                        .close {
                             position: absolute;
                             top: 16px;
                             right: 16px;
                         }
-    
                     }
                 }
             }
-
         }
 
         .chat {
@@ -248,117 +276,180 @@ body {
             height: 100%;
             width: 88%;
             background: $color8;
-    
+
+            .comments {
+                display: flex;
+                flex-direction: column;
+                gap: 25px;
+
+                .comment {
+                    display: flex;
+                    flex-direction: column;
+                }
+            }
+
             .reportCont {
                 display: flex;
                 flex-direction: row;
                 height: 75%;
                 justify-content: space-around;
-    
+
                 .report {
                     display: flex;
-                    height : 90%;
-                    width : 50%;
+                    height: 90%;
+                    width: 50%;
                     background: $color4;
                     margin-top: 3%;
                     margin-left: 3%;
                 }
-    
-                .msgbox {
-                    height : 90%;
-                    width : 40%;
-                    background: $color2;
-                    border-radius: 5px;
-                    margin-top: 3%;
-                    margin-right: 3%;
+
+                .Box {
                     display: flex;
                     flex-direction: column;
-                    overflow: scroll;
-    
-                    .title {
-                        height: 50px;
+                    width: 40%;
+                    gap: 0;
+                    margin-top: 3%;
+
+                    .top-btn {
                         display: flex;
-                        border-bottom: 1px solid;
-                        border-color: $color9;
-                        background: $color4;
-                        align-items: center;
-                        justify-content: flex-start;
-                        padding: 10px;
-                    }
-                    .messages{
-                        padding: 10px;
-                        display: flex;
-                        gap: 20px;
-                        // background: $color2;
-                        height: 70px;
-                        margin-bottom: 10px;
-    
-                        .messageInfo{
-                                display: flex;
-                                flex-direction: column;
-                                color: $color10;
-                                font-weight: 300;
-                            img{
-                                width: 40px;
-                                height: 40px;
-                                border-radius: 50%;
-                                object-fit: cover;
+                        flex-direction: row;
+                        gap: 0;
+
+                        .box-btn {
+                            width: 17%;
+                            height: 50px;
+                            justify-content: center;
+                            align-items: center;
+                            background: $color1;
+                            padding-left: 20px;
+                            padding-right: 20px;
+                            border-radius: 10px;
+                            font: $font;
+                            color: $color2;
+                            cursor: pointer;
+
+                            &:hover {
+                                background: $color7;
                             }
                         }
-    
-                        .messageContent{
-                            max-width: 80%;
+
+                        .active {
+                            background: $color7;
+                        }
+                    }
+
+                    .msgbox {
+                        height: 90%;
+                        // width: 40%;
+                        background: $color2;
+                        border-radius: 5px;
+                        margin-right: 3%;
+                        display: flex;
+                        flex-direction: column;
+                        // overflow: scroll;
+                        flex-wrap: nowrap;
+
+                        .title {
+                            height: 50px;
+                            display: flex;
+                            border-bottom: 1px solid;
+                            border-color: $color9;
+                            background: $color4;
+                            align-items: center;
+                            justify-content: flex-start;
+                            padding: 10px;
+                        }
+
+                        .all-msg {
                             display: flex;
                             flex-direction: column;
-                            gap: 5px;
-    
-                            p{
-                                background-color: $color4;
-                                padding: 10px 20px;
-                                border-radius: 0px 40px 40px 40px;
+                            overflow: scroll;
+                            .messages {
+                                padding: 10px;
+                                display: flex;
+                                gap: 20px;
+                                color: #ffffff;
+                                height: 70px;
+                                margin-bottom: 10px;
+
+                                .messageInfo {
+                                    display: flex;
+                                    flex-direction: column;
+                                    color: $color10;
+                                    font-weight: 300;
+                                    img {
+                                        width: 40px;
+                                        height: 40px;
+                                        border-radius: 50%;
+                                        object-fit: cover;
+                                    }
+                                }
+
+                                .messageContent {
+                                    max-width: 80%;
+                                    display: flex;
+                                    flex-direction: column;
+                                    gap: 5px;
+
+                                    .p {
+                                        background: #8C8C8C ;
+                                        // background-color: $color4;
+                                        padding: 10px 20px;
+                                        border-radius: 0px 40px 40px 40px;
+                                    }
+
+                                    .other {
+                                        background: #0088CC;
+                                    }
+                                }
+                            }
+
+                            .other {
+                                align-self: flex-end;
+                                // color: ;
+                                // justify-content: flex-end;
                             }
                         }
-    
-    
-                    }
-                    .input{
-                        color: $color10;
-                        height: 50px;
-                        width: 70%;
-                        display: flex;
-                        border: 1px solid;
-                        border-color: $color9;
-                        border-radius: 30px;
-                        margin-left: auto;
-                        margin-right: auto;
-                        margin-top: auto;
-                        margin-bottom: 2%;
-                        align-items: center;
-                        justify-content: center;
-    
-                        input{
-                            width: 50%;
-                            border: none;
-                            outline: none;
-                            background-color: $color2;
+
+                        .input {
                             color: $color10;
-                            font-size: 18px;
-                            font-family: 'Poppins';
+                            height: 50px;
+                            width: 70%;
+                            display: flex;
+                            border: 1px solid;
+                            border-color: $color9;
+                            border-radius: 30px;
+                            margin-left: auto;
+                            margin-right: auto;
+                            margin-top: auto;
+                            margin-bottom: 2%;
+                            align-items: center;
+                            justify-content: center;
+
+                            input {
+                                width: 50%;
+                                border: none;
+                                outline: none;
+                                background-color: $color2;
+                                color: $color10;
+                                font-size: 18px;
+                                font-family: "Poppins";
+                            }
                         }
-    
-    
                     }
                 }
             }
-    
+
             .bottomCont {
                 display: flex;
                 flex-direction: row;
                 gap: 50px;
                 background: $color8;
                 height: 12%;
-                justify-content: end;
-    
+                align-items: center;
+                margin: auto;
+                justify-content: start;
+
                 .button {
                     height: 80px;
                     width: 80px;
@@ -371,9 +462,10 @@ body {
                     padding-right: 20px;
                     border-radius: 40px;
                     font: $font;
-                    color: $color2
+                    cursor: pointer;
+                    color: $color2;
                 }
-    
+
                 .summary {
                     display: flex;
                     width: 40%;
@@ -381,8 +473,8 @@ body {
                     margin-left: 10%;
                     background: $color4;
                 }
-    
-                .popup{
+
+                .popup {
                     display: flex;
                     align-items: center;
                     justify-items: center;
@@ -391,38 +483,35 @@ body {
                     left: 0;
                     width: 100%;
                     height: 100vh;
-                    background-color: rgba(0,0,0,0.2);
-    
-                    .pop-in{
+                    background-color: rgba(0, 0, 0, 0.2);
+
+                    .pop-in {
                         display: flex;
                         flex-direction: column;
                         position: absolute;
-                        top : 1;
+                        top: 1;
                         left: 50%;
                         transform: translate(-50%, 0);
                         padding: 32 px;
                         width: 50%;
                         background-color: $color4;
                         border-radius: 15px;
-    
-                        .close{
+
+                        .close {
                             position: absolute;
                             top: 16px;
                             right: 16px;
                         }
-    
                     }
                 }
-    
             }
-    
         }
 
         .icons {
             display: flex;
             flex-wrap: wrap;
             gap: 30px;
-        
+
             .pat-icon {
                 display: flex;
                 flex-direction: column;
@@ -430,6 +519,4 @@ body {
             }
         }
     }
-    
-    
 }

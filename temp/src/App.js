@@ -32,6 +32,7 @@ import { ReportsFile } from "./Reports/ReportsFile";
 import { ReportChat } from "./ChatScreen/ReportChat";
 import { Page404 } from "./Page404/Page404";
 import PatHis from "./DoneAppointments/PatHis";
+import { DeleteUser } from "./Settings/DeleteUser";
 
 function App() {
     library.add(
@@ -55,6 +56,7 @@ function App() {
         faPaperPlane
     );
 
+
     return (
         <div className="App">
             <BrowserRouter>
@@ -68,6 +70,7 @@ function App() {
                     <Route path="/:type/reports/:userid" element={<ReportsFile />} />
                     <Route path="/:type/report/:reportid" element={<ReportChat />}/>
                     <Route path="/:type/doneappointments" element={<PatHis />}/>
+                    <Route path="/:type/settings" element={<DeleteUser />} />
 
                     <Route path="*" element={<Page404 />} />
                 </Routes>

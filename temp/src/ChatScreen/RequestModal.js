@@ -2,11 +2,15 @@ import React, { useEffect, useState } from "react";
 import { AddRadiologist, GetAllRadiologist } from "../connections/Appointment";
 import Select from "react-select";
 import { GetReportById } from "../connections/Report";
+import { SendEmailNotif } from "../connections/EmailNotif";
+import { GetUser } from "../connections/User";
 
 export const RequestModal = props => {
     const [selectedOption, setSelectedOption] = useState(null);
     const [list, setList] = useState("");
-    const [patId,setPatId] = useState(-1);
+    const [patId, setPatId] = useState(-1);
+    const [patData, setPatData] = useState([]);
+    const [report, setReport] = useState([]);
 
     const handleChange = selectedOption => {
         setSelectedOption(selectedOption);
@@ -14,8 +18,14 @@ export const RequestModal = props => {
 
     const requestcall = () => {
         // console.log(selectedOption.id);
-
-        AddRadiologist(props.reportId, selectedOption.id,patId);
+        // console.log(selectedOption.id)
+        AddRadiologist(props.reportId, selectedOption.id, patId);
+        SendEmailNotif(
+            report.user2.username,
+            `${report.user1.first_name} ${report.user1.last_name}`,
+            `${selectedOption.first_name} ${selectedOption.last_name}`,
+            props.reportId
+        );
         props.setTrigger(false);
     };
 
@@ -23,11 +33,12 @@ export const RequestModal = props => {
         let data = [];
         async function fetchData() {
             data = await GetReportById(props.reportId);
-            setPatId(data.user2.id)
+            setPatId(data.user2.id);
+            setReport(data);
         }
 
-        fetchData()
-    })
+        fetchData();
+    });
 
     useEffect(() => {
         let data = [];
@@ -38,6 +49,8 @@ export const RequestModal = props => {
 
         fetchData();
     }, []);
+
+    // console.log(patData);
 
     return (
         <div className="hi">
@@ -54,7 +67,9 @@ export const RequestModal = props => {
                     <Select
                         options={list}
                         value={selectedOption}
-                        getOptionLabel={opt => `${opt.first_name} ${opt.last_name}`}
+                        getOptionLabel={opt =>
+                            `${opt.first_name} ${opt.last_name}`
+                        }
                         getOptionValue={opt => opt.id}
                         onChange={handleChange}
                     />

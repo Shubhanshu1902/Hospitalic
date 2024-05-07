@@ -4,7 +4,7 @@ import {jwtDecode} from "jwt-decode"
 // STORE JWT TOKEN
 const cookie = new Cookies();
 
-export const login = (jwtToken,userId) => {
+export const login = (token,userId) => {
     localStorage.setItem('jwt-token', token);
 } 
 

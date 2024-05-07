@@ -21,7 +21,9 @@ public class Appointment {
     private Date date;
     private Boolean doctor_done= false;
     private Boolean lab_done= false;
+    // @Convert(converter = StringCryptoConverter.class)
     private String prescription = "";
+    // @Convert(converter = StringCryptoConverter.class)
     private String lab_prescription = "";
     @ManyToOne()
     @JoinColumn(

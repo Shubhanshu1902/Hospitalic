@@ -6,37 +6,37 @@ import { useNavigate, useParams } from "react-router-dom";
 import main_logo from "../icons/main_icon.png";
 
 export const Navbar = props => {
-    let type = useParams().type
+    let type = useParams().type;
     const docPat = [
         {
             name: "Appointments",
             icon: "fa-solid fa-tasks",
             path: `../${type}/appointments`,
-            key: 1
+            key: 1,
         },
 
         {
             name: "Done Appointments",
             icon: "fas fa-calendar-alt",
             path: `../${type}/doneappointments`,
-            key: 2
+            key: 2,
         },
-    ]
+    ];
 
     const lab = [
         {
             name: "Tasks",
             icon: "fa-solid fa-tasks",
             path: `../${type}/appointments`,
-            key: 1
-        }
-    ]
+            key: 1,
+        },
+    ];
 
     var ls = [];
-    if(type === "lab") {
+    if (type === "lab") {
         // console.log("IN LAB")
-        ls = lab;}
-    else if(type === "doctor" || type === "patient") {
+        ls = lab;
+    } else if (type === "doctor" || type === "patient") {
         ls = docPat;
     }
 
@@ -109,7 +109,12 @@ export const Navbar = props => {
                             }}
                         />
                     </div>
-                    <div className="text">
+                    <div
+                        className="text"
+                        onClick={() => {
+                            navigate(`../${type}/settings`);
+                        }}
+                    >
                         <FontAwesomeIcon icon="fa-solid fa-gear" />
                         Settings
                     </div>

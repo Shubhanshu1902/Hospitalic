@@ -74,7 +74,7 @@ export const ListComp = props => {
                 Upload Report {" "} 
             </button>
             <LabPop trigger={x} setTrigger={setButtonPopup}>
-                <LabModal id={props.id} trigger={x} setTrigger={setButtonPopup} patient={props.pname} pid={props.pid} did={props.did}></LabModal>
+                <LabModal id={props.id} trigger={x} setTrigger={setButtonPopup} patient={props.pname} pid={props.pid} did={props.did} lab_pres={props.lab_pres}></LabModal>
             </LabPop>
         </div>
         );

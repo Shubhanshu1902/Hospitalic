@@ -16,8 +16,11 @@ public class Report {
     @Id
     @GeneratedValue
     private Long id;
+    @Convert(converter = StringCryptoConverter.class)
     private String name;
+    @Convert(converter = StringCryptoConverter.class)
     private String photo_path;
+    @Convert(converter = StringCryptoConverter.class)
     private String comments;
 
     @ManyToOne()

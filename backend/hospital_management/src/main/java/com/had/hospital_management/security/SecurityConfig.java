@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -23,6 +24,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 
     private CustomUserDetailsService customUserDetailsService;
@@ -47,6 +49,7 @@ public class SecurityConfig {
                         .requestMatchers("user/get_by_id/**").permitAll()
                         .requestMatchers("user/get_all_doctor").permitAll()
                         .requestMatchers("user/get_all_lab").permitAll()
+                        .requestMatchers("user/delete_by_id/**").permitAll()
 
                         //appointment
                         .requestMatchers("/appointment/get_appointment_by_doctor_id/**").hasAuthority("DOCTOR")
@@ -70,13 +73,14 @@ public class SecurityConfig {
                         .requestMatchers("/report/get_patient_by_lab_id/**").hasAuthority("LAB")
                         .requestMatchers("/report/get_report_by_lab_and_patient_id/**").hasAnyAuthority("PATIENT","LAB")
                         .requestMatchers("/report/get_by_id/**").permitAll()
+                        .requestMatchers("/report/add_comment/**").hasAuthority("DOCTOR")
 
                         //requests
                         .requestMatchers("/requests/save").hasAuthority("DOCTOR")
                         .requestMatchers("/requests/get_by_id/**").hasAnyAuthority("DOCTOR","PATIENT","RADIOLOGIST")
                         .requestMatchers("/requests/get_report_id_by_radiologist_id/**").hasAuthority("RADIOLOGIST")
                         .requestMatchers("/requests/get_patient_id_by_radiologist_id/**").hasAuthority("RADIOLOGIST")
-                        .requestMatchers("/requests/get_accepted_request_by_report_id/**").hasAnyAuthority("PATIENT","DOCTOR")
+                        .requestMatchers("/requests/get_accepted_request_by_report_id/**").hasAnyAuthority("PATIENT","DOCTOR","RADIOLOGIST","LAB")
                         .requestMatchers("/requests/get_report_by_radiologist_and_patient/**").hasAnyAuthority("RADIOLOGIST")
                         .requestMatchers("/requests/approve_request_by_id/**").hasAuthority("PATIENT")
                         .requestMatchers("/requests/add_comment/**").hasAuthority("RADIOLOGIST")

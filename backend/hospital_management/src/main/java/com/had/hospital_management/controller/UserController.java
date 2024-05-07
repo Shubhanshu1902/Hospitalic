@@ -1,11 +1,13 @@
 package com.had.hospital_management.controller;
 
 import com.had.hospital_management.model.UserEntity;
+import com.had.hospital_management.security.JWTGenerator;
 import com.had.hospital_management.service.UserService;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,7 +17,8 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserService userService ;
-
+    @Autowired
+    private JWTGenerator jwtgen;
     @PostMapping("/save")
     public UserEntity save(@RequestBody UserEntity userEntity) {
         System.out.println(userEntity);
@@ -39,8 +42,9 @@ public class UserController {
         }
     }
     @GetMapping("/hello")
-    public String helloWorld() {
+    public String helloWorld(@RequestHeader (name="Authorization") String token) {
         System.out.println("hello reached");
+        System.out.println(jwtgen.getUserIdFromJWT(token));
         return "Hello wordl";
     }
 
@@ -67,7 +71,9 @@ public class UserController {
         }
     }
 
+    
     @DeleteMapping("delete_by_id/{id}")
+    @PreAuthorize("@userService.hasAuthorityUsingUserId(authentication.principal.username,#id)")
     public ResponseEntity<?> deleteById(@PathVariable("id") Long id) {
         try {
             userService.deleteById(id);
