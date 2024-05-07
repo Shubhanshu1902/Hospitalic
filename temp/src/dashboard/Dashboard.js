@@ -9,6 +9,7 @@ import { AllRequests } from "./AllRequests";
 import { Appointment } from "../Appointments/Appointment";
 import { BookApp } from "../Appointments/BookApp";
 import { AppList } from "../Appointments/AppList";
+import { AllAcceptedRequests } from "./AllAcceptedRequests";
 
 export const Dashboard = (props) => {
     const type = useParams().type;
@@ -21,8 +22,8 @@ export const Dashboard = (props) => {
                 <Topbar />
 
                 {type === "patient" ? <AllRequests /> : ""}
-
-                {type !== "radiologist" ? <AppList /> : ""}
+                {type === "patient" ? <AllAcceptedRequests /> : ""}
+                {/* {type !== "radiologist" ? <AppList /> : ""} */}
             </div>
         </div> 
     : <Page404 />;

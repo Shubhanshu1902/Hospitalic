@@ -67,6 +67,11 @@ public class RequestsController {
     public List<Requests> getNotAcceptedequestByPatientId(@PathVariable("id") Long id){
         return requestsService.getNotAcceptedRequestByPatientId(id);
     }
+    @GetMapping("/get_accepted_request_by_patient_id/{id}")
+    @PreAuthorize("@userService.hasAuthorityUsingUserId(authentication.principal.username,#id)")
+    public List<Requests> getAcceptedequestByPatientId(@PathVariable("id") Long id){
+        return requestsService.getAcceptedRequestByPatientId(id);
+    }
 
     @GetMapping("/get_report_by_radiologist_and_patient/{rad_id}/{pat_id}")
     @PreAuthorize("@userService.hasAuthorityUsingUserId(authentication.principal.username,#rad_id) or @userService.hasAuthorityUsingUserId(authentication.principal.username,#pat_id)")

@@ -19,6 +19,9 @@ public interface RequestsRepository extends JpaRepository<Requests, Long> {
     @Query(nativeQuery = true, value = "select * from requests where patient_id = :pat_id and status is null")
     List<Requests> findNotAcceptedRequestsByPatientId(@Param("pat_id") Long pat_id);
 
+    @Query(nativeQuery = true, value = "select * from requests where patient_id = :pat_id and status = 1")
+    List<Requests> findAcceptedRequestsByPatientId(@Param("pat_id") Long pat_id);
+
     @Modifying
     @Query(nativeQuery = true, value = "update requests set status = 1 where id = :request_id")
     void approveRequestById(@Param("request_id") Long request_id);
