@@ -16,6 +16,7 @@ public class Requests {
     @GeneratedValue
     private Long id;
     private Long status;
+    @Convert(converter = StringCryptoConverter.class)
     private String comments;
     private Long patient_id;
     @ManyToOne()

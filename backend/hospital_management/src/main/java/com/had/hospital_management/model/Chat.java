@@ -1,9 +1,6 @@
 package com.had.hospital_management.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,6 +20,7 @@ public class Chat {
     private Long id;
     private Long reportId;
     private Long sender_id;
+    @Convert(converter = StringCryptoConverter.class)
     private String msg;
     private LocalDateTime time;
 }
