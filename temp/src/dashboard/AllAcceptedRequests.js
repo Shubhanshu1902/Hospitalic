@@ -7,11 +7,13 @@ import { useState, useEffect } from "react";
 export const AllAcceptedRequests = () => {
     // const request = 
     const [requestList,setRequestList] = useState([]);
+    const ids = retrieveUserId()
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const data = await getAcceptedRequestByPatientId(retrieveUserId());
+                if(data !== undefined)
                 setRequestList(data);
             }
             catch (error) {
@@ -19,13 +21,13 @@ export const AllAcceptedRequests = () => {
             }
         };
 
-        fetchData();
+        fetchData(); 
         const intervalId = setInterval(() => {
             fetchData();
         }, 5000);
 
         return () => clearInterval(intervalId);
-    }, [retrieveUserId()]);
+    }, [ids]);
     
     return (
         <div className="AllRequests">

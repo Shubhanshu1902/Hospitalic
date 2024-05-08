@@ -20,7 +20,7 @@ public class Report {
     private String name;
     @Convert(converter = StringCryptoConverter.class)
     private String photo_path;
-    @Convert(converter = StringCryptoConverter.class)
+    // @Convert(converter = StringCryptoConverter.class)
     private String comments;
 
     @ManyToOne()

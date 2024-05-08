@@ -1,27 +1,42 @@
 import AWS from "aws-sdk";
 
-const S3_BUCKET = process.env.REACT_APP_S3_BUCKET;
-const REGION = process.env.REACT_APP_REGION;
 
-AWS.config.update({
-    accessKeyId: process.env.REACT_APP_accessKeyId,
-    secretAccessKey: process.env.REACT_APP_secretAccessKey,
-});
-
-const myBucket = new AWS.S3({
-    params: { Bucket: S3_BUCKET },
-    region: REGION,
-});
 
 export const getURLfromBUCKET = (fileName) => {
+    const S3_BUCKET = process.env.REACT_APP_S3_BUCKET;
+    const REGION = process.env.REACT_APP_REGION;
+
+    AWS.config.update({
+        accessKeyId: process.env.REACT_APP_accessKeyId,
+        secretAccessKey: process.env.REACT_APP_secretAccessKey,
+    });
+
+    const myBucket = new AWS.S3({
+        params: { Bucket: S3_BUCKET },
+        region: REGION,
+    });
     const {
         config: { params, region },
     } = myBucket;
+
+    console.log(region);
     const regionString = region.includes("us-east-1") ? "" : "-" + region;
     return `https://${params.Bucket}.s3${regionString}.amazonaws.com/${fileName}`;
 };
 
-export const uploadFileToS3 = (file,id) => {
+export const uploadFileToS3 = (file, id) => {
+    const S3_BUCKET = process.env.REACT_APP_S3_BUCKET;
+    const REGION = process.env.REACT_APP_REGION;
+
+    AWS.config.update({
+        accessKeyId: process.env.REACT_APP_accessKeyId,
+        secretAccessKey: process.env.REACT_APP_secretAccessKey,
+    });
+
+    const myBucket = new AWS.S3({
+        params: { Bucket: S3_BUCKET },
+        region: REGION,
+    });
     let params = {
         ACL: "public-read",
         Body: file,
@@ -39,9 +54,21 @@ export const uploadFileToS3 = (file,id) => {
                 return;
             }
         });
-    }
+}
 
 export const uploadJSONtoS3 = (file, id) => {
+    const S3_BUCKET = process.env.REACT_APP_S3_BUCKET;
+    const REGION = process.env.REACT_APP_REGION;
+
+    AWS.config.update({
+        accessKeyId: process.env.REACT_APP_accessKeyId,
+        secretAccessKey: process.env.REACT_APP_secretAccessKey,
+    });
+
+    const myBucket = new AWS.S3({
+        params: { Bucket: S3_BUCKET },
+        region: REGION,
+    });
     let params = {
         ACL: "public-read",
         Body: file,
