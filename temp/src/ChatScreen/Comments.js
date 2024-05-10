@@ -16,6 +16,7 @@ export const Comments = () => {
     const type = useParams().type;
     const reportId = useParams().reportid;
     const [data, setData] = useState([]);
+    const [mycmnt, setMycmnt] = useState("")
 
     const [comments, setComments] = useState([]);
     const [cmnt, setCmnt] = useState("");
@@ -25,6 +26,7 @@ export const Comments = () => {
             let items = await GetReportById(reportId);
             // console.log("items", items);
             if (items.length != 0 && items.comments !== "") {
+                // if(items.user1.id === ids) setMycmnt(items.comments)
                 setComments(comments => [
                     ...comments,
                     {
@@ -57,6 +59,7 @@ export const Comments = () => {
     useEffect(() => {
         // console.log(data.comments)
         if (data.length != 0 && data.comments !== "") {
+            // if(data.user1.id === ids) setMycmnt(data.comments)
             setComments(comments => [
                 ...comments,
                 {
@@ -74,6 +77,16 @@ export const Comments = () => {
             if (type === "doctor") RepAddComment(reportId, cmnt);
             else if (type === "radiologist")
                 ReqAddComment(reportId, retrieveUserId(), cmnt);
+
+            setComments(comments => [
+                ...comments,
+                {
+                    id: ids,
+                    name: ``,
+                    comment: `${cmnt}`,
+                },
+            ]);
+
             setCmnt("");
         }
     };
