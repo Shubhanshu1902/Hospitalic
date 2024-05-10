@@ -45,7 +45,8 @@ export const ListComp = props => {
                         icon="fas fa-arrow-alt-circle-right"
                         style={{ padding: "5px" }}
                     />{" "}
-                    Appointment for {props.pname}
+                    Appointment for {props.pname} on{" "}
+                    {moment(props.time).format("MMM Do YY")}
                 </div>
                 <button className="button" onClick={() => setButtonPopup(true)}>
                     {" "}

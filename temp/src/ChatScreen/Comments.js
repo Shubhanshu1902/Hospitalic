@@ -80,7 +80,9 @@ export const Comments = () => {
 
     const handleArrow = event => {
         // console.log("CLICKED")
-        RepAddComment(reportId, cmnt);
+        if (type === "doctor") RepAddComment(reportId, cmnt);
+        else if (type === "radiologist")
+            ReqAddComment(reportId, retrieveUserId(), cmnt);
         setCmnt("");
     };
 

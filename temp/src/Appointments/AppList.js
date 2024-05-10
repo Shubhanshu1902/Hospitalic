@@ -35,6 +35,11 @@ export const AppList = () => {
 
     useEffect(() => {
         getData();
+        const intervalId = setInterval(() => {
+            getData();
+        }, 1000); // Fetch messages every 5 seconds
+
+        return () => clearInterval(intervalId); // Cleanup function to clear interval on component unmount
     }, []);
 
     var i = 0;
